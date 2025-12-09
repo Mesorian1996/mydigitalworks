@@ -2,19 +2,12 @@
 import Logo from "@/components/global/Logo.astro";
 import Offcanvas from "../../widgets/Offcanvas.astro";
 import { parseTomlToJson } from "@/lib/utils/tomlUtils";
-import { useTranslations } from "@/lib/utils/i18nUtils";
 import NavbarToggler from "@/layouts/components/global/header/NavbarToggler.astro";
 import HeaderOffcanvasContent from "@/components/widgets/HeaderOffcanvasContent.astro";
-import LanguageSwitcher from "@/layouts/components/global/header/LanguageSwitcher.astro";
 import Navbar from "./Navbar.astro";
 import CustomButton from "@/components/CustomButton.astro";
 
 const config = parseTomlToJson();
-const t = await useTranslations(Astro.currentLocale as string);
-
-const isCategoryFilteredPage = ["/category/", "/tag/"].some((path) =>
-  Astro.url.pathname.includes(`/${config.settings.blogFolder}${path}`),
-);
 
 const {
   site: { logoAlternate },
@@ -47,38 +40,19 @@ const {
       <Navbar />
 
       {/* Language Switcher For Small Devices */}
-      {
-        config.settings.multilingual.enable && !isCategoryFilteredPage && (
-          <div class="ms-auto me-4 flex lg:hidden">
-            <LanguageSwitcher
-              appearance={hasDarkBackground ? "light" : "dark"}
-            />
-          </div>
-        )
-      }
-
       {/* Navigation Button For Large Devices */}
       {
-        (navigationButton.enable || config.settings.multilingual.enable) && (
+        navigationButton.enable && (
           <div class="hidden gap-3.5 max-lg:ms-auto max-lg:me-4 lg:flex lg:items-center">
-            {config.settings.multilingual.enable && !isCategoryFilteredPage && (
-              <LanguageSwitcher
-                appearance={hasDarkBackground ? "light" : "dark"}
-              />
-            )}
-            {navigationButton.enable && (
-              <CustomButton
-                variant="fill"
-                label={t("navigation.buttonLabel")}
-                hoverEffect="creative-fill"
-                {...navigationButton}
-                class:list={[
-                  hasDarkBackground
-                    ? "btn-accent effect-color-dark"
-                    : "btn-primary effect-color-accent",
-                ]}
-              />
-            )}
+            <CustomButton
+              variant="fill"
+              label={navigationButton.label || "Gespräch buchen"}
+              hoverEffect="creative-fill"
+              {...navigationButton}
+              class:list={[
+                "bg-[#3B82F6] text-white hover:bg-[#2563eb] border border-transparent",
+              ]}
+            />
           </div>
         )
       }

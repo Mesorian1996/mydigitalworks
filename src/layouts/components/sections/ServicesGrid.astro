@@ -1,0 +1,81 @@
+---
+import ReactIcons from "@/helpers/ReactIcons.astro";
+
+const services = [
+  {
+    title: "Webdesign & Hosting",
+    description: "Individuelle Seiten, sichere Infrastruktur und Updates.",
+    icon: "RxRocket",
+  },
+  {
+    title: "Google Business Profile",
+    description: "Optimierung für lokale Sichtbarkeit und Bewertungen.",
+    icon: "RxPinRight",
+  },
+  {
+    title: "Branding / Corporate Identity",
+    description: "Logo, Farben, Typografie und konsistente Brand-Guides.",
+    icon: "RxSketchLogo",
+  },
+  {
+    title: "SEO & Local SEO",
+    description: "Technisches SEO, Inhalte, strukturierte Daten, Backlinks.",
+    icon: "RxMagnifyingGlass",
+  },
+  {
+    title: "Lead-Generierung",
+    description: "Funnels, CTAs und Landingpages mit klarer Conversion.",
+    icon: "RxTarget",
+  },
+  {
+    title: "Lexware / Lexoffice",
+    description: "Implementierung und Anbindung in digitale Prozesse.",
+    icon: "RxFileText",
+  },
+  {
+    title: "Website Performance",
+    description: "Core Web Vitals, Caching, Bildoptimierung und Hosting.",
+    icon: "RxLightningBolt",
+  },
+  {
+    title: "Analytics & Tracking",
+    description: "Events, Conversions und Dashboards für bessere Entscheidungen.",
+    icon: "RxActivityLog",
+  },
+];
+---
+
+<section id="services" class="bg-white py-20 md:py-28">
+  <div class="container space-y-10">
+    <div class="space-y-4 text-center" data-aos="fade-up">
+      <p class="text-sm uppercase tracking-[0.28em] text-[#3B82F6]">
+        Skills &amp; Services
+      </p>
+      <h2 class="text-h1-sm font-bold leading-tight text-[#0A1A2F] md:text-h1">
+        Was wir für dich bauen
+      </h2>
+      <p class="text-base text-[#475569] md:text-lg">
+        Ein klares Set an Leistungen für sichtbare Marken und mehr Anfragen.
+      </p>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+      {services.map((service, idx) => (
+        <article
+          class="group relative overflow-hidden rounded-2xl border border-[#E5E7EB] bg-[#F8FAFC] p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+          data-aos="fade-up"
+          data-aos-delay={idx * 60}>
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-[#E5E7EB] text-[#0A1A2F]">
+            <ReactIcons icon={service.icon} class="text-xl" />
+          </div>
+          <h3 class="mt-4 text-lg font-semibold text-[#0A1A2F]">{service.title}</h3>
+          <p class="mt-2 text-sm text-[#475569]">{service.description}</p>
+          <div class="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100">
+            <div class="absolute inset-0 bg-gradient-to-br from-[#3B82F6]/10 via-transparent to-transparent" />
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+

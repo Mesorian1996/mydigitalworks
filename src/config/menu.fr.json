@@ -7,18 +7,23 @@
     },
     {
       "enable": true,
+      "name": "À propos",
+      "url": "/#about"
+    },
+    {
+      "enable": true,
       "name": "Services",
       "url": "/#services"
     },
     {
       "enable": true,
-      "name": "Projets",
-      "url": "/#projects"
+      "name": "Portfolio",
+      "url": "/#portfolio"
     },
     {
       "enable": true,
-      "name": "Tarifs",
-      "url": "/#pricing"
+      "name": "Contact",
+      "url": "/#contact"
     }
   ]
 }

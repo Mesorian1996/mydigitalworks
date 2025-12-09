@@ -1,7 +1,5 @@
 ---
 import type { NavigationLink } from "@/types";
-import { getLocaleUrlCTM } from "@/lib/utils/i18nUtils";
-
 const menu = Astro.props.menu as NavigationLink;
 const { pathname } = Astro.url;
 ---
@@ -21,11 +19,7 @@ const { pathname } = Astro.url;
             ? menu.target || "_blank"
             : menu.target || undefined,
         }}
-        target={menu.url?.startsWith("http") ? "_blank" : undefined}
-        href={getLocaleUrlCTM(
-          menu.url || Astro.url.origin,
-          Astro.currentLocale,
-        )}
+        href={menu.url || "/"}
         class:list={[
           "nav-link",
           {

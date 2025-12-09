@@ -9,27 +9,28 @@ import {
   parseTomlToJson,
   reloadOnTomlChange,
 } from "./src/lib/utils/tomlUtils.ts";
-import { enabledLanguages } from "./src/lib/utils/i18nUtils.ts";
 
 const config = parseTomlToJson();
 
 let {
   seo: { sitemap: sitemapConfig },
   settings: {
-    multilingual: { showDefaultLangInUrl, defaultLanguage },
+    multilingual: { defaultLanguage },
   },
 } = config;
+
+const defaultLocale = defaultLanguage || "de";
 
 // https://astro.build/config
 export default defineConfig({
   site: config.site.baseUrl ? config.site.baseUrl : "http://examplesite.com",
   trailingSlash: config.site.trailingSlash ? "always" : "never",
   i18n: {
-    locales: enabledLanguages,
-    defaultLocale: defaultLanguage,
+    locales: [defaultLocale],
+    defaultLocale,
     routing: {
-      redirectToDefaultLocale: showDefaultLangInUrl ? false : true,
-      prefixDefaultLocale: showDefaultLangInUrl,
+      redirectToDefaultLocale: false,
+      prefixDefaultLocale: false,
     },
   },
   integrations: [react(), sitemapConfig.enable ? sitemap() : null, mdx()],

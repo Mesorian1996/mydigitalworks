@@ -1,0 +1,113 @@
+---
+import CustomButton from "@/components/CustomButton.astro";
+---
+
+<section
+  id="hero"
+  class="relative overflow-hidden text-white"
+  style="
+    background: radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.15), transparent 32%),
+    radial-gradient(circle at 80% 10%, rgba(229, 231, 235, 0.12), transparent 30%),
+    linear-gradient(135deg, #0A1A2F 0%, #0f2643 40%, #0A1A2F 100%);
+  ">
+  <div class="absolute inset-0 opacity-70">
+    <div class="hero-mesh pointer-events-none absolute inset-0"></div>
+    <div class="hero-orb"></div>
+  </div>
+
+  <div class="container relative">
+    <div class="flex flex-col gap-10 py-24 md:py-32 lg:py-40">
+      <div class="max-w-4xl space-y-6" data-aos="fade-up">
+        <p class="text-sm uppercase tracking-[0.32em] text-[#E5E7EB]">
+          MY Digital Studio • Webdesign • SEO • Branding
+        </p>
+        <h1 class="text-display-4 font-bold leading-tight md:text-display-3">
+          MY hilft DIR bei deinen digitalen Lösungen.
+        </h1>
+        <p class="text-lg text-[#E5E7EB] md:text-xl">
+          Webdesign, SEO, Branding &amp; Digitalisierung für Kleinunternehmen.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3" data-aos="fade-up" data-aos-delay="120">
+        <CustomButton
+          label="Kostenloses Gespräch buchen"
+          url="#contact"
+          hoverEffect="creative-fill"
+          class="btn-primary bg-[#3B82F6] border-[#3B82F6] text-white hover:bg-[#2563eb] hover:border-[#2563eb] effect-color-dark"
+        />
+        <CustomButton
+          label="Portfolio ansehen"
+          url="#portfolio"
+          hoverEffect="creative-fill"
+          class="btn-outline border-white text-white hover:bg-white/10"
+        />
+      </div>
+
+      <div class="grid grid-cols-1 gap-4 text-[#E5E7EB] sm:grid-cols-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="rounded-2xl border border-white/15 bg-white/5 p-5 backdrop-blur">
+          <p class="text-base font-semibold text-white">
+            Websites, die Leads bringen
+          </p>
+          <p class="mt-2 text-sm text-white/80">
+            Klarer Fokus auf Conversion, schnelle Ladezeiten und mobile-first.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/15 bg-white/5 p-5 backdrop-blur">
+          <p class="text-base font-semibold text-white">
+            Sichtbarkeit auf Google
+          </p>
+          <p class="mt-2 text-sm text-white/80">
+            Google Business Profile, Local SEO und saubere Struktur.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/15 bg-white/5 p-5 backdrop-blur">
+          <p class="text-base font-semibold text-white">
+            Branding mit Wiedererkennung
+          </p>
+          <p class="mt-2 text-sm text-white/80">
+            Einheitliche Markenauftritte, die Vertrauen schaffen.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-mesh {
+    background: radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.18), transparent 35%),
+      radial-gradient(circle at 75% 30%, rgba(229, 231, 235, 0.15), transparent 30%),
+      radial-gradient(circle at 60% 70%, rgba(59, 130, 246, 0.12), transparent 32%);
+    animation: soft-move 12s ease-in-out infinite alternate;
+  }
+  .hero-orb {
+    position: absolute;
+    inset: 20% auto auto 55%;
+    width: 320px;
+    height: 320px;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.28), transparent 60%);
+    filter: blur(20px);
+    animation: floaty 9s ease-in-out infinite;
+  }
+  @keyframes soft-move {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-18px, 12px, 0);
+    }
+  }
+  @keyframes floaty {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(8px, -10px, 0) scale(1.04);
+    }
+    100% {
+      transform: translate3d(-6px, 12px, 0) scale(1);
+    }
+  }
+</style>

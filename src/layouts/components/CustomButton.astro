@@ -27,7 +27,6 @@
   <CustomButton label="Contact Us" icon="/icons/mail.svg" url="/contact" />
  */
 
-import { getLocaleUrlCTM } from "@/lib/utils/i18nUtils";
 import CustomButtonContent from "./CustomButtonContent.astro";
 import type { sharedButton, sharedButtonTag } from "@/sections.schema";
 import type { z } from "astro/zod";
@@ -86,7 +85,7 @@ const buttonClasses = [
       rel={resolvedRel}
       target={resolvedTarget}
       class:list={buttonClasses}
-      href={getLocaleUrlCTM(url, Astro.currentLocale)}
+      href={url}
       {...rest}>
       <CustomButtonContent
         {...{

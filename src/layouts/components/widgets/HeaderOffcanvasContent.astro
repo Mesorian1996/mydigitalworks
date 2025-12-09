@@ -7,7 +7,6 @@ import { markdownify } from "@/lib/utils/textConverter";
 import Social from "./Social.astro";
 import CustomButton from "@/components/CustomButton.astro";
 import Navbar from "../global/header/Navbar.astro";
-import { useTranslations } from "@/lib/utils/i18nUtils";
 
 const {
   settings: {
@@ -15,8 +14,6 @@ const {
     contactInfo: { address, phone, email },
   },
 } = parseTomlToJson();
-
-const t = await useTranslations(Astro.currentLocale as string);
 
 const { offcanvas } = Astro.props;
 
@@ -26,7 +23,7 @@ if (!enable) {
 ---
 
 <div
-  class="text-light h-screen space-y-10 overflow-auto bg-black px-8 pt-20 pb-5 md:px-16 md:pt-32 md:pb-10">
+  class="text-light h-screen space-y-10 overflow-auto bg-[#0A1A2F] px-8 pt-20 pb-5 md:px-16 md:pt-32 md:pb-10">
   <button
     type="button"
     data-hs-overlay={`#${offcanvas}`}
@@ -39,11 +36,11 @@ if (!enable) {
   <Logo class="justify-start" width="11.25rem" height="3.125rem" src={logo} />
   <div class="lg:border-b lg:pb-10">
     {
-      (description || t("headerOffcanvas.description")) && (
+      (description || "Digitale Lösungen für kleine Unternehmen.") && (
         <p
           class="text-lg"
           set:html={markdownify(
-            description || t("headerOffcanvas.description"),
+            description || "Digitale Lösungen für kleine Unternehmen.",
           )}
         />
       )
@@ -68,8 +65,8 @@ if (!enable) {
 
   <CustomButton
     variant="circle"
-    class="btn-accent m-0 ms-auto hidden justify-center lg:flex"
-    label={button?.label || t("headerOffcanvas.buttonLabel")}
+    class="m-0 ms-auto hidden justify-center bg-[#3B82F6] text-white hover:bg-[#2563eb] lg:flex"
+    label={button?.label || "Portfolio"}
     {...button}
   />
 </div>

@@ -8,8 +8,8 @@ description: |
 button:
   enable: true
   variant: "fill" # Options: "fill" | "outline" | "text" | "circle"
-  label: "Let’s Talk with us"
-  url: "/"
+  label: "Kostenloses Gespräch buchen"
+  url: "/#contact"
   rel: ""
   target: ""
 

@@ -1,0 +1,121 @@
+---
+import CustomButton from "@/components/CustomButton.astro";
+import OptimizedImage from "@/components/utilities/OptimizedImage.astro";
+
+const projects = [
+  {
+    title: "Circle of Life BJJ",
+    description:
+      "Mobile-first Website mit klarer Struktur, Lead-Funnel und Trainingsanfragen direkt auf der Seite.",
+    url: "https://circleoflife-bjj.de",
+    slides: [
+      "/images/portfolio/Circleoflife_bjj_1.webp",
+      "/images/portfolio/Circleoflife_bjj_2.webp",
+      "/images/portfolio/Circleoflife_bjj_3.webp",
+    ],
+  },
+  {
+    title: "Limani Fliesenleger",
+    description:
+      "Handwerksauftritt mit Google-Optimierung, Service-Übersicht, Referenzen und schnellen Kontaktwegen.",
+    url: "https://limani-fliesenleger.de",
+    slides: [
+      "/images/portfolio/Limani_Fliesenleger_1.webp",
+      "/images/portfolio/Limani_Fliesenleger_2.webp",
+      "/images/portfolio/Limani_Fliesenleger_3.webp",
+    ],
+  },
+];
+---
+
+<section id="portfolio" class="bg-[#0A1A2F] py-20 md:py-28">
+  <div class="container space-y-10">
+    <div class="space-y-4 text-center text-white" data-aos="fade-up">
+      <p class="text-sm uppercase tracking-[0.28em] text-[#3B82F6]">Unsere Projekte</p>
+      <h2 class="text-h1-sm font-bold leading-tight md:text-h1">Portfolio im Fokus</h2>
+      <p class="text-base text-white/80 md:text-lg">
+        Zwei reale Projekte, die Sichtbarkeit, Vertrauen und Anfragen steigern.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {projects.map((project, idx) => (
+        <article
+          class="group relative overflow-hidden rounded-3xl border border-white/10 bg-[#0f2643] p-8 shadow-[0_20px_70px_-35px_rgba(0,0,0,0.6)] transition duration-500 hover:-translate-y-2 hover:shadow-[0_30px_90px_-40px_rgba(59,130,246,0.35)]"
+          data-aos="fade-up"
+          data-aos-delay={idx * 120}>
+          <div class="space-y-5">
+            <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0A1A2F]">
+              <div class="portfolio-track">
+                {project.slides.map((slide) => (
+                  <div class="portfolio-slide">
+                    <OptimizedImage
+                      src={slide}
+                      alt={`${project.title} Screenshot`}
+                      loading="lazy"
+                      width={1200}
+                      height={675}
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      class="h-64 w-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0A1A2F]/40"></div>
+            </div>
+
+            <div class="space-y-3">
+              <h3 class="text-2xl font-semibold text-white">{project.title}</h3>
+              <p class="text-base text-white/75">{project.description}</p>
+              <div class="flex items-center gap-3">
+                <CustomButton
+                  label="Projekt ansehen"
+                  url={project.url}
+                  hoverEffect="creative-fill"
+                  class="btn-primary bg-[#3B82F6] border-[#3B82F6] text-white hover:bg-[#2563eb] hover:border-[#2563eb] effect-color-dark"
+                />
+                <span class="text-sm uppercase tracking-[0.24em] text-white/60">
+                  Live
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
+            <div class="absolute inset-0 bg-gradient-to-br from-[#3B82F6]/20 via-transparent to-transparent" />
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .portfolio-track {
+    display: flex;
+    width: 300%;
+    animation: portfolio-slide 16s ease-in-out infinite;
+  }
+  .portfolio-slide {
+    width: 100%;
+    flex: 1 0 100%;
+  }
+  @keyframes portfolio-slide {
+    0%,
+    18% {
+      transform: translateX(0);
+    }
+    25%,
+    43% {
+      transform: translateX(-100%);
+    }
+    50%,
+    68% {
+      transform: translateX(-200%);
+    }
+    75%,
+    100% {
+      transform: translateX(0);
+    }
+  }
+</style>
+

@@ -1,8 +1,8 @@
 # Site Configuration
 [site]
-  title            = "Folex" # Shared title for SEO and OpenGraph
-  description      = "A highly customizable creative agency business theme built with Tailwind CSS and Astro Js" # Shared description for SEO and OpenGraph
-  tagline          = "Creative Agency & Personal Portfolio Business Theme"
+  title            = "MY Digital Studio" # Shared title for SEO and OpenGraph
+  description      = "MY Digital Studio – Webdesign, SEO, Branding & digitale Lösungen für Kleinunternehmen." # Shared description for SEO and OpenGraph
+  tagline          = "Digitale Lösungen & Webdesign"
   taglineSeparator = "" # default is " - " 
   baseUrl          = "https://folex-lite-astro.vercel.app/" # Base URL for the site and used in OpenGraph meta tags.
   logo             = "/images/logo.svg" # Path to the site's logo
@@ -76,13 +76,12 @@
 
   # Multilingual settings (check src/config/language.json for changing the languages)
   # NOTE: Manually restart your server when you change the following multilingual table values
-  [settings.multilingual]
-    # Set `enable` to `true` for enabling the multilingual feature or `false` for disabling it.
-    # Run `npm run remove-multilingual` for removing multilingual content files after disabling the feature.
-    enable               = true
-    defaultLanguage      = "en"
-    disableLanguages     = [] # List of languages to disable (eg: ["fr", "es"])
-    showDefaultLangInUrl = false # Show default language in URL (eg: https://getastrothemes.com/en/)
+[settings.multilingual]
+  # Einsprachig (Deutsch)
+  enable               = false
+  defaultLanguage      = "de"
+  disableLanguages     = []
+  showDefaultLangInUrl = false
 
   # Global Contact Information
   [settings.contactInfo]
@@ -98,16 +97,16 @@
     description = "" # Check src/i18n/en.json and src/i18n/fr.json for changing the description in different languages or directly add value here if you are not using internationalization feature. This is also used in footer of personal-portfolio homepage
 
     # Call To Action Button
-    [settings.headerOffcanvas.button]
+[settings.headerOffcanvas.button]
       enable = true
-      label  = "" # Check src/i18n/en.json and src/i18n/fr.json for changing the button label in different languages or directly add value here if you are not using internationalization feature
-      url    = "/"
+      label  = "Portfolio"
+      url    = "/#portfolio"
 
 # Navigation Button In Header
 [settings.navigationButton]
   enable = true
-  label  = "" # Check src/i18n/en.json and src/i18n/fr.json for changing the navigation button label in different languages or directly add value here if you are not using internationalization feature
-  url    = "/"
+  label  = "Gespräch buchen" # Check src/i18n/en.json and src/i18n/fr.json for changing the navigation button label in different languages or directly add value here if you are not using internationalization feature
+  url    = "/#contact"
 
 
 # OpenGraph Metadata

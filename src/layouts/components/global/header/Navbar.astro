@@ -1,19 +1,17 @@
 ---
 import { parseTomlToJson } from "@/lib/utils/tomlUtils";
 import NavMenuItem from "@/layouts/components/global/header/MenuItem.astro";
-import { useTranslations } from "@/lib/utils/i18nUtils";
 import type { NavigationLink } from "@/types";
 import { filteredEnabled } from "@/lib/utils/filteredEnabled";
 import CustomButton from "@/components/CustomButton.astro";
+import menuConfig from "@/config/menu.en.json";
 
 interface Props {
   isMobile?: boolean;
 }
 
 const config = parseTomlToJson();
-const t = await useTranslations(Astro.currentLocale as string);
-let main = t("headerPrimary") as NavigationLink[];
-main = filteredEnabled(main);
+let main = filteredEnabled(menuConfig.headerPrimary as NavigationLink[]);
 
 const { isMobile } = Astro.props;
 const { navigationButton } = config.settings;
@@ -30,8 +28,8 @@ const { navigationButton } = config.settings;
       <li class="max-lg:pt-2 lg:hidden" role="menuitem">
         <CustomButton
           hoverEffect="creative-fill"
-          class="btn-accent effect-color-dark"
-          label={t("navigation.buttonLabel")}
+          class="bg-[#3B82F6] text-white hover:bg-[#2563eb]"
+          label={navigationButton.label || "Gespräch buchen"}
           {...navigationButton}
         />
       </li>

@@ -4,12 +4,10 @@ import { markdownify } from "@/lib/utils/textConverter";
 import { splitProtectedText } from "@/lib/utils/splitProtectedText";
 import SocialComponent from "@/components/widgets/Social.astro";
 import social from "@/config/social.json";
-import { useTranslations } from "@/lib/utils/i18nUtils";
 import { getEntryCTM } from "@/lib/customContentLoader.astro";
 import ContactForm from "../widgets/ContactForm.astro";
 
 const config = parseTomlToJson();
-const t = await useTranslations(Astro.currentLocale as string);
 
 let {
   copyright,
@@ -20,24 +18,24 @@ const { footerSpaceTop = true } = Astro.props;
 
 const {
   data: { title, description },
-} = await getEntryCTM("sections", "call-to-action", Astro.currentLocale);
+} = await getEntryCTM("sections", "call-to-action");
 
-let { form } = (
-  await getEntryCTM("sections", "contact-section", Astro.currentLocale)
-)?.data;
+let { form } = (await getEntryCTM("sections", "contact-section"))?.data;
 
-footerDescription = footerDescription || t("footer.description") || "";
+footerDescription = footerDescription || "";
 
-const copyrightText = copyright.text || t("footer.copyright") || "";
+const copyrightText =
+  copyright.text ||
+  "Copyright © {{ year }} MY Digital Studio. Alle Rechte vorbehalten.";
 const copyrightParts = splitProtectedText(copyrightText);
 ---
 
 <footer
   id="footer-with-contact"
-  class:list={["bg-accent", !footerSpaceTop && "mt-0"]}>
+  class:list={[ "bg-[#0A1A2F] text-white", !footerSpaceTop && "mt-0"]}>
   <div class="container pb-8 md:pb-16">
     <div
-      class="grid grid-cols-1 gap-y-10 border-b-2 border-black py-16 md:py-24 lg:grid-cols-2 lg:gap-x-20 xl:gap-x-10">
+      class="grid grid-cols-1 gap-y-10 border-b border-white/15 py-16 md:py-24 lg:grid-cols-2 lg:gap-x-20 xl:gap-x-10">
       <div class="space-y-10">
         {
           title && (
@@ -50,7 +48,7 @@ const copyrightParts = splitProtectedText(copyrightText);
         {
           description && (
             <div
-              class="w-full max-w-lg text-lg"
+              class="w-full max-w-lg text-lg text-white/80"
               set:html={markdownify(description, true)}
             />
           )
@@ -58,9 +56,9 @@ const copyrightParts = splitProtectedText(copyrightText);
         <div class="space-y-4">
           {
             config.settings.copyright?.enable && (
-              <ul class="has-list has-list-slash prose-a:text-inherit flex flex-wrap gap-y-2">
+              <ul class="has-list has-list-slash prose-a:text-inherit flex flex-wrap gap-y-2 text-white/70">
                 {copyrightParts.map((value) => (
-                  <li class="prose-a:text-text-default/70 prose-a:hover:text-text-default">
+                  <li class="prose-a:text-white/70 prose-a:hover:text-white">
                     <span set:html={markdownify(value)} />
                   </li>
                 ))}
@@ -70,7 +68,7 @@ const copyrightParts = splitProtectedText(copyrightText);
 
           <SocialComponent
             size="lg"
-            layout="dark"
+          layout="dark"
             class="gap-5"
             linkType="follow"
             list={social.main.filter((s) => s.enable)}
@@ -80,7 +78,7 @@ const copyrightParts = splitProtectedText(copyrightText);
       <ContactForm form={form} />
     </div>
     <div
-      class="font-secondary flex flex-wrap items-center justify-between gap-x-8 gap-y-6 pt-6 text-sm leading-loose font-semibold uppercase">
+      class="font-secondary flex flex-wrap items-center justify-between gap-x-8 gap-y-6 pt-6 text-sm leading-loose font-semibold uppercase text-white/70">
       {address && <p set:html={markdownify(address)} />}
       <div class="md:text-end">
         {phone && <p set:html={markdownify(phone)} />}
