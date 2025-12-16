@@ -40,7 +40,7 @@ const copyrightParts = splitProtectedText(copyrightText);
         {
           title && (
             <h2
-              class="text-display-6 xs:text-display-5 md:text-display-4"
+              class="text-display-6 xs:text-display-5 md:text-display-4 text-[#f7b97d]"
               set:html={markdownify(title)}
             />
           )
@@ -75,7 +75,25 @@ const copyrightParts = splitProtectedText(copyrightText);
           />
         </div>
       </div>
-      <ContactForm form={form} />
+      <div
+        class="rounded-2xl bg-[#0f2643] p-6 shadow-xl text-white
+               [&_.form-label]:text-white
+               [&_.form-input]:!text-white
+               [&_.form-input]:!caret-white
+               [&_.form-input]:placeholder:text-white/70
+               [&_.form-input]:border-white/60
+               [&_.form-checkbox]:border-white/60
+               [&_.form-radio]:border-white/60
+               [&_.form-checkbox]:bg-transparent
+               [&_.form-radio]:bg-transparent
+               [&_.hs-select]:text-white
+               [&_.hs-select button]:text-white
+               [&_.hs-select button]:border-white/60">
+        <ContactForm
+          form={form}
+          class="text-white [&_.form-label]:text-white [&_.form-input]:!text-white [&_.form-input]:!caret-white [&_.form-input]:placeholder:text-white/70 [&_.form-check-label]:text-white [&_.form-radio]:border-white/70 [&_.form-checkbox]:border-white/70 [&_.hs-select-button]:!text-white"
+        />
+      </div>
     </div>
     <div
       class="font-secondary flex flex-wrap items-center justify-between gap-x-8 gap-y-6 pt-6 text-sm leading-loose font-semibold uppercase text-white/70">

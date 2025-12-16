@@ -35,18 +35,24 @@ if (!enable) {
 }
 ---
 
-<section id="pricing">
+<section id="pricing" class="py-16 md:py-24">
   <div class="container space-y-14">
-    {
-      title && (
-        <div class="text-center">
-          <h2 class="text-h1-sm md:text-h1" set:html={markdownify(title)} />
-        </div>
-      )
-    }
+    <div class="space-y-3 text-center text-[#0f1c28]">
+      <p class="text-xs uppercase tracking-[0.32em] text-[#476783]">P R E I S E & P A K E T E</p>
+      <h2 class="text-h1-sm font-bold leading-tight md:text-h1">
+        Professionelle Web-Auftritte, die Kunden überzeugen.
+      </h2>
+      <p class="text-base text-[#1f2a35] md:text-lg">
+        Von erster Sichtbarkeit bis High-End-Marke – wählen Sie das Paket, das zu Ihrer Reise passt.
+      </p>
+    </div>
 
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
       {list.map((item) => <PricingCard content={item} />)}
+    </div>
+
+    <div class="text-center text-sm text-[#1f2a35]">
+      Alle Pakete inkl. persönlicher Begleitung bis zum Launch. Transparente Festpreise, klare Timeline, saubere Übergabe.
     </div>
   </div>
 </section>

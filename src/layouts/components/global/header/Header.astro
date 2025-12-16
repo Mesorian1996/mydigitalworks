@@ -34,7 +34,11 @@ const {
   <nav class="xl:container-12xl relative max-xl:container">
     <div
       class="hs-dropdown relative flex items-center justify-between py-6 [--auto-close:inside] [--gpu-acceleration:false] [--strategy:absolute] lg:[--strategy:static]">
-      {hasDarkBackground ? <Logo src={logoAlternate} /> : <Logo />}
+      {hasDarkBackground ? (
+        <Logo src={logoAlternate} width="auto" height="3.75rem" />
+      ) : (
+        <Logo width="auto" height="3.75rem" />
+      )}
 
       <!-- Navbar For Header -->
       <Navbar />
@@ -50,7 +54,7 @@ const {
               hoverEffect="creative-fill"
               {...navigationButton}
               class:list={[
-                "bg-[#3B82F6] text-white hover:bg-[#2563eb] border border-transparent",
+                    "bg-[#456581] text-white hover:bg-[#F7B97C] hover:text-[#0A1A2F] border border-transparent transition-colors",
               ]}
             />
           </div>

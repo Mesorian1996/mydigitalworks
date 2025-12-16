@@ -1,0 +1,126 @@
+---
+const modules = [
+  {
+    title: "Lexoffice Basic",
+    price: "490 €",
+    copy: "Einstieg für digitale Rechnungen & Angebote.",
+    benefitsTitle: "Was du bekommst",
+    benefits: [
+      "Digitale Rechnungen & Angebote in Minuten",
+      "Einheitliches Branding (Logo, Farben, Schrift)",
+      "Rechtssichere Nummern & Belege",
+      "Saubere Grundlage für Wachstum",
+    ],
+    badge: null,
+  },
+  {
+    title: "Lexoffice Pro",
+    price: "990 €",
+    copy: "Automatisierte Buchhaltung & Prozesse.",
+    badge: "Empfohlen",
+    benefitsTitle: "Was wir umsetzen",
+    benefits: [
+      "Automatisierte Rechnungen & wiederkehrende Zahlungen",
+      "Kunden & Produkte sauber strukturiert",
+      "Bankkonten anbinden, Zahlungen abgleichen",
+      "Einführung & Übergabe inkl. kurzer Schulung",
+    ],
+  },
+  {
+    title: "Google Unternehmensprofil",
+    price: "190 €",
+    copy: "Lokal sichtbar werden & Bewertungen aufbauen.",
+    benefitsTitle: "Was wir optimieren",
+    benefits: [
+      "Profil erstellen oder übernehmen",
+      "Leistungen, Texte & Bilder schärfen",
+      "Lokale Keywords & Kategorien setzen",
+      "Erste Bewertungen gezielt anstoßen",
+    ],
+    badge: null,
+  },
+  {
+    title: "Logo Rebranding / Refresh",
+    price: "290 €",
+    copy: "Moderner Markenauftritt mit Wiedererkennung.",
+    benefitsTitle: "Was enthalten ist",
+    benefits: [
+      "Überarbeitung deines bestehenden Logos",
+      "Saubere Farben & Typografie",
+      "Einsatzbereit für Website, Google & Social",
+      "Optional: Mini-Brand-Guide",
+    ],
+    badge: null,
+  },
+];
+---
+
+<section id="modules" class="py-16 md:py-20 bg-white">
+  <div class="container space-y-10">
+    <div class="space-y-3 text-center text-[#0a1a2f]">
+      <p class="text-xs uppercase tracking-[0.28em] text-[#476783]">Module</p>
+      <h2 class="text-h2-sm md:text-h2 font-bold leading-tight">Digitale Module, die schnell wirken.</h2>
+      <p class="text-sm text-[#1f2a35]/85 md:text-base">
+        Ergänze dein Paket um fokussierte Bausteine – klar bepreist, sofort einsatzbereit.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {modules.map((item) => (
+        <article class="flex h-full flex-col rounded-3xl border border-[#d7c5aa]/70 bg-gradient-to-br from-white to-[#f7f0e4] p-6 shadow-[0_22px_70px_-48px_rgba(0,0,0,0.28)]">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex flex-col gap-1">
+              <h3 class="text-lg font-semibold tracking-tight text-[#0a1a2f]">{item.title}</h3>
+              <p class="text-sm font-secondary text-[#476783]">{item.price}</p>
+            </div>
+            {item.badge && (
+              <span class="rounded-full bg-[#f7b97d] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#0a1a2f]">
+                {item.badge}
+              </span>
+            )}
+          </div>
+          <p class="mt-3 text-sm leading-relaxed text-[#1f2a35]/85">{item.copy}</p>
+          {item.benefits && (
+            <div class="mt-4 space-y-2">
+              <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#476783]">
+                {item.benefitsTitle || "Was du bekommst"}
+              </p>
+              <ul class="space-y-1.5 text-xs leading-relaxed text-[#0f1c28]">
+                {item.benefits.map((point) => (
+                  <li class="flex gap-2">
+                    <span class="mt-1 h-2 w-2 rounded-full bg-[#f7b97d]" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <div class="container mt-12">
+    <div class="rounded-3xl bg-gradient-to-r from-[#476783] via-[#648298] to-[#f7b97d] px-8 py-12 text-white shadow-[0_25px_90px_-55px_rgba(0,0,0,0.35)]">
+      <div class="mx-auto flex max-w-3xl flex-col items-center text-center space-y-4">
+        <p class="text-xs uppercase tracking-[0.32em] text-white/80">
+          Mobile First · Performance · Conversion
+        </p>
+        <h3 class="text-3xl font-bold leading-tight md:text-4xl">
+          Wir arbeiten Mobile First – mit schönen, performanten Inhalten, die aus Interessenten Kunden machen.
+        </h3>
+        <p class="text-sm md:text-base text-white/85">
+          Schnelle Ladezeiten, klare Nutzerführung und starke Stories: So wird dein Content sichtbar, klickstark und verkaufsstark.
+        </p>
+        <div class="w-full md:w-auto">
+          <a
+            href="#contact"
+            class="inline-flex w-full items-center justify-center rounded-xl bg-[#F7B97C] px-8 py-4 text-base font-semibold text-[#0A1A2F] shadow-lg transition hover:-translate-y-0.5 hover:bg-[#456581] hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/50">
+            unverbindliches Angebot einholen
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

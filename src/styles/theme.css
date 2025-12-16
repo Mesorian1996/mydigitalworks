@@ -5,20 +5,29 @@
   --leading-inherit: inherit;
 
   /* Colors */
-  --color-primary: #0d0f01;
-  --color-secondary: #bcd4ff;
-  --color-accent: #e3ff04;
-  --color-accent-blue: #1601ac;
-  --color-body: #fff;
-  --color-body-dark: #070800;
-  --color-border-light: #e5e5e5;
-  --color-border-dark: #292525;
-  --color-theme-dark: #0e1118;
-  --color-theme-darker: #131312;
-  --color-theme-light: #f6f5f3;
-  --color-text-default: #2e2e2e;
-  --color-dark: #0a0c00;
-  --color-light: #f6f5f3;
+  --color-primary: #476783;
+  --color-secondary: #648298;
+  --color-accent: #f7b97d;
+  --color-accent-blue: #efba87;
+  --color-body: #fdfbf8;
+  --color-body-dark: #0a1a2f;
+  --color-border-light: #e6dbcc;
+  --color-border-dark: #2e3b47;
+  --color-theme-dark: #0c1b2a;
+  --color-theme-darker: #081320;
+  --color-theme-light: #e7ecf1;
+  --color-text-default: #0f1c28;
+  --color-dark: #0a1a2f;
+  --color-light: #f7f2ea;
+
+  /* Brand tokens for direct Tailwind usage */
+  --color-brand-primary: #476783;
+  --color-brand-primary-soft: #648298;
+  --color-brand-bg-soft: #a7b4bb;
+  --color-brand-bg-muted: #c9baa8;
+  --color-brand-neutral: #ddbc97;
+  --color-brand-accent: #f7b97d;
+  --color-brand-accent-soft: #efba87;
 
   /* Screen */
   --breakpoint-*: initial;

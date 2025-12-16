@@ -1,0 +1,85 @@
+---
+import ReactIcons from "@/helpers/ReactIcons.astro";
+
+const plans = [
+  {
+    name: "Webhosting Basic",
+    price: "49 € / Monat",
+    intro: "Stabiles Hosting für deine Website – schnell, sicher, betreut.",
+    benefits: [
+      "Schnelles & sicheres Hosting inkl. SSL",
+      "Regelmäßige Backups & Updates",
+      "Technischer Betrieb ohne Aufwand",
+    ],
+    badge: null,
+  },
+  {
+    name: "Webhosting Pro",
+    price: "99 € / Monat",
+    intro: "Maximale Performance, Monitoring und priorisierter Support.",
+    benefits: [
+      "Performance-Optimierung & Caching",
+      "Monitoring, Security Checks & Wartung",
+      "Priorisierter Support",
+    ],
+    badge: "Empfohlen",
+  },
+];
+---
+
+<section id="hosting" class="py-16 md:py-20 bg-white">
+  <div class="container space-y-10">
+    <div class="space-y-3 text-center text-[#0a1a2f]">
+      <p class="text-xs uppercase tracking-[0.28em] text-[#476783]">Webhosting & Betrieb</p>
+      <h2 class="text-h2-sm md:text-h2 font-bold leading-tight">Professionelles Hosting als monatlicher Service.</h2>
+      <p class="text-sm text-[#1f2a35]/85 md:text-base">
+        Klare Pakete, transparente Preise, laufender Betrieb ohne Aufwand.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+      {plans.map((plan) => {
+        const isFeatured = !!plan.badge;
+        return (
+          <article
+            class:list={[
+              "flex h-full flex-col justify-between rounded-3xl border p-7 md:p-8 shadow-[0_22px_70px_-48px_rgba(0,0,0,0.28)] bg-gradient-to-br from-white to-[#f7f0e4]",
+              isFeatured
+                ? "border-[#f7b97d]/80 ring-1 ring-[#f7b97d]/40"
+                : "border-[#d7c5aa]/70",
+            ]}>
+            <div class="space-y-4">
+              <div class="flex items-start justify-between gap-3">
+                <div class="space-y-1">
+                  <h3 class="text-lg font-semibold tracking-tight text-[#0a1a2f] md:text-xl">
+                    {plan.name}
+                  </h3>
+                  <p class="text-xl font-secondary font-semibold text-[#476783] md:text-2xl">
+                    {plan.price}
+                  </p>
+                </div>
+                {plan.badge && (
+                  <span class="rounded-full bg-[#f7b97d] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#0a1a2f]">
+                    {plan.badge}
+                  </span>
+                )}
+              </div>
+              <p class="text-sm text-[#1f2a35]/85 md:text-base">{plan.intro}</p>
+              <ul class="space-y-2 text-xs font-medium text-[#0f1c28] md:text-[13px]">
+                {plan.benefits.map((benefit) => (
+                  <li class="flex items-start gap-2">
+                    <span class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center">
+                      <ReactIcons icon="IoMdCheckmark" class="h-4 w-4 text-[#476783]" />
+                    </span>
+                    <span class="leading-relaxed">{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</section>
+

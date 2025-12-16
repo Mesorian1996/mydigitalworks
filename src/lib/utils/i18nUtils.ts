@@ -1,12 +1,12 @@
 import trailingSlashChecker from "./trailingSlashChecker";
-import menu from "../../config/menu.en.json";
-import dictionary from "../../i18n/en.json";
+import menu from "../../config/menu.json";
+import dictionary from "../../i18n/de.json";
 
-// Single-language setup (de) with content stored under "english" directory for compatibility
+// Single-language setup (de) with content stored under "de" directory
 export const supportedLanguages = [
   {
     languageCode: "de",
-    contentDir: "english",
+    contentDir: "de",
   },
 ];
 
@@ -16,7 +16,7 @@ export const enabledLanguages = supportedLanguages;
 const translations = {
   ...menu,
   ...dictionary,
-  contentDir: "english",
+  contentDir: "de",
 };
 
 type NestedObject = Record<string, any>;

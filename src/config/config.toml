@@ -4,12 +4,12 @@
   description      = "MY Digital Studio – Webdesign, SEO, Branding & digitale Lösungen für Kleinunternehmen." # Shared description for SEO and OpenGraph
   tagline          = "Digitale Lösungen & Webdesign"
   taglineSeparator = "" # default is " - " 
-  baseUrl          = "https://folex-lite-astro.vercel.app/" # Base URL for the site and used in OpenGraph meta tags.
-  logo             = "/images/logo.svg" # Path to the site's logo
-  logoAlternate    = "/images/logo-light.svg" # Path to the site's alternate logo
+  baseUrl          = "https://my-digital-studio.de/" # Base URL for the site and used in OpenGraph meta tags.
+  logo             = "/images/logo_text.webp" # Path to the site's primary logo (Text)
+  logoAlternate    = "/images/logo.webp" # Path to the site's alternate/logo icon
   logoText         = "" # Text displayed next to the logo
-  logoWidth        = "86px" # Width of the logo
-  logoHeight       = "24px" # Height of the logo
+  logoWidth        = "72px" # Width of the logo (increased ~50%)
+  logoHeight       = "72px" # Height of the logo (increased ~50%)
 
   # Add a trailing slash at the end of URLs (e.g., https://example.com/, https://example.com/contact/)
   # Note: Manually restart your server when you change this value
@@ -18,7 +18,7 @@
   # Add your site logo in image path below and open your terminal and run "npm run generate-favicons" to generate favicons for different devices and platform (https://realfavicongenerator.net/checker)
   [site.favicon]
     path  = "/images/favicons" # favicon images path (No need to change it)
-    image = "/images/favicon.png" # Add your site logo path here and follow upper instruction
+    image = "/images/favicons/favicon-32x32.png" # Updated to new favicon set
 
 
 # SEO Metadata
@@ -66,13 +66,13 @@
   contactFormAction   = "https://formsubmit.co/your_email@example.com"
   contactFormProvider = "formsubmit.co"
 
-  footerDescription = "" # Check src/i18n/en.json and src/i18n/fr.json for changing the footer description in different languages or directly add value here if you are not using internationalization feature
+  footerDescription = "" # Check src/i18n/de.json for changing the footer description or set it directly here if you are not using internationalization
 
-  # For changing footer description and footer copyright in different languages see src/i18n/en.json and src/i18n/fr.json
+  # For changing footer description and footer copyright see src/i18n/de.json
   # We kindly appreciate it if you retain the theme copyright. Thank you for supporting Getastrothemes!
   [settings.copyright]
     enable = true
-    text   = "" # Check src/i18n/en.json and src/i18n/fr.json for changing the copyright text in different languages or directly add value here if you are not using internationalization feature
+    text   = "" # Check src/i18n/de.json for changing the copyright text or set it directly here if you are not using internationalization feature
 
   # Multilingual settings (check src/config/language.json for changing the languages)
   # NOTE: Manually restart your server when you change the following multilingual table values
@@ -85,16 +85,16 @@
 
   # Global Contact Information
   [settings.contactInfo]
-    address = "27 Division St, New York, <br /> NY 10002, USA"
-    email   = "[folex.agency@mail.com](mailto:folex.agency@mail.com)"
-    phone   = "[+1 800 123 654 987](tel:+1800123654987)"
+    address = "Mannheim, Deutschland"
+    email   = "[hello@my-digital-studio.de](mailto:hello@my-digital-studio.de)"
+    phone   = "[+49 621 000000](tel:+49621000000)"
 
   # Header Offcanvas Configuration
   # Update social links in `src/config/social.json`
   [settings.headerOffcanvas]
     enable      = true
-    logo        = "/images/logo-light.svg"
-    description = "" # Check src/i18n/en.json and src/i18n/fr.json for changing the description in different languages or directly add value here if you are not using internationalization feature. This is also used in footer of personal-portfolio homepage
+    logo        = "/images/logo.webp"
+    description = "" # Check src/i18n/de.json for changing the description or set it directly here if you are not using internationalization feature. This is also used in footer of personal-portfolio homepage
 
     # Call To Action Button
 [settings.headerOffcanvas.button]
@@ -105,7 +105,7 @@
 # Navigation Button In Header
 [settings.navigationButton]
   enable = true
-  label  = "Gespräch buchen" # Check src/i18n/en.json and src/i18n/fr.json for changing the navigation button label in different languages or directly add value here if you are not using internationalization feature
+  label  = "Gespräch buchen" # Check src/i18n/de.json for changing the navigation button label or set it directly here
   url    = "/#contact"
 
 

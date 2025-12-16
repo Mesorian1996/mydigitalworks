@@ -1,3 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" role="img" aria-label="MY Digital Studio Logo Hell auf Dunkel">
+  <!-- Signet -->
+  <g fill="#F7B97C">
+    <path d="M38 12h24l18 42 18-42h24l-30 76h-24z"/>
+  </g>
+  <!-- Wortmarke -->
+  <text x="140" y="62" font-family="Montserrat, 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">
+    MY DIGITAL
+  </text>
+  <text x="140" y="92" font-family="Montserrat, 'Helvetica Neue', Arial, sans-serif" font-size="26" font-weight="600" fill="#F7B97C" letter-spacing="0.08em">
+    STUDIO
+  </text>
+</svg>
 <svg width="93" height="24" viewBox="0 0 93 24" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path
     d="M2.668 10.231H18.415V14.9H2.668V10.231ZM18.937 1.18303V5.85203H2.784L5.481 3.15503V22.933H0V1.18303H18.937Z"

@@ -1,0 +1,34 @@
+{
+  "headerPrimary": [
+    {
+      "enable": true,
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "enable": true,
+      "name": "Über uns",
+      "url": "/#about"
+    },
+    {
+      "enable": true,
+      "name": "Services",
+      "url": "/#services"
+    },
+    {
+      "enable": true,
+      "name": "Portfolio",
+      "url": "/#portfolio"
+    },
+    {
+      "enable": true,
+      "name": "Preise",
+      "url": "/#pricing"
+    },
+    {
+      "enable": true,
+      "name": "Kontakt",
+      "url": "/#contact"
+    }
+  ]
+}

@@ -6,41 +6,43 @@ import CustomButton from "@/components/CustomButton.astro";
   id="hero"
   class="relative overflow-hidden text-white"
   style="
-    background: radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.15), transparent 32%),
-    radial-gradient(circle at 80% 10%, rgba(229, 231, 235, 0.12), transparent 30%),
-    linear-gradient(135deg, #0A1A2F 0%, #0f2643 40%, #0A1A2F 100%);
+    background: radial-gradient(circle at 18% 24%, rgba(71, 103, 131, 0.16), transparent 32%),
+    radial-gradient(circle at 82% 12%, rgba(201, 186, 168, 0.14), transparent 32%),
+    linear-gradient(135deg, #476783 0%, #648298 35%, #c9baa8 70%, #f7b97d 100%);
   ">
-  <div class="absolute inset-0 opacity-70">
+  <div class="absolute inset-0 opacity-75">
     <div class="hero-mesh pointer-events-none absolute inset-0"></div>
     <div class="hero-orb"></div>
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#0a1a2f]/55 via-transparent to-[#0a1a2f]/35"></div>
   </div>
 
   <div class="container relative">
     <div class="flex flex-col gap-10 py-24 md:py-32 lg:py-40">
       <div class="max-w-4xl space-y-6" data-aos="fade-up">
-        <p class="text-sm uppercase tracking-[0.32em] text-[#E5E7EB]">
-          MY Digital Studio • Webdesign • SEO • Branding
+        <p class="text-xs uppercase tracking-[0.32em] text-[#e5e7eb]/80">
+          MY DIGITAL WORKS · WEBDESIGN · SEO · BRANDING
         </p>
         <h1 class="text-display-4 font-bold leading-tight md:text-display-3">
-          MY hilft DIR bei deinen digitalen Lösungen.
+          Wir bauen Websites, die Vertrauen schaffen und Anfragen bringen.
         </h1>
-        <p class="text-lg text-[#E5E7EB] md:text-xl">
-          Webdesign, SEO, Branding &amp; Digitalisierung für Kleinunternehmen.
+        <p class="text-lg text-[#e5e7eb] md:text-xl">
+          Klarer Auftritt, schnelle Ladezeiten, lokale Sichtbarkeit – ideal für
+          Dienstleister, Praxen und Handwerk.
         </p>
       </div>
 
       <div class="flex flex-wrap items-center gap-3" data-aos="fade-up" data-aos-delay="120">
         <CustomButton
-          label="Kostenloses Gespräch buchen"
+          label="KOSTENLOSES GESPRÄCH BUCHEN"
           url="#contact"
           hoverEffect="creative-fill"
-          class="btn-primary bg-[#3B82F6] border-[#3B82F6] text-white hover:bg-[#2563eb] hover:border-[#2563eb] effect-color-dark"
+          class="btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#c9baa8] hover:border-[#c9baa8] hover:text-[#0a1a2f] focus-visible:ring-4 focus-visible:ring-[#f7b97d]/40 transition-colors"
         />
         <CustomButton
-          label="Portfolio ansehen"
+          label="PORTFOLIO ANSEHEN"
           url="#portfolio"
           hoverEffect="creative-fill"
-          class="btn-outline border-white text-white hover:bg-white/10"
+          class="btn-outline border-white text-white hover:bg-white/10 focus-visible:ring-4 focus-visible:ring-white/30"
         />
       </div>
 
@@ -76,9 +78,9 @@ import CustomButton from "@/components/CustomButton.astro";
 
 <style>
   .hero-mesh {
-    background: radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.18), transparent 35%),
-      radial-gradient(circle at 75% 30%, rgba(229, 231, 235, 0.15), transparent 30%),
-      radial-gradient(circle at 60% 70%, rgba(59, 130, 246, 0.12), transparent 32%);
+    background: radial-gradient(circle at 30% 40%, rgba(71, 103, 131, 0.2), transparent 35%),
+      radial-gradient(circle at 75% 30%, rgba(201, 186, 168, 0.16), transparent 30%),
+      radial-gradient(circle at 60% 70%, rgba(247, 185, 125, 0.14), transparent 32%);
     animation: soft-move 12s ease-in-out infinite alternate;
   }
   .hero-orb {
@@ -87,7 +89,7 @@ import CustomButton from "@/components/CustomButton.astro";
     width: 320px;
     height: 320px;
     border-radius: 9999px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.28), transparent 60%);
+    background: radial-gradient(circle, rgba(239, 186, 135, 0.35), transparent 60%);
     filter: blur(20px);
     animation: floaty 9s ease-in-out infinite;
   }

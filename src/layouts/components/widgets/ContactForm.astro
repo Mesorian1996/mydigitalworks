@@ -229,8 +229,11 @@ const noteStyles = {
           <div
             {...{ "data-default": input.content }}
             class:list={[
-              "prose-styles border px-4 py-2 [font-size:inherit]",
-              noteStyles[input.note] || "border-gray-200 bg-gray-50/25",
+              input.parentClass,
+              !input.parentClass?.includes("no-box") &&
+                "prose-styles border px-4 py-2 [font-size:inherit]",
+              !input.parentClass?.includes("no-box") &&
+                (noteStyles[input.note] || "border-gray-200 bg-gray-50/25"),
             ]}
             set:html={markdownify(input.content || "", true)}
           />

@@ -85,7 +85,7 @@ const cleanupMenuFiles = async () => {
     const files = await fs.readdir(CONFIG_DIR);
     await Promise.all(
       files
-        .filter((file) => file.startsWith("menu.") && file !== "menu.en.json")
+        .filter((file) => file.startsWith("menu.") && file !== "menu.json")
         .map(async (file) => {
           const filePath = path.join(CONFIG_DIR, file);
           await fs.unlink(filePath);
@@ -104,7 +104,7 @@ const cleanupI18nFiles = async () => {
     const files = await fs.readdir(I18N_DIR);
     await Promise.all(
       files
-        .filter((file) => file !== "en.json")
+        .filter((file) => file !== "de.json")
         .map(async (file) => {
           const filePath = path.join(I18N_DIR, file);
           await fs.unlink(filePath);

@@ -19,8 +19,8 @@ form {
 .form-input,
 .hs-select input.form-input,
 .hs-select button.form-input {
-  @apply border-body-dark text-dark placeholder:text-dark h-full w-full border-2 border-x-0 border-t-0 bg-transparent px-0 pt-0 pb-4 outline-0 [--tw-ring-offset-shadow:none] placeholder:opacity-70 focus:bg-transparent focus:!shadow-none focus:!ring-0;
-  @apply [&_[data-title]]:text-dark;
+  @apply border-body-dark text-dark placeholder:text-white h-full w-full border-2 border-x-0 border-t-0 bg-transparent px-0 pt-0 pb-4 outline-0 [--tw-ring-offset-shadow:none] placeholder:opacity-70 focus:bg-transparent focus:!shadow-none focus:!ring-0;
+  @apply [&_[data-title]]:text-white;
 }
 
 /* Focus styles for input types */
@@ -45,7 +45,7 @@ select:focus {
 
 /* Label Styling */
 .form-label {
-  @apply text-dark mb-4 block font-normal;
+  @apply text-white mb-4 block font-normal;
 }
 
 /* ----------------------------
