@@ -66,6 +66,8 @@ const resolvedTarget = url.startsWith("http")
   ? target || "_blank"
   : target || undefined;
 
+const isUnderlineSlide = hoverEffect === "underline-slide" && variant === "text";
+
 const buttonClasses = [
   variant !== "circle" && "btn",
   {
@@ -75,6 +77,7 @@ const buttonClasses = [
       (variant === "circle" || variant === "fill") &&
       !className?.includes("btn-"),
   },
+  isUnderlineSlide && "group relative inline-flex items-center gap-2",
   className,
 ];
 ---
@@ -94,6 +97,7 @@ const buttonClasses = [
           variant,
           icon,
           isCreativeHoverEffect,
+          hoverEffect,
         }}
       />
     </a>
@@ -106,6 +110,7 @@ const buttonClasses = [
           variant,
           icon,
           isCreativeHoverEffect,
+          hoverEffect,
         }}
       />
     </button>

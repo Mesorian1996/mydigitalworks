@@ -103,8 +103,8 @@ form:
           - label: "Individuelles Paket"
             value: "Individuelles Paket"
             selected: false
-          - label: "Lexoffice"
-            value: "Lexoffice"
+          - label: "Buchhaltung digital"
+            value: "Buchhaltung digital"
             selected: false
           - label: "Google Profile"
             value: "Google Profile"

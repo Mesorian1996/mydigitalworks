@@ -1,0 +1,25 @@
+---
+import Base from "@/layouts/Base.astro";
+const title = "Über uns";
+---
+
+<Base className="bg-white">
+  <section class="bg-[#E5E7EB] py-20 md:py-24">
+    <div class="container space-y-3">
+      <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Über uns</p>
+      <h1 class="text-h1-sm font-bold leading-tight text-[#0A1A2F] md:text-h1">
+        {title}
+      </h1>
+      <p class="text-base text-[#1f2a35]/75 md:text-lg">Placeholder für Inhalte.</p>
+    </div>
+  </section>
+
+  <section class="py-14 md:py-20">
+    <div class="container">
+      <div class="rounded-3xl border border-dashed border-[#d7c5aa]/60 bg-white/70 p-8 text-[#0a1a2f]">
+        <p class="text-sm text-[#0a1a2f]/70">Inhalt folgt: {title}</p>
+      </div>
+    </div>
+  </section>
+</Base>
+

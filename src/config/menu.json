@@ -7,28 +7,33 @@
     },
     {
       "enable": true,
-      "name": "Über uns",
-      "url": "/#about"
-    },
-    {
-      "enable": true,
-      "name": "Services",
-      "url": "/#services"
-    },
-    {
-      "enable": true,
-      "name": "Portfolio",
-      "url": "/#portfolio"
+      "name": "Leistungen",
+      "url": "/leistungen"
     },
     {
       "enable": true,
       "name": "Preise",
-      "url": "/#pricing"
+      "url": "/preise"
+    },
+    {
+      "enable": true,
+      "name": "Portfolio",
+      "url": "/portfolio"
+    },
+    {
+      "enable": true,
+      "name": "Über uns",
+      "url": "/ueber-uns"
     },
     {
       "enable": true,
       "name": "Kontakt",
-      "url": "/#contact"
+      "url": "/kontakt"
+    },
+    {
+      "enable": true,
+      "name": "FAQ",
+      "url": "/faq"
     }
   ]
 }

@@ -1,0 +1,125 @@
+---
+import Base from "@/layouts/Base.astro";
+import CustomButton from "@/components/CustomButton.astro";
+import heroImg from "@/assets/images/leistungen/leistungen_hero.webp";
+import IconLaptop from "@/assets/images/icons/svg/009-laptop.svg";
+import IconSeo from "@/assets/images/icons/svg/046-seo.svg";
+import IconGmb from "@/assets/images/icons/svg/colored/google.svg";
+import IconChecklist from "@/assets/images/icons/svg/032-checklist.svg";
+import IconRebrand from "@/assets/images/icons/svg/006-online business.svg";
+import IconHosting from "@/assets/images/icons/svg/002-global network.svg";
+
+const services = [
+  {
+    title: "Webdesign",
+    hook: "Klare, schnelle Seiten, die Vertrauen aufbauen.",
+    story:
+      "Eine professionelle Website ist oft der erste Eindruck deines Unternehmens. Sie schafft Vertrauen, führt gezielt durch dein Angebot und macht aus Interessenten Kunden.",
+    href: "/leistungen/webdesign",
+    icon: IconLaptop,
+  },
+  {
+    title: "SEO & Local SEO",
+    hook: "Gefunden werden, bevor die Konkurrenz auftaucht.",
+    story:
+      "Gute Sichtbarkeit entsteht dort, wo Menschen aktiv nach Lösungen suchen. Mit klarer Struktur und lokaler Ausrichtung wirst du genau im richtigen Moment gefunden.",
+    href: "/leistungen/seo-local",
+    icon: IconSeo,
+  },
+  {
+    title: "Google Unternehmensprofil",
+    hook: "Mehr lokale Anfragen ohne Ads.",
+    story:
+      "Für viele Kunden beginnt die Entscheidung bei Google Maps. Ein gepflegtes Unternehmensprofil sorgt für Vertrauen, Präsenz und kontinuierliche Anfragen.",
+    href: "/leistungen/google-unternehmensprofil",
+    icon: IconGmb,
+  },
+  {
+    title: "Digitale Rechnungen",
+    hook: "Buchhaltung digital & sauber aufgesetzt.",
+    story:
+      "Digitale Rechnungsprozesse bringen Klarheit in den Arbeitsalltag. Sie vereinfachen Abläufe, sparen Zeit und schaffen eine verlässliche Grundlage für weiteres Wachstum.",
+    href: "/leistungen/buchhaltung-digital",
+    icon: IconChecklist,
+  },
+  {
+    title: "Rebranding / Logo Refresh",
+    hook: "Moderner Auftritt, der Vertrauen schafft.",
+    story:
+      "Ein zeitgemäßer Markenauftritt erzählt, wofür dein Unternehmen steht. Er sorgt für Wiedererkennung und ein professionelles Auftreten auf allen Kanälen.",
+    href: "/leistungen/rebranding",
+    icon: IconRebrand,
+  },
+  {
+    title: "Webhosting & Wartung",
+    hook: "Betrieb, Updates und Sicherheit aus einer Hand.",
+    story:
+      "Damit deine Website jederzeit zuverlässig funktioniert, braucht es stabile Technik im Hintergrund. Wir sorgen für Sicherheit, Performance und einen reibungslosen Betrieb.",
+    href: "/leistungen/webhosting-wartung",
+    icon: IconHosting,
+  },
+];
+
+const title = "Leistungen";
+---
+
+<Base className="bg-white">
+  <section class="bg-[#E5E7EB] py-16 md:py-20">
+    <div class="container grid gap-10 lg:grid-cols-[1.1fr,0.9fr] lg:items-center">
+      <div class="space-y-4">
+        <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Leistungen</p>
+        <h1 class="text-h1-sm font-bold leading-tight text-[#0A1A2F] md:text-h1">
+          {title}
+        </h1>
+        <p class="text-base text-[#1f2a35]/80 md:text-lg">
+          Klar strukturierte Services für sichtbare, schnelle Ergebnisse – von Webdesign bis Betrieb.
+        </p>
+      </div>
+      <div class="overflow-hidden rounded-3xl bg-white shadow-lg">
+        <img
+          src={heroImg.src}
+          alt="Modernes Webdesign Workspace"
+          class="h-full w-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-gradient-to-b from-white via-[#f9f2e9] to-white py-16 md:py-20">
+    <div class="container space-y-8">
+      <div class="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3">
+        {services.map((item, idx) => (
+          <article
+            class="group flex h-full min-h-[280px] flex-col rounded-3xl border border-[#a7b4bb]/40 bg-[#eef2f5] p-10 shadow-[0_24px_90px_-60px_rgba(0,0,0,0.18)] transition hover:-translate-y-1 hover:bg-[#e8edf2] hover:shadow-[0_32px_110px_-70px_rgba(71,103,131,0.28)]">
+            <a href={item.href} class="flex h-full flex-col gap-5">
+              <div class="flex items-start gap-2">
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#ddbc97]/50 text-[#476783]">
+                  <img src={item.icon.src} alt="" class="h-6 w-6" loading="lazy" decoding="async" />
+                </span>
+                <div class="space-y-1.5">
+                  <h3 class="text-lg font-semibold tracking-tight text-[#0A1A2F]">{item.title}</h3>
+                  <p class="text-sm text-[#1f2a35]/80">{item.hook}</p>
+                </div>
+              </div>
+              <p class="text-sm leading-7 text-[#0a1a2f]/80">
+                {item.story}
+              </p>
+              <div class="mt-2">
+                <CustomButton
+                  variant="text"
+                  hoverEffect="underline-slide"
+                  label="Mehr erfahren"
+                  url={item.href}
+                  class="text-[#476783] hover:text-[#f7b97d] px-0 py-0"
+                />
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+

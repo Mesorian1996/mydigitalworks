@@ -4,6 +4,7 @@ import NavMenuItem from "@/layouts/components/global/header/MenuItem.astro";
 import type { NavigationLink } from "@/types";
 import { filteredEnabled } from "@/lib/utils/filteredEnabled";
 import CustomButton from "@/components/CustomButton.astro";
+import Logo from "@/components/global/Logo.astro";
 import menuConfig from "@/config/menu.json";
 
 interface Props {
@@ -21,6 +22,11 @@ const { navigationButton } = config.settings;
   id="nav-menu"
   class:list={["navbar", isMobile && "navbar-mobile"]}
   role="menu">
+  {isMobile && (
+    <li class="mb-4" role="menuitem">
+      <Logo width="auto" height="2.5rem" />
+    </li>
+  )}
   {main.map((menu) => <NavMenuItem isMobile={isMobile} menu={menu} />)}
   {/* Navigation Button For Small Devices */}
   {
