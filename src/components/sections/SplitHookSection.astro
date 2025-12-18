@@ -1,0 +1,86 @@
+---
+import hookImage from "@/assets/images/Leistungen/leistungen_hero.webp";
+import IconGrowth from "@/assets/images/icons/svg/growth-graph.svg";
+
+
+const tiles = [
+  { title: "Kundengewinnung", copy: "Klare Botschaften, starke CTAs und Wege ohne Reibung." },
+  { title: "Wertsteigerung", copy: "Ein professioneller Auftritt erhöht Wahrnehmung und Vertrauen." },
+  { title: "Sichtbarkeit", copy: "Saubere Struktur und SEO-Basis für bessere Auffindbarkeit." },
+  { title: "Reichweite", copy: "Inhalte, die gefunden werden – lokal wie überregional." },
+];
+
+const palette = [
+  "rgba(71,103,131,0.12)",
+  "rgba(100,130,152,0.12)",
+  "rgba(201,186,168,0.14)",
+  "rgba(247,185,125,0.14)",
+];
+---
+
+<section class="bg-white py-16 md:py-24">
+  <div class="container grid gap-12 lg:grid-cols-2 lg:items-center">
+    <div class="space-y-6 text-[#0A1A2F]" data-aos="fade-up">
+      <div class="space-y-3">
+        <h2 class="text-h2-sm font-bold leading-tight md:text-h2">
+          Wir machen aus Ihrer Website ein digitales Aushängeschild.
+        </h2>
+        <p class="text-base text-[#1f2a35]/80 md:text-lg">
+          ...das Vertrauen schafft und Anfragen auslöst.
+        </p>
+      </div>
+      <div class="h-px w-full border-t border-dashed border-[#476783]/50" />
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+{tiles.map((tile, idx) => {
+  const soft = palette[idx % palette.length];
+
+  return (
+    <article
+      class="group flex h-full flex-col gap-4 rounded-3xl bg-white/55 p-5
+             shadow-[0_14px_55px_-45px_rgba(0,0,0,0.2)]
+             transition hover:-translate-y-0.5"
+      data-aos="fade-up"
+      data-aos-delay={80 + idx * 60}
+    >
+      <div class="flex items-start gap-4">
+        <span
+          class="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl
+                 ring-1 ring-black/10
+                 shadow-[0_10px_30px_-20px_rgba(0,0,0,0.25)]
+                 transition group-hover:scale-[1.05]"
+          style={{
+            backgroundImage: `linear-gradient(135deg, ${soft}, rgba(255,255,255,0.35))`,
+          } as any}
+        >
+<img
+  src={IconGrowth.src}
+  class="h-6 w-6 text-[#476783] transition group-hover:text-[#f7b97d]"
+/>
+        </span>
+
+        <div class="space-y-1">
+          <p class="text-base font-semibold text-[#0A1A2F]">{tile.title}</p>
+          <p class="text-sm leading-relaxed text-[#1f2a35]/80">{tile.copy}</p>
+        </div>
+      </div>
+    </article>
+  );
+})}
+
+      </div>
+    </div>
+
+    <div class="relative" data-aos="fade-left" data-aos-delay="120">
+      <div class="overflow-hidden rounded-3xl bg-white shadow-[0_32px_120px_-80px_rgba(0,0,0,0.32)] ring-1 ring-[#d7c5aa]/70">
+        <img
+          src={hookImage.src}
+          alt="Webdesign Teamarbeit"
+          class="h-full w-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,150 @@
+---
+import ReactIcons from "@/helpers/ReactIcons.astro";
+
+type AccordionItem = {
+  title: string;
+  content: string;
+  bullets?: string[];
+};
+
+interface Props {
+  title?: string;
+  items: AccordionItem[];
+  startIndex?: number;
+  class?: string;
+}
+
+const { title, items = [], startIndex = 1, class: className } = Astro.props;
+const componentId = `accordion-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div class:list={["space-y-6", className]} data-accordion-root={componentId}>
+  {title && (
+    <h3 class="text-2xl font-bold text-[#0A1A2F] md:text-3xl text-center">{title}</h3>
+  )}
+
+  <div class="overflow-hidden rounded-3xl border border-[#e5dccf] bg-white shadow-[0_20px_70px_-60px_rgba(0,0,0,0.3)]">
+    <div class="border-t border-[#e5dccf]" aria-hidden="true" />
+    {items.map((item, index) => {
+      const number = String(startIndex + index).padStart(2, "0");
+      const panelId = `${componentId}-panel-${index}`;
+      const buttonId = `${componentId}-button-${index}`;
+
+      return (
+        <div class="group border-b border-[#e5dccf] last:border-b-0">
+          <button
+            id={buttonId}
+            type="button"
+            aria-expanded="false"
+            aria-controls={panelId}
+            data-accordion-trigger={componentId}
+            data-panel={panelId}
+            class="flex w-full items-center gap-4 px-6 py-5 text-left transition-colors duration-300 hover:bg-[#f9f5ee] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#476783]/40">
+            <div class="flex min-w-[2.5rem] justify-start">
+              <span class="text-xs font-semibold tracking-[0.28em] text-[#7d8b97]">
+                {number}
+              </span>
+            </div>
+            <div class="flex-1">
+              <span class="text-lg font-semibold leading-tight text-[#0A1A2F] md:text-xl">
+                {item.title}
+              </span>
+            </div>
+            <span class="rounded-full border border-[#d7c5aa]/80 p-2 text-[#476783] transition-transform duration-300 group-[.is-open]:rotate-45">
+              <ReactIcons icon="IoMdArrowForward" class="text-lg" />
+            </span>
+          </button>
+          <div
+            id={panelId}
+            data-open="false"
+            class="px-6 pb-0 text-sm text-[#1f2a35]/85 transition-[max-height] duration-300 ease-in-out"
+            style="max-height:0; overflow:hidden;">
+            <div class="space-y-3 py-3 opacity-0 transition-opacity duration-200 data-[open=true]:opacity-100" data-open-child>
+              <p class="leading-relaxed">{item.content}</p>
+              {item.bullets && item.bullets.length > 0 && (
+                <ul class="space-y-1.5">
+                  {item.bullets.map((bullet) => (
+                    <li class="flex items-start gap-2">
+                      <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#476783]" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</div>
+
+<script is:inline define:vars={{ componentId }}>
+  const root = document.querySelector(
+    `[data-accordion-root="${componentId}"]`,
+  ) as HTMLElement | null;
+  if (!root) {
+    console.warn("Accordion root not found for", componentId);
+  } else {
+    const triggers = root.querySelectorAll(
+      `[data-accordion-trigger="${componentId}"]`,
+    );
+    const panels = Array.from(
+      root.querySelectorAll<HTMLElement>(`[id^="${componentId}-panel-"]`),
+    );
+
+    const setOpen = (targetPanelId: string) => {
+      panels.forEach((panel) => {
+        const trigger = Array.from(triggers).find(
+          (t) => t.getAttribute("data-panel") === panel.id,
+        ) as HTMLElement | undefined;
+        const isTarget = panel.id === targetPanelId && targetPanelId !== "";
+        panel.dataset.open = String(isTarget);
+        trigger?.setAttribute("aria-expanded", String(isTarget));
+        trigger?.parentElement?.classList.toggle("is-open", isTarget);
+        const content = panel.querySelector<HTMLElement>("[data-open-child]");
+        if (content) {
+          content.dataset.open = String(isTarget);
+        }
+        if (isTarget && content) {
+          panel.style.maxHeight = `${content.scrollHeight + 24}px`;
+        } else {
+          panel.style.maxHeight = "0px";
+        }
+      });
+    };
+
+    // Default: first item open (consistent rule)
+    if (panels.length > 0) {
+      setOpen(panels[0].id);
+    }
+
+    triggers.forEach((trigger) => {
+      const panelId = trigger.getAttribute("data-panel");
+      if (!panelId) return;
+      const panel = root.querySelector<HTMLElement>(`#${panelId}`);
+      if (!panel) return;
+
+      trigger.addEventListener("click", () => {
+        const isOpen = trigger.getAttribute("aria-expanded") === "true";
+        if (isOpen) {
+          setOpen(""); // close all
+        } else {
+          setOpen(panelId);
+        }
+      });
+      trigger.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          const isOpen = trigger.getAttribute("aria-expanded") === "true";
+          if (isOpen) {
+            setOpen("");
+          } else {
+            setOpen(panelId);
+          }
+        }
+      });
+    });
+  }
+</script>
+

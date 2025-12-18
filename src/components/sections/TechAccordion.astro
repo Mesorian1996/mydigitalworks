@@ -1,0 +1,72 @@
+---
+const items = [
+  {
+    title: "Performance (Astro-first)",
+    copy: "Minimales JS, schnelle Ladezeiten, starke Core Web Vitals – damit Seiten spürbar flüssig bleiben.",
+    bullets: ["Optimierte Assets & Caching", "Saubere Bundles, weniger Ballast"],
+  },
+  {
+    title: "SEO-Fundament",
+    copy: "Struktur, Meta und Überschriften, die Google wie Nutzer verstehen – ohne Spielereien.",
+    bullets: ["Klarer H-Stack & interne Logik", "Meta-Basics sauber gepflegt"],
+  },
+  {
+    title: "Conversion & Tracking",
+    copy: "Klare CTAs und messbare Journeys: Wir richten Basics ein, damit Sie Erfolge sehen.",
+    bullets: ["Kontaktwege sichtbar & kurz", "Optional: Analytics & Events"],
+  },
+  {
+    title: "Saubere Übergabe",
+    copy: "Wartbar, erweiterbar, dokumentiert – keine Bastellösung, sondern ein Setup mit Zukunft.",
+    bullets: ["Kurze Doku oder Handoff-Call", "Klare Struktur für spätere Features"],
+  },
+];
+---
+
+<section class="bg-white py-16 md:py-24">
+  <div class="container space-y-8">
+    <div class="space-y-2 text-center text-[#0A1A2F]" data-aos="fade-up">
+      <span class="inline-flex items-center rounded-full bg-[#f1e5d4] px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-[#476783]">
+        Technik & Qualität
+      </span>
+      <h2 class="text-h2-sm font-bold leading-tight md:text-h2">
+        Schnell, sauber, skalierbar – damit Ihre Seite langfristig funktioniert.
+      </h2>
+    </div>
+
+    <div class="space-y-3">
+      {items.map((item, idx) => (
+        <details
+          class="group rounded-2xl bg-gradient-to-br from-[#476783]/[0.06] via-white/90 to-[#c9baa8]/[0.10]
+        p-5 shadow-[0_18px_80px_-68px_rgba(71,103,131,0.30)]
+        ring-1 ring-[#476783]/15 transition"
+          data-aos="fade-up"
+          data-aos-delay={idx * 70}
+          open={idx === 0}>
+          <summary class="flex cursor-pointer items-start justify-between gap-3 text-left text-[#0A1A2F] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#476783]/40">
+            <div class="space-y-1">
+              <p class="text-base font-semibold">{item.title}</p>
+              <p class="text-sm text-[#1f2a35]/80 leading-relaxed">{item.copy}</p>
+            </div>
+            <span class="mt-1 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#476783]/12 text-[#476783] ring-1 ring-[#476783]/15 transition group-open:rotate-90">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="stroke-current">
+                <path d="M6 4l8 8-8 8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </summary>
+          {item.bullets && (
+            <div class="mt-3 space-y-1.5">
+              {item.bullets.map((b) => (
+                <div class="flex gap-2 text-sm leading-relaxed text-[#1f2a35]/80">
+                  <span class="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#476783]" />
+                  <span>{b}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+

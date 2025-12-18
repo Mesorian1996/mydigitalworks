@@ -1,0 +1,123 @@
+---
+import IconPerf from "@/assets/images/icons/svg/009-laptop.svg";
+import IconDesign from "@/assets/images/icons/svg/006-online business.svg";
+import IconSeo from "@/assets/images/icons/svg/046-seo.svg";
+import IconStory from "@/assets/images/icons/svg/030-user.svg";        // Story & Vertrauen
+import IconValue from "@/assets/images/icons/svg/efficiency.svg";     // Wertsteigerung
+import IconCta from "@/assets/images/icons/svg/018-deal.svg";         // Aus Interessenten werden Kunden
+
+
+const cards = [
+  {
+    title: "Performante Websites",
+    copy: "Moderne Designs, die gleichzeitig perfomant sind.",
+    icon: IconPerf,
+  },
+  {
+    title: "Individuelles Design",
+    copy: "Durch Branding-Farben und passendem Theme steht Ihre Marke im Zentrum, klar und wiedererkennbar.",
+    icon: IconDesign,
+  },
+  {
+    title: "Aus Interessenten werden Kunden",
+    copy: "Wertvoller Content mit Storytelling und gezieltem Call to Action führen Besucher zum Kontakt.",
+    icon: IconCta,
+  },
+  {
+    title: "Suchmaschinen-Basis inklusive",
+    copy: "Saubere Struktur, Headlines und Inhalte, die Google und Nutzer verstehen.",
+    icon: IconSeo,
+  },
+  {
+    title: "Story & Vertrauen",
+    copy: "Wir positionieren zielorientieren Content mit Nutzerfokus.",
+    icon: IconStory,
+  },
+  {
+    title: "Wertsteigerung",
+    copy: "Ein professioneller Auftritt hebt Wahrnehmung und Preisbereitschaft.",
+    icon: IconValue,
+  },
+];
+
+
+
+const palette = [
+  "rgba(71,103,131,0.12)",
+  "rgba(100,130,152,0.12)",
+  "rgba(167,180,187,0.12)",
+  "rgba(201,186,168,0.14)",
+  "rgba(247,185,125,0.14)",
+  "rgba(221,188,151,0.14)",
+];
+
+const paletteStrong = ["#476783", "#648298", "#5e6b73", "#8b7a66", "#f7b97d", "#ddbc97"];
+
+
+---
+
+<section class="bg-white py-16 md:py-24">
+  <div class="container space-y-10">
+    <div class="space-y-3 text-left text-[#0A1A2F]" data-aos="fade-up">
+      <span class="inline-flex items-center rounded-full bg-[#f1e5d4] px-3 py-1 text-xs font-semibold uppercase tracking-[0.26em] text-[#476783]">
+        Was wir machen
+      </span>
+      <h2 class="text-h2-sm font-bold leading-tight md:text-h2">
+        Webdesign, das Vertrauen schafft und <span class="text-[#476783]">Kunden</span> gewinnt.
+      </h2>
+      <p class="max-w-3xl text-base text-[#1f2a35]/80 md:text-lg">
+        Wir erzählen Ihre Story mit klaren Worten, frischem Design und schneller Technik – damit Menschen gerne bleiben,
+        sich sicher fühlen und neugierig den nächsten Schritt gehen.
+      </p>
+    </div>
+
+<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+  {cards.map((card, idx) => {
+    const soft = palette[idx % palette.length];
+    const strong = paletteStrong[idx % paletteStrong.length];
+
+    return (
+      <article
+        class="group flex h-full flex-col gap-4 rounded-3xl bg-white/55 p-6
+               shadow-[0_14px_55px_-45px_rgba(0,0,0,0.2)]
+               transition hover:-translate-y-0.5"
+        style={{ "--accent": strong } as any}
+      >
+        <div class="flex items-start gap-4">
+          {/* Icon */}
+<span
+  class="mt-1 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl
+         ring-1 ring-black/10
+         shadow-[0_12px_34px_-18px_rgba(0,0,0,0.35)]
+         transition group-hover:scale-[1.06]"
+  style={{
+    backgroundImage: `linear-gradient(135deg, ${soft}, rgba(255,255,255,0.55))`,
+  } as any}
+>
+  <img src={card.icon.src} alt="" class="h-7 w-7 opacity-95" />
+</span>
+
+          {/* Text */}
+          <div class="space-y-1">
+<h3
+  class="text-lg font-semibold text-[#0A1A2F]
+         transition duration-300
+         group-hover:text-transparent
+         group-hover:bg-clip-text
+group-hover:bg-[linear-gradient(90deg,var(--accent)_0%,var(--accent)_55%,#0A1A2F_85%)]
+         group-hover:bg-[length:220%_100%]
+         group-hover:bg-[position:0%_0%]"
+>
+  {card.title}
+</h3>
+            <p class="text-sm leading-relaxed text-[#1f2a35]/80">{card.copy}</p>
+          </div>
+        </div>
+      </article>
+    );
+  })}
+</div>
+
+  </div>
+</section>
+
