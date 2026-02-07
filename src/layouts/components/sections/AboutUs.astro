@@ -1,3 +1,9 @@
+---
+import { Image } from 'astro:assets';
+import mesorianbild from "@/assets/images/team/Mesorian.jpg";
+
+---
+
 <section id="about" class="bg-[#E5E7EB] py-20 md:py-28">
   <div class="container">
     <div class="grid items-center gap-12 lg:grid-cols-2">
@@ -51,12 +57,12 @@
       <div class="grid gap-6" data-aos="fade-left">
         <div class="space-y-3 rounded-3xl bg-white p-4 text-[#0A1A2F] shadow-lg">
           <div class="aspect-[4/5] w-full overflow-hidden rounded-2xl bg-[#E5E7EB]">
-            <img
-              src="/src/assets/images/team/Mesorian.webp"
-              alt="Mesorian"
+            <Image 
+              src={mesorianbild} 
+              alt="Mesorian" 
               class="h-full w-full object-cover"
+              quality="mid" 
               loading="lazy"
-              decoding="async"
             />
           </div>
           <div>
