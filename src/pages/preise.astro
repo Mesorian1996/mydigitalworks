@@ -1,21 +1,151 @@
 ---
 import Base from "@/layouts/Base.astro";
-import PricingSection from "@/components/sections/PricingSection.astro";
-import HostingSection from "@/components/sections/HostingSection.astro";
-import DigitaleBuchhaltungSection from "@/components/sections/DigitaleBuchhaltungSection.astro";
-import ModulesSection from "@/components/sections/ModulesSection.astro";
 import CustomButton from "@/components/CustomButton.astro";
+
+const title = "Preise";
+
+// Website Packages
+const websitePackages = [
+  {
+    id: "starter",
+    name: "Starter",
+    price: "990 €",
+    orientation: "Ideal für Selbstständige und kleine Unternehmen, die schnell professionell sichtbar sein möchten.",
+    shortDescription: "Ein kompakter Webauftritt für den Einstieg, übersichtlich aufgebaut und mobil optimiert.",
+    features: [
+      "Bis zu 5 Seiten",
+      "Mobil-optimiert",
+      "Basis-SEO",
+      "Kontaktformular",
+      "SSL-Zertifikat inklusive"
+    ]
+  },
+  {
+    id: "business",
+    name: "Business",
+    price: "1.990 €",
+    orientation: "Ideal für Unternehmen, die regelmäßig Anfragen generieren und regional wachsen möchten.",
+    shortDescription: "Eine strukturierte Website mit Fokus auf Sichtbarkeit, Vertrauen und Conversion.",
+    features: [
+      "Bis zu 10 Seiten",
+      "SEO-optimiert",
+      "Google Analytics",
+      "Google Unternehmensprofil Setup",
+      "Performance-Optimierung",
+      "3 Monate Support inklusive"
+    ],
+    featured: true
+  },
+  {
+    id: "individuell",
+    name: "Individuell",
+    price: "auf Anfrage",
+    orientation: "Ideal für Marken und Unternehmen mit individuellen Anforderungen und komplexeren Projekten.",
+    shortDescription: "Maßgeschneiderte Lösungen für besondere Funktionen, Inhalte oder Markenauftritte.",
+    features: [
+      "Unbegrenzte Seiten",
+      "Individuelle Funktionen",
+      "E-Commerce möglich",
+      "Mehrsprachig möglich",
+      "Umfangreiche SEO-Strategie",
+      "Dedizierter Support"
+    ]
+  }
+];
+
+// Hosting Packages
+const hostingPackages = [
+  {
+    name: "Hosting",
+    price: "25 €/Monat",
+    features: [
+      "Schnelle SSD-Server",
+      "SSL-Zertifikat inklusive",
+      "Tägliche Backups",
+      "99,9% Uptime-Garantie",
+      "E-Mail-Support"
+    ]
+  },
+  {
+    name: "Premium Hosting",
+    price: "49 €/Monat",
+    features: [
+      "Alles aus Hosting",
+      "CDN für weltweite Performance",
+      "Erweiterte Sicherheit",
+      "Prioritäts-Support",
+      "Mini-Änderungen inklusive*"
+    ],
+    note: "*Kleine textliche/visuelle Anpassungen. Größere Änderungen werden separat berechnet."
+  }
+];
+
+// Digitale Buchhaltung
+const buchhaltungServices = [
+  {
+    name: "Einführung / Setup",
+    price: "990 €",
+    priceNote: "einmalig",
+    description: "Lexoffice einrichten, Prozesse aufsetzen, Schulung",
+    features: [
+      "Lexoffice-Einrichtung",
+      "Kontenpläne und Kategorien",
+      "Rechnungsvorlagen erstellen",
+      "Persönliche Schulung (1-2h)",
+      "Prozess-Dokumentation"
+    ]
+  },
+  {
+    name: "Digitaler Buchhaltungsservice",
+    price: "119 €/Monat",
+    priceNote: "monatlich",
+    description: "Laufende Buchhaltung digital geführt",
+    features: [
+      "Belege digital erfassen",
+      "Angebote & Rechnungen erstellen",
+      "Einnahmen & Ausgaben buchen",
+      "Vorbereitung für Steuerkanzlei",
+      "Monatlicher Report",
+      "Lohn-Add-on: +11 € je Mitarbeiter"
+    ],
+    setupNote: "Setup bei Buchung des Service: nur 290 € statt 990 €",
+    disclaimer: "Jahresabschluss, USt-Voranmeldung etc. kosten extra und erfolgen durch Ihre Steuerkanzlei."
+  }
+];
+
+// Add-ons & Modules
+const addons = [
+  {
+    name: "Google Unternehmensprofil",
+    price: "290 €",
+    priceNote: "einmalig",
+    description: "Professionelle Einrichtung für lokale Sichtbarkeit"
+  },
+  {
+    name: "Logo Refresh / Rebranding",
+    price: "ab 190 €",
+    priceNote: "einmalig",
+    description: "Modernes Logo-Design oder Marken-Auffrischung"
+  }
+];
 ---
 
 <Base className="bg-white">
+  <!-- Hero Section -->
   <section class="bg-gradient-to-b from-white via-[#f9f2e9] to-white py-16 md:py-24">
     <div class="container">
       <div class="mx-auto max-w-4xl space-y-6 text-center" data-aos="fade-up">
         <div class="inline-flex items-center gap-3 rounded-full bg-[#476783]/10 px-3 py-1.5 text-[#476783]">
-          <img src="/images/logo.webp" alt="MY Digital Works Logo" class="h-6 w-auto opacity-80" loading="lazy" decoding="async" />
+          <img
+            src="/images/logo.webp"
+            alt="MY Digital Works Logo"
+            class="h-6 w-auto opacity-80"
+            loading="lazy"
+            decoding="async"
+          />
           <span class="text-[11px] uppercase tracking-[0.24em]">MY Digital Works</span>
         </div>
-        <h1 class="text-h1-sm font-bold leading-tight text-[#0A1A2F] md:text-h1">Preise &amp; Pakete</h1>
+        <h1 class="text-h1-sm font-bold leading-tight text-[#0A1A2F] md:text-h1">{title}</h1>
         <p class="text-base text-[#1f2a35]/80 md:text-lg max-w-2xl mx-auto">
           Transparente Preise, faire Konditionen. Investieren Sie in Sichtbarkeit und Anfragen, nicht in versteckte Kosten.
         </p>
@@ -23,20 +153,323 @@ import CustomButton from "@/components/CustomButton.astro";
     </div>
   </section>
 
-  <PricingSection />
-  <HostingSection />
-  <DigitaleBuchhaltungSection />
-  <ModulesSection />
+  <!-- Website Packages with Mobile Segmented Control -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="container">
+      <div class="mb-12 space-y-4 text-center" data-aos="fade-up">
+        <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+          Webseitenpakete
+        </h2>
+        <p class="text-base text-[#1f2a35]/70 md:text-lg">
+          Wählen Sie das passende Paket für Ihre Anforderungen.
+        </p>
+      </div>
 
+      <!-- Mobile: Segmented Control -->
+      <div class="mb-8 md:hidden" data-aos="fade-up">
+        <div class="flex rounded-2xl border border-[#d7c5aa]/70 bg-white p-1.5" role="tablist">
+          {websitePackages.map((pkg, idx) => (
+            <button
+              type="button"
+              role="tab"
+              aria-selected={pkg.id === "business"}
+              aria-controls={`panel-${pkg.id}`}
+              data-tab={pkg.id}
+              class:list={[
+                "flex-1 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200",
+                pkg.id === "business"
+                  ? "bg-[#476783] text-white shadow-sm"
+                  : "text-[#1f2a35]/70 hover:text-[#0A1A2F]"
+              ]}>
+              {pkg.name}
+            </button>
+          ))}
+        </div>
+        
+        <!-- Mobile: Single Card -->
+        <div class="mt-6">
+          {websitePackages.map(pkg => (
+            <div
+              id={`panel-${pkg.id}`}
+              role="tabpanel"
+              data-panel={pkg.id}
+              class:list={["min-h-[500px]", pkg.id !== "business" && "hidden"]}>
+              <div class="rounded-3xl border border-[#d7c5aa]/70 bg-white p-8 shadow-[0_24px_90px_-60px_rgba(0,0,0,0.25)]">
+                {pkg.featured && (
+                  <div class="mb-6 inline-flex items-center gap-2 rounded-full bg-[#476783] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">
+                    Meistgewählt
+                  </div>
+                )}
+                <div class="mb-6">
+                  <h3 class="text-2xl font-bold text-[#0A1A2F]">{pkg.name}</h3>
+                  <p class="mt-2 text-sm text-[#1f2a35]/70">{pkg.orientation}</p>
+                </div>
+                <div class="mb-4">
+                  <div class="text-4xl font-bold text-[#476783]">{pkg.price}</div>
+                </div>
+                <p class="mb-6 text-sm text-[#1f2a35]/80">{pkg.shortDescription}</p>
+                <ul class="mb-8 space-y-3">
+                  {pkg.features.map(feature => (
+                    <li class="flex items-start gap-3 text-sm text-[#1f2a35]/80">
+                      <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-[#476783]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <CustomButton
+                  label="Anfragen"
+                  url="/#contact"
+                  hoverEffect="creative-fill"
+                  class="w-full btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#f7b97d] hover:border-[#f7b97d] hover:text-[#0a1a2f]"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Desktop: 3-Column Grid -->
+      <div class="hidden gap-8 md:grid md:grid-cols-3" data-aos="fade-up" data-aos-delay="100">
+        {websitePackages.map((pkg, idx) => (
+          <div
+            class:list={[
+              "flex h-full flex-col rounded-3xl border bg-white p-8 shadow-[0_24px_90px_-60px_rgba(0,0,0,0.25)] transition duration-300",
+              pkg.featured 
+                ? "border-[#476783] ring-2 ring-[#476783]/20 scale-105" 
+                : "border-[#d7c5aa]/70 hover:-translate-y-1 hover:shadow-[0_32px_110px_-70px_rgba(71,103,131,0.28)]"
+            ]}>
+            {pkg.featured && (
+              <div class="mb-6 inline-flex items-center gap-2 self-start rounded-full bg-[#476783] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">
+                Meistgewählt
+              </div>
+            )}
+            <div class="mb-6">
+              <h3 class="text-2xl font-bold text-[#0A1A2F]">{pkg.name}</h3>
+              <p class="mt-2 text-sm text-[#1f2a35]/70">{pkg.orientation}</p>
+            </div>
+            <div class="mb-4">
+              <div class="text-4xl font-bold text-[#476783]">{pkg.price}</div>
+            </div>
+            <p class="mb-6 text-sm text-[#1f2a35]/80">{pkg.shortDescription}</p>
+            <ul class="mb-8 flex-1 space-y-3">
+              {pkg.features.map(feature => (
+                <li class="flex items-start gap-3 text-sm text-[#1f2a35]/80">
+                  <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-[#476783]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <CustomButton
+              label="Anfragen"
+              url="/#contact"
+              hoverEffect="creative-fill"
+              class:list={[
+                pkg.featured
+                  ? "btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#f7b97d] hover:border-[#f7b97d] hover:text-[#0a1a2f]"
+                  : "btn-outline border-[#476783] text-[#476783] hover:bg-[#476783] hover:text-white"
+              ]}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Webhosting -->
+  <section class="bg-gradient-to-b from-[#f9f2e9] to-white py-16 md:py-24">
+    <div class="container">
+      <div class="mb-12 space-y-4 text-center" data-aos="fade-up">
+        <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+          Webhosting & Betrieb
+        </h2>
+        <p class="text-base text-[#1f2a35]/70 md:text-lg">
+          Professionelles Hosting mit Wartung, Sicherheit und Performance.
+        </p>
+      </div>
+
+      <div class="mx-auto grid max-w-4xl gap-8 md:grid-cols-2">
+        {hostingPackages.map((pkg, idx) => (
+          <div
+            class="flex flex-col rounded-2xl border border-[#d7c5aa]/70 bg-white p-8 shadow-[0_20px_80px_-50px_rgba(0,0,0,0.2)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_100px_-60px_rgba(71,103,131,0.25)]"
+            data-aos="fade-up"
+            data-aos-delay={idx * 100}>
+            <h3 class="mb-4 text-xl font-bold text-[#0A1A2F]">{pkg.name}</h3>
+            <div class="mb-6 text-3xl font-bold text-[#476783]">{pkg.price}</div>
+            <ul class="mb-6 flex-1 space-y-3">
+              {pkg.features.map(feature => (
+                <li class="flex items-start gap-3 text-sm text-[#1f2a35]/80">
+                  <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-[#476783]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+            {pkg.note && (
+              <div class="mb-6 rounded-lg bg-[#476783]/5 p-3 text-xs text-[#1f2a35]/70">
+                {pkg.note}
+              </div>
+            )}
+            <CustomButton
+              label="Anfragen"
+              url="/#contact"
+              hoverEffect="creative-fill"
+              class="btn-outline border-[#476783] text-[#476783] hover:bg-[#476783] hover:text-white"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Digitale Buchhaltung -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="container">
+      <div class="mb-12 space-y-4 text-center" data-aos="fade-up">
+        <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+          Digitale Buchhaltung
+        </h2>
+        <p class="text-base text-[#1f2a35]/70 md:text-lg">
+          Von der Einrichtung bis zur laufenden Buchhaltung – digital und steuerkanzlei-fertig.
+        </p>
+      </div>
+
+      <div class="mx-auto grid max-w-4xl gap-8 md:grid-cols-2">
+        {buchhaltungServices.map((service, idx) => (
+          <div
+            class="flex flex-col rounded-2xl border border-[#d7c5aa]/70 bg-white p-8 shadow-[0_20px_80px_-50px_rgba(0,0,0,0.2)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_100px_-60px_rgba(71,103,131,0.25)]"
+            data-aos="fade-up"
+            data-aos-delay={idx * 100}>
+            <h3 class="mb-2 text-xl font-bold text-[#0A1A2F]">{service.name}</h3>
+            <p class="mb-4 text-sm text-[#1f2a35]/70">{service.description}</p>
+            <div class="mb-6">
+              <div class="text-3xl font-bold text-[#476783]">{service.price}</div>
+              <div class="text-sm text-[#476783]/70">{service.priceNote}</div>
+            </div>
+            <ul class="mb-6 flex-1 space-y-3">
+              {service.features.map(feature => (
+                <li class="flex items-start gap-3 text-sm text-[#1f2a35]/80">
+                  <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-[#476783]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+            {service.setupNote && (
+              <div class="mb-4 rounded-lg bg-[#f7b97d]/10 p-3 text-sm font-medium text-[#476783]">
+                💰 {service.setupNote}
+              </div>
+            )}
+            {service.disclaimer && (
+              <div class="mb-6 rounded-lg bg-[#476783]/5 p-3 text-xs text-[#1f2a35]/70">
+                <strong>Hinweis:</strong> {service.disclaimer}
+              </div>
+            )}
+            <CustomButton
+              label="Service anfragen"
+              url="/#contact"
+              hoverEffect="creative-fill"
+              class="btn-outline border-[#476783] text-[#476783] hover:bg-[#476783] hover:text-white"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Add-ons & Modules -->
+  <section class="bg-gradient-to-b from-[#f9f2e9] to-white py-16 md:py-24">
+    <div class="container">
+      <div class="mb-12 space-y-4 text-center" data-aos="fade-up">
+        <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+          Google & Rebranding
+        </h2>
+        <p class="text-base text-[#1f2a35]/70 md:text-lg">
+          Zusätzliche Module für mehr Sichtbarkeit und modernen Markenauftritt.
+        </p>
+      </div>
+
+      <div class="mx-auto grid max-w-4xl gap-8 md:grid-cols-2">
+        {addons.map((addon, idx) => (
+          <div
+            class="flex flex-col rounded-2xl border border-[#d7c5aa]/70 bg-white p-8 shadow-[0_20px_80px_-50px_rgba(0,0,0,0.2)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_100px_-60px_rgba(71,103,131,0.25)]"
+            data-aos="fade-up"
+            data-aos-delay={idx * 100}>
+            <h3 class="mb-2 text-xl font-bold text-[#0A1A2F]">{addon.name}</h3>
+            <p class="mb-6 text-sm text-[#1f2a35]/70">{addon.description}</p>
+            <div class="mb-6">
+              <div class="text-3xl font-bold text-[#476783]">{addon.price}</div>
+              <div class="text-sm text-[#476783]/70">{addon.priceNote}</div>
+            </div>
+            <CustomButton
+              label="Anfragen"
+              url="/#contact"
+              hoverEffect="creative-fill"
+              class="mt-auto btn-outline border-[#476783] text-[#476783] hover:bg-[#476783] hover:text-white"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
   <section class="bg-gradient-to-b from-[#0A1A2F] to-[#1a2f45] py-20 md:py-28">
     <div class="container">
       <div class="mx-auto max-w-3xl space-y-8 text-center" data-aos="fade-up">
-        <h2 class="text-h2-sm font-bold leading-tight text-white md:text-h2">Fragen zu den Preisen?</h2>
+        <h2 class="text-h2-sm font-bold leading-tight text-white md:text-h2">
+          Fragen zu den Preisen?
+        </h2>
         <p class="text-lg text-white/80">
           Lassen Sie uns in einem kostenlosen Gespräch herausfinden, welches Paket am besten zu Ihnen passt.
         </p>
-        <CustomButton label="Kostenloses Erstgespräch" url="/#contact" hoverEffect="creative-fill" class="btn-primary bg-[#f7b97d] border-[#f7b97d] text-[#0a1a2f] hover:bg-white hover:border-white hover:text-[#0a1a2f]" />
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <CustomButton
+            label="Kostenloses Erstgespräch"
+            url="/#contact"
+            hoverEffect="creative-fill"
+            class="btn-primary bg-[#f7b97d] border-[#f7b97d] text-[#0a1a2f] hover:bg-white hover:border-white hover:text-[#0a1a2f]"
+          />
+        </div>
       </div>
     </div>
   </section>
 </Base>
+
+<script>
+  // Mobile Segmented Control
+  const tabs = document.querySelectorAll('[role="tab"]');
+  const panels = document.querySelectorAll('[role="tabpanel"]');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetId = tab.dataset.tab;
+      
+      // Update tabs
+      tabs.forEach(t => {
+        t.setAttribute('aria-selected', 'false');
+        t.classList.remove('bg-[#476783]', 'text-white', 'shadow-sm');
+        t.classList.add('text-[#1f2a35]/70');
+      });
+      
+      tab.setAttribute('aria-selected', 'true');
+      tab.classList.add('bg-[#476783]', 'text-white', 'shadow-sm');
+      tab.classList.remove('text-[#1f2a35]/70');
+      
+      // Update panels
+      panels.forEach(panel => {
+        panel.classList.add('hidden');
+      });
+      
+      const targetPanel = document.querySelector(`[data-panel="${targetId}"]`);
+      if (targetPanel) {
+        targetPanel.classList.remove('hidden');
+      }
+    });
+  });
+</script>
