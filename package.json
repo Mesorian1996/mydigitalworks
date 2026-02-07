@@ -1,5 +1,5 @@
 {
-  "name": "folex-lite-astro",
+  "name": "mydigitalworks",
   "type": "module",
   "version": "1.0.0",
   "description": "A highly customizable creative agency & personal portfolio business theme built with Tailwind CSS and Astro Js",
@@ -7,26 +7,21 @@
   "license": "SEE LICENSE IN LICENSE.md",
   "packageManager": "pnpm@8.15.5",
   "private": true,
-  "keywords": [
-    "astro",
-    "template",
-    "tailwindcss"
-  ],
+  "keywords": ["astro", "template", "tailwindcss"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/getastrothemes/folex-lite-astro.git"
+    "url": "git@github.com:Mesorian1996/mydigitalworks.git"
   },
   "engines": {
-    "node": ">=18.20.8 <19 || >=20.3.0 <21 || >=22.0.0",
-    "npm": ">=9.6.7",
-    "pnpm": ">=8.15.5",
-    "yarn": ">=1.22.22"
+    "node": ">=20",
+    "pnpm": ">=8.15.5"
   },
   "scripts": {
     "dev": "astro dev",
-    "preview": "astro build && npm run remove-draft-from-sitemap && astro preview",
-    "build": "npm run check && astro build && npm run remove-draft-from-sitemap",
+    "build": "astro build && pnpm run remove-draft-from-sitemap",
+    "preview": "pnpm run build && astro preview",
     "check": "astro check",
+    "ci": "pnpm run check && pnpm run build",
     "format": "prettier --write ./src",
     "generate-favicons": "node ./scripts/generate-favicons.mjs",
     "remove-multilingual": "node ./scripts/remove-multilingual.mjs",

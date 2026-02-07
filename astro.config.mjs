@@ -24,8 +24,11 @@ let {
 const defaultLocale = defaultLanguage || "de";
 
 // https://astro.build/config
+const SITE = process.env.SITE_URL || config.site.baseUrl || "http://localhost:4321";
+
 export default defineConfig({
-  site: config.site.baseUrl ? config.site.baseUrl : "http://examplesite.com",
+  output: "static",
+  site: SITE,
   trailingSlash: config.site.trailingSlash ? "always" : "never",
   i18n: {
     locales: [defaultLocale],
@@ -35,27 +38,12 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
-  integrations: [react(), sitemapConfig.enable ? sitemap() : null, mdx(), icon()],
+  integrations: [react(), sitemapConfig.enable ? sitemap() : null, mdx(), icon()].filter(Boolean),
   markdown: {
-    rehypePlugins: [
-      [
-        rehypeExternalLinks,
-        {
-          rel: "noopener noreferrer nofollow",
-          target: "_blank",
-        },
-      ],
-    ],
+    rehypePlugins: [[rehypeExternalLinks, { rel: "noopener noreferrer nofollow", target: "_blank" }]],
     remarkPlugins: [remarkParseContent],
-
-    // Code Highlighter https://github.com/shikijs/shiki
-    shikiConfig: {
-      theme: "light-plus", // https://shiki.style/themes
-      wrap: false,
-    },
+    shikiConfig: { theme: "light-plus", wrap: false },
     extendDefaultPlugins: true,
   },
-  vite: {
-    plugins: [tailwindcss(), reloadOnTomlChange()],
-  },
+  vite: { plugins: [tailwindcss(), reloadOnTomlChange()] },
 });
