@@ -30,7 +30,7 @@ const copyrightParts = splitProtectedText(copyrightText);
 // IMPORTANT: Create your key at https://web3forms.com with the email where you want to receive submissions
 // For testing: Use Mesorian96@gmx.de
 // For production: Use kontakt@mydigitalworks.de
-const WEB3FORMS_KEY = "3a997d22-0d88-4e6e-bd4e-1ef591465416"; // ← REPLACE WITH YOUR KEY FROM WEB3FORMS.COM
+const WEB3FORMS_ACCESS_KEY = "3a997d22-0d88-4e6e-bd4e-1ef591465416"; // ← REPLACE WITH YOUR KEY FROM WEB3FORMS.COM
 ---
 
 <footer
@@ -256,7 +256,7 @@ const WEB3FORMS_KEY = "3a997d22-0d88-4e6e-bd4e-1ef591465416"; // ← REPLACE WIT
   </div>
 </footer>
 
-<script define:vars={{ WEB3FORMS_KEY }}>
+<script define:vars={{ WEB3FORMS_ACCESS_KEY }}>
   // Web3Forms Implementation
   const form = document.getElementById('web3forms-contact');
   const submitBtn = form?.querySelector('button[type="submit"]');
@@ -272,7 +272,7 @@ const WEB3FORMS_KEY = "3a997d22-0d88-4e6e-bd4e-1ef591465416"; // ← REPLACE WIT
       // Add Web3Forms Access Key
       // NOTE: The email address is determined by the Access Key you created on web3forms.com
       // All submissions will go to the email you used when creating the key
-      formData.append("access_key", WEB3FORMS_KEY);
+      formData.append("access_key", WEB3FORMS_ACCESS_KEY);
       
       // Store original button content
       const originalHTML = submitBtn.innerHTML;
