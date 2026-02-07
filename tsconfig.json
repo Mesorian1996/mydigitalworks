@@ -12,11 +12,12 @@
     "incremental": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@/components/*": ["./src/layouts/components/*"],
-      "@/shortcodes/*": ["./src/layouts/shortcodes/*"],
-      "@/helpers/*": ["./src/layouts/helpers/*"],
-      "@/*": ["./src/*"]
-    }
+  "@/components/*": ["src/layouts/components/*"],
+  "@/shortcodes/*": ["src/layouts/shortcodes/*"],
+  "@/helpers/*": ["src/layouts/helpers/*"],
+  "@/assets/*": ["src/assets/*"], // Explizit für Bilder
+  "@/*": ["src/*"]
+}
   },
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist", "public"]
