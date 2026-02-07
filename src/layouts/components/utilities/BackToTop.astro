@@ -1,0 +1,24 @@
+---
+import ReactIcons from "@/helpers/ReactIcons.astro";
+---
+
+<a class="back-to-top" href="#top" aria-label="Nach oben">
+  <span class="back-to-top-icon">
+    <ReactIcons icon="RxArrowUp" class="h-5 w-5" />
+  </span>
+</a>
+
+<script>
+  const btn = document.querySelector(".back-to-top");
+  if (btn) {
+    const toggle = () => {
+      if (window.scrollY > 400) {
+        btn.classList.add("is-visible");
+      } else {
+        btn.classList.remove("is-visible");
+      }
+    };
+    toggle();
+    window.addEventListener("scroll", toggle, { passive: true });
+  }
+</script>

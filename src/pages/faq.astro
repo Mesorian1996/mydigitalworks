@@ -1,6 +1,56 @@
 ---
 import Base from "@/layouts/Base.astro";
 const title = "FAQ";
+const faqs = [
+  {
+    group: "Zusammenarbeit & Ablauf",
+    items: [
+      {
+        q: "Wie läuft die Zusammenarbeit ab",
+        a: "Wir starten mit einem kurzen Briefing, klären Ziele und Inhalte und stimmen einen klaren Ablauf ab. Danach setzen wir die Website Schritt für Schritt um und gehen gemeinsam live.",
+      },
+      {
+        q: "Wie schnell können wir starten",
+        a: "In der Regel innerhalb weniger Tage nach dem Erstgespräch, abhängig vom Umfang und der Verfügbarkeit.",
+      },
+    ],
+  },
+  {
+    group: "Webdesign & Hosting",
+    items: [
+      {
+        q: "Welche Inhalte werden benötigt",
+        a: "Logo, Bilder und grobe Texte helfen beim Start. Falls nötig unterstützen wir bei Struktur und Formulierung.",
+      },
+      {
+        q: "Ist Hosting dabei",
+        a: "Hosting ist als eigener Baustein buchbar. So bleibt die Website schnell und sicher, inklusive Betreuung.",
+      },
+    ],
+  },
+  {
+    group: "Google Unternehmensprofil",
+    items: [
+      {
+        q: "Was bringt ein optimiertes Profil",
+        a: "Es verbessert die lokale Auffindbarkeit und erleichtert den Erstkontakt über Anruf, Route oder Website.",
+      },
+    ],
+  },
+  {
+    group: "Digitale Buchhaltung mit Lexoffice",
+    items: [
+      {
+        q: "Ist das Steuerberatung",
+        a: "Nein. Wir unterstützen bei der Einrichtung und der vorbereitenden Buchführung. Die steuerliche Beratung erfolgt durch die Steuerkanzlei.",
+      },
+      {
+        q: "Welche Aufgaben werden übernommen",
+        a: "Wir helfen bei Angeboten, Rechnungen und Belegablage sowie der Vorbereitung für die Steuerkanzlei.",
+      },
+    ],
+  },
+];
 ---
 
 <Base className="bg-white">
@@ -10,16 +60,55 @@ const title = "FAQ";
       <h1 class="text-h1-sm font-bold leading-tight text-[#0A1A2F] md:text-h1">
         {title}
       </h1>
-      <p class="text-base text-[#1f2a35]/75 md:text-lg">Placeholder für Inhalte.</p>
+      <p class="text-base text-[#1f2a35]/75 md:text-lg">
+        Antworten auf die wichtigsten Fragen zu Leistungen, Ablauf und Zusammenarbeit.
+      </p>
     </div>
   </section>
 
   <section class="py-14 md:py-20">
     <div class="container">
-      <div class="rounded-3xl border border-dashed border-[#d7c5aa]/60 bg-white/70 p-8 text-[#0a1a2f]">
-        <p class="text-sm text-[#0a1a2f]/70">Inhalt folgt: {title}</p>
+      <div class="rounded-3xl border border-[#d7c5aa]/60 bg-white/70 p-8 text-[#0a1a2f]">
+        <div class="space-y-10 text-sm text-[#0a1a2f]/80 md:text-base">
+          {faqs.map((group, groupIdx) => (
+            <div class="space-y-4">
+              <h2 class="text-lg font-semibold text-[#0a1a2f]">{group.group}</h2>
+              <div class="faq-accordion" data-faq-group>
+                {group.items.map((item, itemIdx) => (
+                  <details
+                    class="faq-item"
+                    open={groupIdx === 0 && itemIdx === 0}
+                  >
+                    <summary class="faq-summary">
+                      <span class="faq-question">{item.q}</span>
+                      <span class="faq-icon" aria-hidden="true">+</span>
+                    </summary>
+                    <div class="faq-panel">
+                      <p>{item.a}</p>
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
 </Base>
+
+<script>
+  const groups = document.querySelectorAll("[data-faq-group]");
+  groups.forEach((group) => {
+    const items = group.querySelectorAll("details");
+    items.forEach((item) => {
+      item.addEventListener("toggle", () => {
+        if (!item.open) return;
+        items.forEach((other) => {
+          if (other !== item) other.open = false;
+        });
+      });
+    });
+  });
+</script>
 

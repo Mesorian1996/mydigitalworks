@@ -7,6 +7,7 @@ import Header from "@/components/global/header/Header.astro";
 import type { JSONLDProps } from "@/lib/utils/JsonLdGenerator";
 import BreakpointIndicator from "@/components/widgets/BreakpointIndicator.astro";
 import FooterThree from "@/components/global/FooterThree.astro";
+import BackToTop from "@/components/utilities/BackToTop.astro";
 
 interface Props extends JSONLDProps {
   className?: string;
@@ -55,6 +56,7 @@ className = fitToScreen
 <html lang="de">
   <Head {...props} structuredData={structuredData} />
   <body class:list={[hasBodyDarkBackground && "bg-body-dark"]}>
+    <div id="top" aria-hidden="true"></div>
     <Header
       position={headerPosition}
       hasDarkBackground={hasHeaderDarkBackground}
@@ -112,6 +114,7 @@ className = fitToScreen
         });
       });
     </script>
+    <BackToTop />
     <BreakpointIndicator />
   </body>
 </html>

@@ -7,6 +7,7 @@ import TechAccordion from "@/components/sections/TechAccordion.astro";
 import webdesignHero from "@/assets/images/Leistungen/webdesign_unterseite.webp";
 
 const title = "Webdesign";
+const metaDescription = "Professionelles Webdesign aus Ludwigshafen ✓ Mobile-First ✓ SEO-optimiert ✓ Schnelle Ladezeiten ✓ Websites für Unternehmen in Mannheim & Rhein-Neckar";
 
 const miniProjects = [
   {
@@ -14,7 +15,7 @@ const miniProjects = [
     story:
       "Familienbetrieb, der Vertrauen und handwerkliche Qualität zeigen wollte. Wir haben eine klare Leistungsstruktur aufgebaut und lokale Sichtbarkeit gestärkt.",
     result:
-      "Mehr Anfragen aus der Region durch klare CTAs und optimiertes Google-Unternehmensprofil.",
+      "Mehr Anfragen aus der Region durch klare CTAs und optimiertes Google Unternehmensprofil.",
     image: "/images/Limani_Fliesenleger_1.png",
     url: "https://limani-fliesenleger.de",
   },
@@ -23,16 +24,48 @@ const miniProjects = [
     story:
       "Eigene Academy, die Probetrainings füllen wollte. Fokus auf einfache Kontaktwege und authentische Darstellung des Trainers.",
     result:
-      "Kontinuierliche Probetrainings-Anfragen dank klarer CTA und mobile-first Performance.",
+      "Kontinuierliche Probetrainings Anfragen dank klarer CTA und mobile first Performance.",
     image: "/images/Circleoflife_bjj_1.png",
     url: "https://circleoflife-bjj.de",
   },
 ];
+
+// FAQ Section - Webdesign fokusiert
+const faqs = [
+  {
+    question: "Was kostet eine professionelle Website?",
+    answer: "Die Kosten für eine professionelle Website hängen vom Umfang ab. Eine einfache Business-Website mit 5-7 Seiten startet bei 2.000-3.000€. Umfangreichere Websites mit individuellen Funktionen, E-Commerce oder komplexen Designs liegen bei 4.000-8.000€+. Wir erstellen ein individuelles Angebot basierend auf Ihren Anforderungen. Wichtig: Eine professionelle Website ist eine Investition, die sich durch mehr Anfragen und bessere Kundengewinnung auszahlt."
+  },
+  {
+    question: "Wie lange dauert die Erstellung einer Website?",
+    answer: "Eine Standard-Business-Website dauert 3-6 Wochen von Konzept bis Launch. Der Prozess umfasst: Briefing und Konzeption (1 Woche), Design und Entwicklung (2-3 Wochen), Inhalte einpflegen und Feinschliff (1 Woche), Testing und Go-Live. Bei größeren Projekten mit Shop-Systemen oder individuellen Features rechnen Sie mit 8-12 Wochen. Die Timeline hängt auch davon ab, wie schnell Sie Inhalte und Feedback liefern."
+  },
+  {
+    question: "Kann ich meine Website selbst bearbeiten?",
+    answer: "Ja, absolut! Wir bauen alle Websites mit modernen Content-Management-Systemen, die Sie einfach selbst pflegen können. Sie erhalten eine Einweisung, wie Sie Texte ändern, Bilder austauschen und neue Seiten anlegen. Für regelmäßige Updates oder technische Anpassungen bieten wir optional Wartungspakete an. So haben Sie die Kontrolle über Ihre Inhalte, während wir uns um technische Updates und Sicherheit kümmern."
+  },
+  {
+    question: "Ist meine Website auch auf dem Smartphone gut sichtbar?",
+    answer: "Definitiv – alle unsere Websites sind Mobile-First entwickelt. Das bedeutet: Sie funktionieren perfekt auf Smartphones, Tablets und Desktop-PCs. Da über 70% der Nutzer mobil surfen, optimieren wir Design, Navigation und Ladezeiten speziell für mobile Geräte. Google bewertet mobile Optimierung als wichtigen Ranking-Faktor, daher ist Mobile-First nicht optional, sondern Standard bei uns."
+  },
+  {
+    question: "Wird meine Website für Google optimiert (SEO)?",
+    answer: "Ja, SEO-Grundlagen sind bei uns Standard: Technisch sauberer Code, schnelle Ladezeiten, mobile Optimierung, saubere URL-Struktur und Meta-Tags. Für lokale Unternehmen optimieren wir zusätzlich für lokale Suchanfragen (z.B. 'Dienstleister Mannheim'). Für tiefergehende SEO-Optimierung mit Keyword-Strategie, Content-Aufbau und kontinuierlichem Monitoring bieten wir separate SEO-Pakete an."
+  },
+  {
+    question: "Bekomme ich auch Unterstützung nach dem Website-Launch?",
+    answer: "Selbstverständlich! Nach dem Launch sind wir weiterhin für Sie da. Sie erhalten technischen Support bei Fragen und optional Wartungspakete für regelmäßige Updates, Backups und Sicherheits-Checks. Viele Kunden buchen auch laufende SEO-Betreuung oder Content-Updates. Wir lassen Sie nicht allein – Ihre Website soll langfristig erfolgreich sein."
+  },
+  {
+    question: "Was unterscheidet professionelles Webdesign von Baukasten-Systemen?",
+    answer: "Baukasten-Systeme wie Wix oder Jimdo sind schnell, aber begrenzt: eingeschränktes Design, langsame Ladezeiten, schlechte SEO-Performance, keine individuelle Skalierung. Professionelles Webdesign bietet: maßgeschneidertes Design, optimale Performance, volle Kontrolle über Code und Hosting, bessere Google-Rankings, individuelle Funktionen. Langfristig spart professionelles Design Zeit und Geld durch weniger Einschränkungen und bessere Conversion-Raten."
+  }
+];
 ---
 
-<Base className="bg-white">
-<section class="bg-gradient-to-b from-white via-[#f9f2e9] to-white py-16 md:py-24">
-  <div class="container grid gap-12 lg:grid-cols-2 lg:items-center">
+<Base className="bg-white" title={title} description={metaDescription}>
+<section class="bg-gradient-to-b from-white via-[#f9f2e9] to-white py-12 md:py-24">
+  <div class="container grid gap-8 lg:gap-12 lg:grid-cols-2 lg:items-center">
     <div
       class="relative order-2 overflow-hidden rounded-3xl border border-[#d7c5aa]/70 bg-white shadow-[0_28px_120px_-70px_rgba(0,0,0,0.35)] lg:order-1 lg:translate-y-10"
       data-aos="fade-right">
@@ -45,29 +78,32 @@ const miniProjects = [
       />
     </div>
 
-    <div class="order-1 space-y-6 text-[#0A1A2F] lg:order-2" data-aos="fade-left" data-aos-delay="120">
-      <div class="flex items-center gap-3">
-        <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Leistungen</p>
-        <span class="inline-flex items-center justify-center rounded-full bg-[#476783]/10 p-2 text-[#476783]">
-          <img src="/images/logo.webp" alt="MY Digital Works Logo" class="h-8 w-auto" loading="lazy" decoding="async" />
-        </span>
+    <div class="order-1 space-y-4 md:space-y-6 text-[#0A1A2F] lg:order-2" data-aos="fade-left" data-aos-delay="120">
+      <div class="inline-flex items-center gap-3 rounded-full bg-[#476783]/10 px-3 py-1.5 text-[#476783]">
+        <img
+          src="/images/logo.webp"
+          alt="MY Digital Works Logo"
+          class="h-6 w-auto opacity-80"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="text-[11px] uppercase tracking-[0.24em]">MY Digital Works</span>
       </div>
-      <h1 class="text-h1-sm font-bold leading-tight md:text-h1">{title}</h1>
+      <h1 class="text-[2.5rem] md:text-h1-sm font-bold leading-tight lg:text-h1">{title}</h1>
       <p class="text-base text-[#1f2a35]/80 md:text-lg">
-        Websites, die Vertrauen schaffen, schnell laden und Anfragen aus Besuchern machen.
-        Klare Struktur, starke Story und Technik ohne Ballast.
+        Webseiten, die Vertrauen schaffen, schnell laden und Anfragen generieren. Mobile First aufgebaut, suchmaschinenoptimiert und bereit für moderne KI Suche. Für Unternehmen in Ludwigshafen, Mannheim und der Metropolregion Rhein Neckar.
       </p>
       <div class="flex flex-wrap gap-3">
         <CustomButton
           label="Kostenloses Gespräch buchen"
-          url="/#contact"
+          url="/#footer-with-contact"
           hoverEffect="creative-fill"
           class="btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#c9baa8] hover:border-[#c9baa8] hover:text-[#0a1a2f] effect-color-dark"
         />
         <CustomButton
           variant="text"
           hoverEffect="underline-slide"
-          label="Case ansehen"
+          label="Cases ansehen"
           url="/#portfolio"
           class="text-[#476783] hover:text-[#f7b97d] px-0 py-0"
         />
@@ -77,6 +113,20 @@ const miniProjects = [
 </section>
 
 <WhatWeDoCards />
+ <!-- CTA nach Cases -->
+      <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="300">
+        <div class="mx-auto max-w-2xl space-y-4">
+          <p class="text-base text-[#1f2a35]/70">
+            Du möchtest eine Webseite, die Vertrauen schafft und Anfragen generiert? Dann Frage jetzt unverbindlich an.
+          </p>
+          <CustomButton
+            label="Jetzt Projekt besprechen"
+            url="/#footer-with-contact"
+            hoverEffect="creative-fill"
+            class="btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#f7b97d] hover:border-[#f7b97d] hover:text-[#0a1a2f]"
+          />
+        </div>
+      </div>
 
 <SplitHookSection />
 
@@ -124,7 +174,155 @@ const miniProjects = [
           </article>
         ))}
       </div>
+
+      <!-- CTA nach Cases -->
+      <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="300">
+        <div class="mx-auto max-w-2xl space-y-4">
+          <p class="text-base text-[#1f2a35]/70">
+            Bereit für eine professionelle Website, die Vertrauen schafft und Anfragen generiert?
+          </p>
+          <CustomButton
+            label="Jetzt Projekt besprechen"
+            url="/#footer-with-contact"
+            hoverEffect="creative-fill"
+            class="btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#f7b97d] hover:border-[#f7b97d] hover:text-[#0a1a2f]"
+          />
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- FAQ Section -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-4xl space-y-10">
+        <div class="space-y-3 text-center text-[#0a1a2f]" data-aos="fade-up">
+          <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Häufige Fragen</p>
+          <h2 class="text-h2-sm font-bold leading-tight md:text-h2">
+            Webdesign FAQ – Alles Wichtige auf einen Blick
+          </h2>
+          <p class="text-base text-[#1f2a35]/70 max-w-2xl mx-auto">
+            Die wichtigsten Antworten zu Kosten, Ablauf und Möglichkeiten bei der Website Erstellung.
+          </p>
+        </div>
+
+        <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+          {faqs.map((faq, index) => (
+            <details
+              class="group rounded-2xl border border-[#d7c5aa]/50 bg-gradient-to-br from-[#f9f2e9]/20 to-white p-6 transition-all duration-300 hover:border-[#d7c5aa] hover:shadow-lg [&[open]]:border-[#476783] [&[open]]:bg-white [&[open]]:shadow-xl"
+              data-aos="fade-up"
+              data-aos-delay={index * 50}>
+              <summary class="flex cursor-pointer items-start justify-between gap-4 text-left font-semibold text-[#0A1A2F] transition-colors duration-200 group-hover:text-[#476783] [&::-webkit-details-marker]:hidden">
+                <span class="text-base md:text-lg leading-relaxed">{faq.question}</span>
+                <svg
+                  class="h-6 w-6 flex-shrink-0 text-[#476783] transition-transform duration-300 group-open:rotate-180"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="mt-4 border-t border-[#d7c5aa]/30 pt-4 text-sm leading-relaxed text-[#1f2a35]/80 md:text-base">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+
+        <!-- Schema.org JSON-LD für FAQ -->
+        <script type="application/ld+json" set:html={JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.answer
+            }
+          }))
+        })} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="bg-gradient-to-b from-[#0A1A2F] to-[#1a2f45] py-20 md:py-28">
+    <div class="container">
+      <div class="mx-auto max-w-3xl space-y-8 text-center" data-aos="fade-up">
+        <h2 class="text-h2-sm font-bold leading-tight text-white md:text-h2">
+          Lassen Sie uns Ihre Website erstellen
+        </h2>
+        <p class="text-lg text-white/80">
+          Professionelles Webdesign für Unternehmen in Ludwigshafen, Mannheim und der Metropolregion Rhein Neckar. Modern, schnell und conversion optimiert.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <CustomButton
+            label="Kostenloses Erstgespräch"
+            url="/#footer-with-contact"
+            hoverEffect="creative-fill"
+            class="btn-primary bg-[#f7b97d] border-[#f7b97d] text-[#0a1a2f] hover:bg-white hover:border-white hover:text-[#0a1a2f]"
+          />
+          <CustomButton
+            label="E-Mail schreiben"
+            url="mailto:kontakt@mydigitalworks.de"
+            hoverEffect="creative-fill"
+            class="btn-outline border-white text-white hover:bg-white hover:text-[#0a1a2f]"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Webdesign Service Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "MY Digital Works - Webdesign",
+    "description": "Professionelles Webdesign für Unternehmen in Ludwigshafen, Mannheim und der Metropolregion Rhein-Neckar",
+    "url": "https://mydigitalworks.de/leistungen/webdesign",
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Ludwigshafen"
+      },
+      {
+        "@type": "City", 
+        "name": "Mannheim"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Rheinland-Pfalz"
+      }
+    ],
+    "serviceType": [
+      "Webdesign",
+      "Website-Erstellung",
+      "Mobile-First Design",
+      "SEO-Optimierung",
+      "Responsive Webdesign"
+    ]
+  })} />
 </Base>
 
+<style>
+  /* FAQ Details smooth animation */
+  details > summary {
+    list-style: none;
+  }
+  
+  details[open] > summary ~ * {
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

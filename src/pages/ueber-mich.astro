@@ -1,0 +1,303 @@
+---
+import Base from "@/layouts/Base.astro";
+import CustomButton from "@/components/CustomButton.astro";
+import mesorianbild from "@/assets/images/team/Mesorian.webp";
+import IconLaptop from "@/assets/images/icons/svg/009-laptop.svg";
+import IconSeo from "@/assets/images/icons/svg/046-seo.svg";
+import IconGmb from "@/assets/images/icons/svg/colored/google.svg";
+import IconChecklist from "@/assets/images/icons/svg/032-checklist.svg";
+import IconRebrand from "@/assets/images/icons/svg/006-online business.svg";
+import IconHosting from "@/assets/images/icons/svg/002-global network.svg";
+
+const services = [
+  {
+    title: "Webdesign",
+    hook: "Klare, schnelle Seiten, die Vertrauen aufbauen.",
+    story: "Eine professionelle Website ist oft der erste Eindruck deines Unternehmens. Sie schafft Vertrauen, führt gezielt durch dein Angebot und macht aus Interessenten Kunden.",
+    href: "/leistungen/webdesign",
+    icon: IconLaptop,
+    accentColor: "#476783",
+  },
+  {
+    title: "SEO & Local SEO",
+    hook: "Gefunden werden, bevor die Konkurrenz auftaucht.",
+    story: "Gute Sichtbarkeit entsteht dort, wo Menschen aktiv nach Lösungen suchen. Mit klarer Struktur und lokaler Ausrichtung wirst du genau im richtigen Moment gefunden.",
+    href: "/leistungen/seo-local",
+    icon: IconSeo,
+    accentColor: "#f7b97d",
+  },
+  {
+    title: "Google Unternehmensprofil",
+    hook: "Mehr lokale Anfragen ohne Ads.",
+    story: "Für viele Kunden beginnt die Entscheidung bei Google Maps. Ein gepflegtes Unternehmensprofil sorgt für Vertrauen, Präsenz und kontinuierliche Anfragen.",
+    href: "/leistungen/google-unternehmensprofil",
+    icon: IconGmb,
+    accentColor: "#476783",
+  },
+  {
+    title: "Digitale Rechnungen",
+    hook: "Buchhaltung digital & sauber aufgesetzt.",
+    story: "Digitale Rechnungsprozesse bringen Klarheit in den Arbeitsalltag. Sie vereinfachen Abläufe, sparen Zeit und schaffen eine verlässliche Grundlage für weiteres Wachstum.",
+    href: "/leistungen/buchhaltung-digital",
+    icon: IconChecklist,
+    accentColor: "#f7b97d",
+  },
+  {
+    title: "Rebranding / Logo Refresh",
+    hook: "Moderner Auftritt, der Vertrauen schafft.",
+    story: "Ein zeitgemäßer Markenauftritt erzählt, wofür dein Unternehmen steht. Er sorgt für Wiedererkennung und ein professionelles Auftreten auf allen Kanälen.",
+    href: "/leistungen/rebranding",
+    icon: IconRebrand,
+    accentColor: "#476783",
+  },
+  {
+    title: "Webhosting & Wartung",
+    hook: "Betrieb, Updates und Sicherheit aus einer Hand.",
+    story: "Damit deine Website jederzeit zuverlässig funktioniert, braucht es stabile Technik im Hintergrund. Wir sorgen für Sicherheit, Performance und einen reibungslosen Betrieb.",
+    href: "/leistungen/webhosting-wartung",
+    icon: IconHosting,
+    accentColor: "#f7b97d",
+  },
+];
+
+const process = [
+  { step: "01", title: "Erstgespräch", description: "Ich höre zu, verstehe Ihre Ziele und prüfe, ob ich der richtige Partner bin." },
+  { step: "02", title: "Konzept", description: "Sie erhalten einen konkreten Vorschlag: Struktur, Design-Richtung und Timeline." },
+  { step: "03", title: "Umsetzung", description: "Ich arbeite transparent, halte Sie auf dem Laufenden und hole Feedback ein." },
+  { step: "04", title: "Launch & Betreuung", description: "Ihre Website geht live. Bei Bedarf unterstütze ich Sie auch danach weiter." }
+];
+---
+
+<Base className="bg-white">
+  <section class="bg-gradient-to-b from-white via-[#f9f2e9] to-white py-16 md:py-24">
+    <div class="container grid gap-12 lg:grid-cols-2 lg:items-center">
+      <div class="relative order-2 overflow-hidden rounded-3xl border border-[#d7c5aa]/70 bg-white shadow-[0_28px_120px_-70px_rgba(0,0,0,0.35)] lg:order-1 lg:translate-y-10" data-aos="fade-right">
+        <img src={mesorianbild.src} alt="Mesorian - MY Digital Works" class="aspect-[4/5] w-full object-cover" loading="lazy" decoding="async" />
+      </div>
+      <div class="order-1 space-y-6 text-[#0A1A2F] lg:order-2" data-aos="fade-left" data-aos-delay="120">
+        <div class="inline-flex items-center gap-3 rounded-full bg-[#476783]/10 px-3 py-1.5 text-[#476783]">
+          <img src="/images/logo.webp" alt="MY Digital Works Logo" class="h-6 w-auto opacity-80" loading="lazy" decoding="async" />
+          <span class="text-[11px] uppercase tracking-[0.24em]">MY Digital Works</span>
+        </div>
+        <h1 class="text-h1-sm font-bold leading-tight md:text-h1">Über mich</h1>
+        <div class="space-y-4 text-base text-[#1f2a35]/80 md:text-lg">
+          <p>Ich helfe kleinen und mittelständischen Unternehmen dabei, online sichtbar zu werden und Anfragen zu generieren.</p>
+          <p>Mein Fokus liegt auf modernen Websites, lokaler Google-Präsenz und digitaler Buchhaltung mit Lexoffice. Keine übertriebenen Versprechungen, sondern praktische Lösungen, die funktionieren.</p>
+        </div>
+        <CustomButton label="Kostenloses Gespräch buchen" url="/#footer-with-contact" hoverEffect="creative-fill" class="btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#c9baa8] hover:border-[#c9baa8] hover:text-[#0a1a2f] effect-color-dark" />
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-16 md:py-24">
+    <div class="container">
+      <div class="mb-12 space-y-4 text-center" data-aos="fade-up">
+        <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Mein Angebot</p>
+        <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">Was ich anbiete</h2>
+        <p class="text-base text-[#1f2a35]/70 md:text-lg">Von der Website bis zur digitalen Buchhaltung – alles aus einer Hand.</p>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {services.map((service, idx) => (
+          <a
+            href={service.href}
+            class="service-card group relative flex flex-col gap-5 overflow-hidden rounded-3xl border border-[#d7c5aa]/60 bg-white p-8 shadow-[0_18px_70px_-50px_rgba(0,0,0,0.18)] transition-all duration-500 hover:-translate-y-2 hover:border-[#d7c5aa] hover:shadow-[0_28px_100px_-60px_rgba(71,103,131,0.3)]"
+            data-aos="fade-up"
+            data-aos-delay={idx * 60}>
+            
+            <!-- Top Stripe -->
+            <div class="stripe-top"></div>
+            
+            <div class="relative z-10 flex items-start justify-between">
+              <div
+                class="inline-flex h-16 w-16 items-center justify-center rounded-2xl shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-6"
+                style={`background: linear-gradient(135deg, ${service.accentColor}, ${service.accentColor === '#476783' ? '#648298' : '#efba87'});`}>
+                <img src={service.icon.src} alt={service.title} class="h-8 w-8 brightness-0 invert" />
+              </div>
+            </div>
+
+            <div class="relative z-10 space-y-2">
+              <h3 class="text-xl font-bold text-[#0A1A2F] transition-colors group-hover:text-[#476783]">
+                {service.title}
+              </h3>
+              <p class="text-sm font-medium text-[#476783]">
+                {service.hook}
+              </p>
+              <p class="text-sm leading-relaxed text-[#1f2a35]/75">
+                {service.story}
+              </p>
+            </div>
+
+            <div class="relative z-10 mt-auto flex items-center gap-2 text-sm font-semibold text-[#476783] transition-colors group-hover:text-[#f7b97d]">
+              Mehr erfahren
+              <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section - ENHANCED (wie Rebranding) -->
+  <section class="bg-gradient-to-b from-[#f9f2e9] to-white py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-3xl space-y-4 text-center mb-12" data-aos="fade-up">
+        <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">So arbeite ich</p>
+        <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+          Mein Prozess
+        </h2>
+        <p class="text-base text-[#1f2a35]/70 md:text-lg">
+          Strukturiert, transparent und mit Ihrer Vision im Fokus.
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {process.map((item, idx) => (
+          <article
+            class="process-card group relative overflow-hidden rounded-3xl border border-[#d7c5aa]/50 bg-gradient-to-br from-white to-[#f9f2e9]/30 p-6 transition-all duration-500 hover:-translate-y-2 hover:border-[#476783]/50 hover:shadow-[0_24px_80px_-30px_rgba(71,103,131,0.3)]"
+            data-aos="fade-up"
+            data-aos-delay={idx * 100}>
+            
+            <!-- Top Stripe with Step Number -->
+            <div class="stripe-top-process"></div>
+            
+            <div class="relative z-10">
+              <!-- Step Number Badge -->
+              <div class="mb-6 flex items-center justify-between">
+                <div 
+                  class="flex h-14 w-14 items-center justify-center rounded-2xl shadow-lg font-bold text-xl text-white transition-all duration-500 group-hover:scale-110 group-hover:rotate-12"
+                  style="background: linear-gradient(135deg, #476783, #648298);">
+                  {item.step}
+                </div>
+                
+                <!-- Arrow indicator -->
+                {idx < 3 && (
+                  <svg class="hidden lg:block absolute -right-3 top-6 h-6 w-6 text-[#476783]/30 group-hover:text-[#476783] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                )}
+              </div>
+
+              <h3 class="mb-3 text-xl font-bold text-[#0A1A2F] transition-colors group-hover:text-[#476783]">
+                {item.title}
+              </h3>
+              <p class="text-sm leading-relaxed text-[#1f2a35]/75">
+                {item.description}
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- CTA nach Process -->
+      <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="300">
+        <div class="mx-auto max-w-2xl space-y-4">
+          <p class="text-base text-[#1f2a35]/70">
+            Bereit für Ihr digitales Projekt?
+          </p>
+          <CustomButton
+            label="Jetzt Projekt besprechen"
+            url="/#footer-with-contact"
+            hoverEffect="creative-fill"
+            class="btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#f7b97d] hover:border-[#f7b97d] hover:text-[#0a1a2f]"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="bg-gradient-to-b from-[#0A1A2F] to-[#1a2f45] py-20 md:py-28">
+    <div class="container">
+      <div class="mx-auto max-w-3xl space-y-8 text-center" data-aos="fade-up">
+        <h2 class="text-h2-sm font-bold leading-tight text-white md:text-h2">Lassen Sie uns sprechen</h2>
+        <p class="text-lg text-white/80">Kostenloses Erstgespräch, um zu prüfen, ob ich der richtige Partner für Ihr Projekt bin.</p>
+        <CustomButton label="Kostenloses Erstgespräch" url="/#footer-with-contact" hoverEffect="creative-fill" class="btn-primary bg-[#f7b97d] border-[#f7b97d] text-[#0a1a2f] hover:bg-white hover:border-white hover:text-[#0a1a2f]" />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* ===== SERVICE CARD STRIPE ===== */
+  .stripe-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #476783, #648298, #f7b97d);
+    background-size: 200% 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .service-card:hover .stripe-top,
+  .process-card:hover .stripe-top-process {
+    transform: scaleX(1);
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Service Card Position */
+  .service-card {
+    position: relative;
+  }
+
+  /* ===== PROCESS CARD STRIPE ===== */
+  .stripe-top-process {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #476783, #f7b97d);
+    background-size: 200% 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Process Card Enhancements */
+  .process-card {
+    position: relative;
+  }
+
+  .process-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(71, 103, 131, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+
+  .process-card:hover::after {
+    opacity: 1;
+  }
+
+  /* Accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .stripe-top,
+    .stripe-top-process,
+    .service-card,
+    .process-card {
+      transition: none;
+      animation: none;
+    }
+  }
+</style>

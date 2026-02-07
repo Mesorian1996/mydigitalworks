@@ -1,12 +1,12 @@
 # Site Configuration
 [site]
-  title            = "MY Digital Studio" # Shared title for SEO and OpenGraph
-  description      = "MY Digital Studio – Webdesign, SEO, Branding & digitale Lösungen für Kleinunternehmen." # Shared description for SEO and OpenGraph
+  title            = "MY Digital Works" # Shared title for SEO and OpenGraph
+  description      = "MY Digital Works – Webdesign, SEO, Branding & digitale Lösungen für Kleinunternehmen." # Shared description for SEO and OpenGraph
   tagline          = "Digitale Lösungen & Webdesign"
   taglineSeparator = "" # default is " - " 
   baseUrl          = "https://my-digital-studio.de/" # Base URL for the site and used in OpenGraph meta tags.
   logo             = "/images/logo_text.webp" # Path to the site's primary logo (Text)
-  logoAlternate    = "/images/logo.webp" # Path to the site's alternate/logo icon
+  logoAlternate    = "/images/primary_logo.png" # Path to the site's alternate/logo icon
   logoText         = "" # Text displayed next to the logo
   logoWidth        = "72px" # Width of the logo (increased ~50%)
   logoHeight       = "72px" # Height of the logo (increased ~50%)
@@ -86,14 +86,14 @@
   # Global Contact Information
   [settings.contactInfo]
     address = "Mannheim, Deutschland"
-    email   = "[hello@my-digital-studio.de](mailto:hello@my-digital-studio.de)"
-    phone   = "[+49 621 000000](tel:+49621000000)"
+    email   = "[kontakt@mydigitalworks.de](mailto:kontakt@mydigitalworks.de)"
+    phone   = "[+49 157 39429234](tel:+4915739429234)"
 
   # Header Offcanvas Configuration
   # Update social links in `src/config/social.json`
   [settings.headerOffcanvas]
     enable      = true
-    logo        = "/images/logo.webp"
+    logo        = "/images/primary_logo.png"
     description = "" # Check src/i18n/de.json for changing the description or set it directly here if you are not using internationalization feature. This is also used in footer of personal-portfolio homepage
 
     # Call To Action Button

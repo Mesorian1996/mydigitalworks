@@ -8,7 +8,39 @@
     {
       "enable": true,
       "name": "Leistungen",
-      "url": "/leistungen"
+      "url": "/leistungen",
+      "children": [
+        {
+          "enable": true,
+          "name": "Webdesign",
+          "url": "/leistungen/webdesign"
+        },
+        {
+          "enable": true,
+          "name": "Google Unternehmensprofil",
+          "url": "/leistungen/google-unternehmensprofil"
+        },
+        {
+          "enable": true,
+          "name": "Digitale Buchhaltung",
+          "url": "/leistungen/buchhaltung-digital"
+        },
+        {
+          "enable": true,
+          "name": "Rebranding",
+          "url": "/leistungen/rebranding"
+        },
+        {
+          "enable": true,
+          "name": "SEO",
+          "url": "/leistungen/seo-local"
+        },
+        {
+          "enable": true,
+          "name": "Webhosting",
+          "url": "/leistungen/webhosting-wartung"
+        }
+      ]
     },
     {
       "enable": true,
@@ -22,16 +54,11 @@
     },
     {
       "enable": true,
-      "name": "Über uns",
-      "url": "/ueber-uns"
+      "name": "Über mich",
+      "url": "/ueber-mich"
     },
     {
-      "enable": true,
-      "name": "Kontakt",
-      "url": "/kontakt"
-    },
-    {
-      "enable": true,
+      "enable": false,
       "name": "FAQ",
       "url": "/faq"
     }

@@ -1,0 +1,108 @@
+---
+import heroLogo from "@/assets/images/logo/mesorian - My DIgital Works_Primary Logo.png";
+
+const bubbles = [
+  { label: "Webdesign", href: "/leistungen/webdesign" },
+  { label: "Google Unternehmensprofil", href: "/leistungen/google-unternehmensprofil" },
+  { label: "Digitale Buchhaltung", href: "/leistungen/buchhaltung-digital" },
+  { label: "Rebranding", href: "/leistungen/rebranding" },
+];
+---
+
+<section
+  class="relative overflow-hidden bg-gradient-to-br from-[#0c1a2f] via-[#0f2643] to-[#0c1a2f] text-white"
+  id="hero"
+>
+  <div
+    class="pointer-events-none absolute inset-0"
+    aria-hidden="true"
+    style="
+      background:
+        radial-gradient(circle at 22% 30%, rgba(247, 185, 125, 0.18), transparent 42%),
+        radial-gradient(circle at 78% 18%, rgba(100, 130, 152, 0.16), transparent 36%),
+        radial-gradient(circle at 74% 72%, rgba(71, 103, 131, 0.12), transparent 36%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
+    "
+  ></div>
+
+  <div class="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-16 sm:py-20 lg:py-24">
+    <div class="relative grid gap-10 lg:grid-cols-[minmax(260px,320px)_1fr] lg:items-center">
+      <!-- Decorative connectors -->
+      <div
+        class="pointer-events-none absolute inset-0 hidden lg:block"
+        aria-hidden="true"
+        style="
+          background:
+            linear-gradient(90deg, rgba(247, 185, 125, 0.18) 0 34%, transparent 34%),
+            radial-gradient(circle at 32% 22%, rgba(247, 185, 125, 0.28), transparent 40%),
+            radial-gradient(circle at 32% 50%, rgba(247, 185, 125, 0.24), transparent 40%),
+            radial-gradient(circle at 32% 78%, rgba(247, 185, 125, 0.2), transparent 42%);
+        "
+      ></div>
+
+      <!-- Left: Logo + text -->
+      <div class="relative z-10 flex flex-col gap-6 rounded-3xl border border-white/12 bg-white/5 p-6 shadow-2xl shadow-black/30 backdrop-blur">
+        <div class="flex items-center gap-3">
+          <img
+            src={heroLogo.src || heroLogo}
+            alt="MY Digital Works Logo"
+            class="h-16 w-auto drop-shadow-md"
+            loading="lazy"
+          />
+        </div>
+        <div class="space-y-3">
+          <h1 class="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+            Websites, die Vertrauen schaffen.
+          </h1>
+          <p class="text-base leading-relaxed text-white/85 sm:text-lg">
+            Webdesign, SEO und Branding – klar strukturiert, schnell, auf Anfragen optimiert.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: Bubbles -->
+      <div class="relative z-10">
+        <div class="grid w-full max-w-xl grid-cols-1 gap-3 sm:grid-cols-2">
+          {bubbles.map((item, idx) => (
+            <a
+              href={item.href}
+              class="group bubble-anim relative flex items-center justify-between gap-3 rounded-full border border-white/15 bg-white/5 px-5 py-4 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-white/30 hover:bg-white/10 hover:shadow-xl hover:shadow-[#f7b97d1f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f7b97d]"
+              style={`animation-delay:${idx * 0.35}s`}
+            >
+              <span class="text-sm font-semibold tracking-tight text-white sm:text-base">
+                {item.label}
+              </span>
+              <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#f7b97d] transition duration-300 group-hover:bg-[#f7b97d]/15">
+                Mehr
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes bubble-wobble {
+    0% {
+      transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    50% {
+      transform: translate3d(0, -2px, 0) rotate(-1.5deg);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+  }
+  .bubble-anim {
+    animation: bubble-wobble 3.8s ease-in-out infinite;
+    will-change: transform;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bubble-anim {
+      animation: none;
+    }
+  }
+</style>
+

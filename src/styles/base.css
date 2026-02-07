@@ -6,6 +6,13 @@ body {
   @apply bg-body font-primary text-text-default leading-body font-normal;
 }
 
+@media (max-width: 640px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}
+
 /* Global Section Spacing */
 main section {
   @apply section-spacing;

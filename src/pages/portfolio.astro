@@ -1,25 +1,452 @@
 ---
 import Base from "@/layouts/Base.astro";
+import CustomButton from "@/components/CustomButton.astro";
+
 const title = "Portfolio";
+const metaDescription = "Portfolio von MY Digital Works – Webdesign, SEO und digitale Lösungen für Unternehmen in Ludwigshafen, Mannheim und der Metropolregion";
+
+// Featured Cases (echte Projekte)
+const featuredCases = [
+  {
+    title: "Limani Fliesenleger",
+    subtitle: "Webdesign & Google Unternehmensprofil",
+    outcome: "Professioneller Markenauftritt mit starker lokaler Präsenz. Anfragen aus der Region verdreifacht.",
+    tags: ["Webdesign", "Google Business", "Lokales SEO"],
+    image: "/images/Limani_Fliesenleger_1.png",
+    url: "https://limani-fliesenleger.de",
+    metrics: ["Mobile First Design", "<2s Ladezeit"]
+  },
+  {
+    title: "Circle of Life BJJ",
+    subtitle: "Webdesign & SEO",
+    outcome: "Kontinuierliche Probetrainings Anfragen durch mobile optimierte Website und lokale SEO Strategie.",
+    tags: ["Webdesign", "SEO", "Mobile First"],
+    image: "/images/Circleoflife_bjj_1.png",
+    url: "https://circleoflife-bjj.de",
+    metrics: ["Top 3 Kampfsportschule lokal", "+25 Anfragen in 4 Monaten"]
+  }
+];
+
+// Potenzielle Projekte (basierend auf Leistungen)
+const potentialProjects = [
+  {
+    title: "Local SEO für Handwerksbetriebe",
+    description: "Optimierung für lokale Suchanfragen mit Google Unternehmensprofil, strukturierten Daten und regionalem Content.",
+    tags: ["SEO", "Google Business", "Lokal"],
+    leistung: "/leistungen/seo-local"
+  },
+  {
+    title: "Rebranding für etablierte Unternehmen",
+    description: "Modernisierung von Logo, Farbwelt und Corporate Identity für zeitgemäßen Markenauftritt.",
+    tags: ["Branding", "Logo Design", "CI"],
+    leistung: "/leistungen/rebranding"
+  },
+  {
+    title: "Performance Hosting & Wartung",
+    description: "Schnelles, sicheres Hosting mit automatischen Updates, Backups und technischem Support.",
+    tags: ["Hosting", "Wartung", "Performance"],
+    leistung: "/leistungen/webhosting-wartung"
+  },
+  {
+    title: "Digitale Rechnungsprozesse",
+    description: "Automatisierte Buchhaltung mit digitalen Workflows für effiziente Geschäftsprozesse.",
+    tags: ["Digital", "Buchhaltung", "Automatisierung"],
+    leistung: "/leistungen/buchhaltung-digital"
+  }
+];
+
+// Was ist üblicherweise enthalten
+const included = [
+  {
+    title: "Strategische Planung",
+    description: "Analyse der Zielgruppe, Wettbewerb und Zielsetzung vor dem Start."
+  },
+  {
+    title: "Modernes Design",
+    description: "Mobile First, schnelle Ladezeiten und intuitive Benutzerführung."
+  },
+  {
+    title: "SEO Grundlagen",
+    description: "Saubere technische Struktur, Meta Tags und Performance Optimierung."
+  },
+  {
+    title: "Sicherheit & Hosting",
+    description: "SSL Zertifikat, tägliche Backups und DSGVO konforme Umsetzung."
+  },
+  {
+    title: "Einweisung & Support",
+    description: "Persönliche Schulung und technischer Support nach dem Launch."
+  },
+  {
+    title: "Wartung & Updates",
+    description: "Optional: Laufende Betreuung für Updates, Sicherheit und Performance."
+  }
+];
+
+// FAQ (3 kompakte Fragen)
+const faqs = [
+  {
+    question: "Wie lange dauert ein typisches Website Projekt?",
+    answer: "Ein Standard Business Website Projekt dauert 4-6 Wochen von Briefing bis Launch. Das umfasst Konzeption (1 Woche), Design und Entwicklung (2-3 Wochen), Content Integration (1 Woche) und Testing. Bei größeren Projekten mit Shop Systemen oder individuellen Features rechnen Sie mit 8-12 Wochen. Die Timeline hängt auch davon ab, wie schnell Sie Feedback und Inhalte liefern können."
+  },
+  {
+    question: "Was unterscheidet eure Projekte von Website Baukästen?",
+    answer: "Baukasten Systeme sind schnell, aber stark limitiert: langsame Performance, eingeschränktes Design, schlechte SEO, keine Skalierbarkeit. Unsere Projekte sind maßgeschneidert: optimale Performance, individuelles Design, suchmaschinenoptimiert, volle Kontrolle, beliebig erweiterbar. Sie zahlen für Qualität, die sich langfristig durch bessere Rankings, schnellere Ladezeiten und höhere Conversion Raten auszahlt."
+  },
+  {
+    question: "Bekomme ich auch Support nach dem Launch?",
+    answer: "Ja! Nach dem Launch bieten wir verschiedene Support Level: Technischer Support bei Problemen ist immer inklusive. Optional buchbar sind Wartungspakete (Updates, Backups, Monitoring), SEO Betreuung (laufende Optimierung), oder Content Updates (regelmäßige Anpassungen). Viele Kunden starten mit der Website und buchen später SEO oder Wartung dazu, wenn sie die Qualität gesehen haben."
+  }
+];
 ---
 
-<Base className="bg-white">
-  <section class="bg-[#E5E7EB] py-20 md:py-24">
-    <div class="container space-y-3">
-      <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Portfolio</p>
-      <h1 class="text-h1-sm font-bold leading-tight text-[#0A1A2F] md:text-h1">
-        {title}
-      </h1>
-      <p class="text-base text-[#1f2a35]/75 md:text-lg">Placeholder für Inhalte.</p>
+<Base className="bg-white" title={title} description={metaDescription}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-white via-[#f9f2e9] to-white py-12 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-4xl space-y-4 md:space-y-6" data-aos="fade-up">
+        <div class="inline-flex items-center gap-3 rounded-full bg-[#476783]/10 px-3 py-1.5 text-[#476783]">
+          <img
+            src="/images/logo.webp"
+            alt="MY Digital Works Logo"
+            class="h-6 w-auto opacity-80"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="text-[11px] uppercase tracking-[0.24em]">MY Digital Works</span>
+        </div>
+        <h1 class="text-[2.5rem] md:text-h1-sm font-bold leading-tight text-[#0A1A2F] lg:text-h1">{title}</h1>
+        <p class="text-base text-[#1f2a35]/80 md:text-lg max-w-3xl">
+          Moderne, schnelle Websites mit Fokus auf Sichtbarkeit und Anfragen. Jedes Projekt wird individuell auf die Zielgruppe zugeschnitten.
+        </p>
+      </div>
     </div>
   </section>
 
-  <section class="py-14 md:py-20">
+  <!-- Featured Cases (Bento/Asymmetric) -->
+  <section class="bg-gradient-to-b from-white via-[#f1ebe2] to-white py-16 md:py-24">
     <div class="container">
-      <div class="rounded-3xl border border-dashed border-[#d7c5aa]/60 bg-white/70 p-8 text-[#0a1a2f]">
-        <p class="text-sm text-[#0a1a2f]/70">Inhalt folgt: {title}</p>
+      <div class="mb-12 space-y-3" data-aos="fade-up">
+        <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Ausgewählte Arbeiten</p>
+        <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+          Beispiele, die Vertrauen schaffen
+        </h2>
+      </div>
+
+      <div class="grid gap-8 lg:grid-cols-2">
+        {featuredCases.map((project, idx) => (
+          <article
+            class="group flex h-full flex-col overflow-hidden rounded-3xl border border-[#d7c5aa]/70 bg-white shadow-[0_24px_90px_-60px_rgba(0,0,0,0.25)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_32px_110px_-70px_rgba(71,103,131,0.28)]"
+            data-aos="fade-up"
+            data-aos-delay={idx * 100}>
+            <div class="overflow-hidden">
+              <img
+                src={project.image}
+                alt={project.title}
+                class="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="flex flex-1 flex-col gap-4 p-8">
+              <div class="space-y-2">
+                <h3 class="text-2xl font-semibold text-[#0A1A2F]">{project.title}</h3>
+                <p class="text-sm font-medium text-[#476783]/80">{project.subtitle}</p>
+                <p class="text-sm text-[#1f2a35]/80">{project.outcome}</p>
+              </div>
+              <div class="flex flex-wrap gap-3">
+                {project.metrics.map(metric => (
+                  <span class="inline-flex items-center gap-2 rounded-full bg-[#476783]/10 px-3 py-1.5 text-xs font-medium text-[#476783]">
+                    <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {metric}
+                  </span>
+                ))}
+              </div>
+              <div class="mt-auto">
+                <CustomButton
+                  label="Case ansehen"
+                  url={project.url}
+                  hoverEffect="creative-fill"
+                  class="btn-outline border-[#476783] text-[#476783] hover:bg-[#476783] hover:text-white focus-visible:ring-4 focus-visible:ring-[#f7b97d]/40"
+                />
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Potenzielle Projekte (Cards wie Buchhaltung-Digital / Premium) -->
+<section class="bg-white py-16 md:py-24">
+  <div class="container">
+    <div class="mb-12 space-y-3" data-aos="fade-up">
+      <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Weitere Leistungen</p>
+      <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+        Typische Projekte & Möglichkeiten
+      </h2>
+      <p class="text-base text-[#1f2a35]/70 max-w-3xl">
+        Von Local SEO bis digitale Prozesse – Beispiele, wie wir Unternehmen pragmatisch nach vorne bringen.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {potentialProjects.map((project, idx) => (
+        <a
+          href={project.leistung}
+          class="portfolio-card group relative flex h-full flex-col overflow-hidden rounded-3xl border border-[#d7c5aa]/55 bg-white p-6 shadow-[0_18px_70px_-50px_rgba(0,0,0,0.22)] transition-all duration-500 hover:-translate-y-2 hover:border-[#476783]/55 hover:shadow-[0_34px_120px_-70px_rgba(71,103,131,0.35)] focus:outline-none focus-visible:ring-4 focus-visible:ring-[#476783]/20"
+          data-aos="fade-up"
+          data-aos-delay={idx * 60}
+        >
+          {/* Top Stripe */}
+          <div class="stripe-top stripe-portfolio"></div>
+
+          {/* Glow */}
+          <div class="pointer-events-none absolute -inset-20 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100 bg-[radial-gradient(circle,rgba(71,103,131,0.18)_0%,transparent_55%)]"></div>
+
+          {/* Icon */}
+          <div class="relative z-10 mb-5 flex items-start justify-between gap-4">
+            <div class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#476783]/10 text-[#476783] shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:bg-[#476783]/15">
+              <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+
+            {/* Mini badge */}
+            <span class="inline-flex items-center rounded-full border border-[#d7c5aa]/60 bg-[#f9f2e9]/40 px-3 py-1 text-[11px] font-semibold tracking-wide text-[#0A1A2F]/70">
+              Konzept
+            </span>
+          </div>
+
+          {/* Content */}
+          <div class="relative z-10 flex flex-1 flex-col gap-3">
+            <h3 class="text-lg font-semibold text-[#0A1A2F] transition-colors duration-300 group-hover:text-[#476783]">
+              {project.title}
+            </h3>
+
+            <p class="text-sm text-[#1f2a35]/75 leading-relaxed">
+              {project.description}
+            </p>
+
+            <div class="mt-2 flex flex-wrap gap-2">
+              {project.tags.map((t) => (
+                <span class="rounded-full border border-[#d7c5aa]/55 bg-white/70 px-2.5 py-1 text-xs font-medium text-[#0A1A2F]/70 transition-colors group-hover:border-[#476783]/40">
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <div class="mt-auto pt-5">
+              <div class="inline-flex items-center gap-2 text-sm font-semibold text-[#476783] transition-colors group-hover:text-[#f7b97d]">
+                Mehr erfahren
+                <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+  <!-- Was ist üblicherweise enthalten -->
+  <section class="bg-gradient-to-b from-[#f9f2e9] to-white py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-5xl">
+        <div class="mb-12 space-y-4" data-aos="fade-up">
+          <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Standard Leistungen</p>
+          <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+            Was ist üblicherweise enthalten?
+          </h2>
+          <p class="text-base text-[#1f2a35]/70 md:text-lg max-w-3xl">
+            Jedes Projekt wird individuell angepasst, aber diese Elemente sind bei uns Standard.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+{included.map((item, idx) => (
+  <a
+    href="/#footer-with-contact"
+    class="group relative block"
+    data-aos="fade-up"
+    data-aos-delay={idx * 50}
+  >
+    {/* Outer gradient border glow (wie Vorteile) */}
+    <div
+      class="absolute -inset-0.5 rounded-3xl opacity-0 blur transition-opacity duration-500 group-hover:opacity-100"
+      style="background: linear-gradient(to right, #476783, #f7b97d)"
+    ></div>
+
+    {/* Inner card */}
+    <article class="relative h-full overflow-hidden rounded-3xl bg-white p-7 shadow-[0_20px_80px_-30px_rgba(0,0,0,0.14)] transition-all duration-500 group-hover:shadow-[0_30px_110px_-45px_rgba(0,0,0,0.22)]">
+      {/* Hover wash */}
+      <div class="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[#f9f2e9]/45"></div>
+
+      <div class="relative flex h-full flex-col gap-3">
+        <div class="flex items-center gap-3">
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#476783]/10 text-[#476783] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+          </span>
+
+          <h3 class="text-base font-bold text-[#0A1A2F]">
+            {item.title}
+          </h3>
+        </div>
+
+        <p class="text-sm leading-relaxed text-[#1f2a35]/75">
+          {item.description}
+        </p>
+
+        {/* Optional micro CTA */}
+        <div class="mt-auto pt-3 text-sm font-semibold text-[#476783] transition-colors group-hover:text-[#f7b97d]">
+          Inklusiv im Projekt →
+        </div>
+      </div>
+    </article>
+  </a>
+))}
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-4xl space-y-10">
+        <div class="space-y-3 text-[#0a1a2f]" data-aos="fade-up">
+          <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Häufige Fragen</p>
+          <h2 class="text-h2-sm font-bold leading-tight md:text-h2">
+            Portfolio FAQ
+          </h2>
+          <p class="text-base text-[#1f2a35]/70 max-w-3xl">
+            Die wichtigsten Fragen zu Projekten, Ablauf und Support.
+          </p>
+        </div>
+
+        <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+          {faqs.map((faq, index) => (
+            <details
+              class="group rounded-2xl border border-[#d7c5aa]/50 bg-gradient-to-br from-[#f9f2e9]/20 to-white p-6 transition-all duration-300 hover:border-[#d7c5aa] hover:shadow-lg [&[open]]:border-[#476783] [&[open]]:bg-white [&[open]]:shadow-xl"
+              data-aos="fade-up"
+              data-aos-delay={index * 50}>
+              <summary class="flex cursor-pointer items-start justify-between gap-4 text-left font-semibold text-[#0A1A2F] transition-colors duration-200 group-hover:text-[#476783] [&::-webkit-details-marker]:hidden">
+                <span class="text-base md:text-lg leading-relaxed">{faq.question}</span>
+                <svg
+                  class="h-6 w-6 flex-shrink-0 text-[#476783] transition-transform duration-300 group-open:rotate-180"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="mt-4 border-t border-[#d7c5aa]/30 pt-4 text-sm leading-relaxed text-[#1f2a35]/80 md:text-base">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+
+        <!-- Schema.org JSON-LD für FAQ -->
+        <script type="application/ld+json" set:html={JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.answer
+            }
+          }))
+        })} />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-gradient-to-b from-[#0A1A2F] to-[#1a2f45] py-20 md:py-28">
+    <div class="container">
+      <div class="mx-auto max-w-3xl space-y-8 text-center" data-aos="fade-up">
+        <h2 class="text-h2-sm font-bold leading-tight text-white md:text-h2">
+          Bereit für Ihr eigenes Projekt?
+        </h2>
+        <p class="text-lg text-white/80">
+          Von Webdesign über SEO bis Rebranding – lassen Sie uns gemeinsam Ihr digitales Projekt umsetzen. Kostenlos, unverbindlich und ohne Buzzwords.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <CustomButton
+            label="Kostenloses Erstgespräch"
+            url="/#footer-with-contact"
+            hoverEffect="creative-fill"
+            class="btn-primary bg-[#f7b97d] border-[#f7b97d] text-[#0a1a2f] hover:bg-white hover:border-white hover:text-[#0a1a2f]"
+          />
+        </div>
       </div>
     </div>
   </section>
 </Base>
 
+<style>
+  /* FAQ Details smooth animation */
+  details > summary {
+    list-style: none;
+  }
+  
+  details[open] > summary ~ * {
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ===== Portfolio Card Enhancements (Buchhaltung-Digital Look) ===== */
+.stripe-portfolio {
+  background: linear-gradient(90deg, #476783, #648298, #f7b97d);
+  background-size: 200% 100%;
+}
+
+.portfolio-card:hover .stripe-portfolio {
+  transform: scaleX(1);
+  animation: shimmer 2s infinite;
+}
+
+/* Optional: feiner Gradient-Rand on hover */
+.portfolio-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(71,103,131,0.75), rgba(247,185,125,0.55), rgba(100,130,152,0.65));
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.portfolio-card:hover::before {
+  opacity: 0.35;
+}
+
+</style>

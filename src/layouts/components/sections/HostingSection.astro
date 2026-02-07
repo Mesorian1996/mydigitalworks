@@ -3,23 +3,25 @@ import ReactIcons from "@/helpers/ReactIcons.astro";
 
 const plans = [
   {
-    name: "Webhosting Basic",
-    price: "49 € / Monat",
-    intro: "Stabiles Hosting für deine Website – schnell, sicher, betreut.",
+    name: "Hosting",
+    price: "25 € / Monat",
+    intro: "Stabiles Hosting für deine Webseite – schnell, sicher, betreut.",
+    addOns: ["Domain", "SSL", "Backups", "Support"],
     benefits: [
       "Schnelles & sicheres Hosting inkl. SSL",
-      "Regelmäßige Backups & Updates",
+      "Regelmäßige Updates",
       "Technischer Betrieb ohne Aufwand",
     ],
     badge: null,
   },
   {
-    name: "Webhosting Pro",
-    price: "99 € / Monat",
-    intro: "Maximale Performance, Monitoring und priorisierter Support.",
+    name: "Premium Hosting",
+    price: "49 € / Monat",
+    intro: "Performance, Monitoring und priorisierter Support.",
+    addOns: ["Domain", "SSL", "Backups", "Mini-Änderungen"],
     benefits: [
-      "Performance-Optimierung & Caching",
-      "Monitoring, Security Checks & Wartung",
+      "Performance-Optimierung und Beratung",
+      "Monitoring, Sicherheitsüberprüfungen & Wartung",
       "Priorisierter Support",
     ],
     badge: "Empfohlen",
@@ -31,14 +33,15 @@ const plans = [
   <div class="container space-y-10">
     <div class="space-y-3 text-center text-[#0a1a2f]">
       <p class="text-xs uppercase tracking-[0.28em] text-[#476783]">Webhosting & Betrieb</p>
-      <h2 class="text-h2-sm md:text-h2 font-bold leading-tight">Professionelles Hosting als monatlicher Service.</h2>
+      <h2 class="text-h2-sm md:text-h2 font-bold leading-tight">Professionelles Hosting als monatlicher Service</h2>
       <p class="text-sm text-[#1f2a35]/85 md:text-base">
-        Klare Pakete, transparente Preise, laufender Betrieb ohne Aufwand.
+        Webhosting als Service: Wir übernehmen Betrieb, Sicherheit und Wartung
+        deiner Website, damit alles stabil läuft und du dich um nichts kümmern musst.
       </p>
     </div>
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-      {plans.map((plan) => {
+      {plans.map((plan, idx) => {
         const isFeatured = !!plan.badge;
         return (
           <article
@@ -47,14 +50,16 @@ const plans = [
               isFeatured
                 ? "border-[#f7b97d]/80 ring-1 ring-[#f7b97d]/40"
                 : "border-[#d7c5aa]/70",
-            ]}>
+            ]}
+            data-aos="fade-up"
+            data-aos-delay={idx * 120}>
             <div class="space-y-4">
               <div class="flex items-start justify-between gap-3">
                 <div class="space-y-1">
                   <h3 class="text-lg font-semibold tracking-tight text-[#0a1a2f] md:text-xl">
                     {plan.name}
                   </h3>
-                  <p class="text-xl font-secondary font-semibold text-[#476783] md:text-2xl">
+                  <p class="text-xl font-primary font-semibold text-[#476783] md:text-2xl">
                     {plan.price}
                   </p>
                 </div>
@@ -65,6 +70,20 @@ const plans = [
                 )}
               </div>
               <p class="text-sm text-[#1f2a35]/85 md:text-base">{plan.intro}</p>
+              {plan.addOns && (
+                <div class="flex flex-wrap gap-2">
+                  {plan.addOns.map((item) => (
+                    <span class="rounded-full border border-[#d7c5aa]/70 bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#476783]">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              )}
+              {plan.name === "Premium Hosting" && (
+                <p class="text-xs text-[#1f2a35]/75">
+                  Kleine Änderungen = kleine Text-/Bildanpassungen pro Monat; größere Änderungen werden separat berechnet.
+                </p>
+              )}
               <ul class="space-y-2 text-xs font-medium text-[#0f1c28] md:text-[13px]">
                 {plan.benefits.map((benefit) => (
                   <li class="flex items-start gap-2">

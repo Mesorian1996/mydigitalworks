@@ -1,25 +1,464 @@
 ---
 import Base from "@/layouts/Base.astro";
-const title = "SEO Local";
+import CustomButton from "@/components/CustomButton.astro";
+
+const title = "SEO & Lokale Sichtbarkeit";
+const metaDescription = "Professionelle SEO Optimierung für mehr Sichtbarkeit bei Google ✓ Lokales SEO ✓ Keyword-Strategie ✓ Messbare Rankings ✓ Jetzt kostenlos beraten lassen";
+
+// Benefits/Value Props - Premium Design mit Branding Colors
+const benefits = [
+  {
+    title: "Gefunden werden",
+    description: "Ihre Kunden suchen nach Ihren Leistungen. Wir sorgen dafür, dass sie Sie finden und nicht die Konkurrenz.",
+    icon: "search",
+    gradientFrom: "#476783",
+    gradientTo: "#648298",
+    lightBg: "#e7ecf1"
+  },
+  {
+    title: "Langfristig wirksam",
+    description: "SEO arbeitet für Sie auch wenn Sie schlafen. Organische Reichweite statt bezahlte Anzeigen.",
+    icon: "growth",
+    gradientFrom: "#f7b97d",
+    gradientTo: "#efba87",
+    lightBg: "#f7f2ea"
+  },
+  {
+    title: "Messbare Ergebnisse",
+    description: "Transparentes Reporting mit konkreten Zahlen: Rankings, Traffic, Anfragen.",
+    icon: "analytics",
+    gradientFrom: "#476783",
+    gradientTo: "#648298",
+    lightBg: "#e7ecf1"
+  }
+];
+
+// SEO Services
+const services = [
+  "Keyword-Recherche und Strategie",
+  "On-Page-Optimierung (Texte, Meta-Tags, Struktur)",
+  "Google Business Profile Optimierung",
+  "Lokale Suchmaschinenoptimierung",
+  "Technisches SEO (Ladezeiten, Mobile)",
+  "Content-Strategie und Blog-Aufbau",
+  "Monatliches Reporting und Anpassungen"
+];
+
+// FAQ Section - SEO fokusiert
+const faqs = [
+  {
+    question: "Was ist SEO und warum brauche ich es?",
+    answer: "SEO (Search Engine Optimization) ist die Optimierung Ihrer Website für Suchmaschinen wie Google. Ohne SEO verlieren Sie potenzielle Kunden an die Konkurrenz – denn 75% der Nutzer klicken nie auf die zweite Seite der Suchergebnisse. Mit professioneller SEO-Optimierung erscheinen Sie bei relevanten Suchanfragen ganz vorne und werden von Kunden gefunden, die aktiv nach Ihren Leistungen suchen."
+  },
+  {
+    question: "Wie lange dauert es, bis ich SEO-Ergebnisse sehe?",
+    answer: "SEO ist kein Sprint, sondern ein Marathon. Erste Verbesserungen sehen Sie nach 1-3 Monaten: technische Optimierungen sind live, erste Rankings steigen. Nach 3-6 Monaten werden Ergebnisse sichtbar: Top 10 Positionen für wichtige Keywords, verdoppelter organischer Traffic. Die volle Wirkung zeigt sich nach 6-12 Monaten mit etablierten Top 3 Rankings und konstantem organischen Traffic. Qualität braucht Zeit – dafür ist der Effekt nachhaltig."
+  },
+  {
+    question: "Was kostet professionelle SEO-Optimierung?",
+    answer: "Die Kosten für SEO hängen vom Umfang ab. Einmalige Optimierungen (technisches SEO, On-Page) starten bei einigen hundert Euro. Laufende SEO-Betreuung mit monatlichem Content, Monitoring und Anpassungen beginnt ab 500-1000€/Monat. Wichtig: SEO ist eine Investition, kein Kostenfaktor. Der ROI ist meist nach 6-12 Monaten positiv, da organischer Traffic keine laufenden Klickkosten wie bei Anzeigen verursacht. Wir erstellen ein individuelles Angebot basierend auf Ihren Zielen und Ihrer Konkurrenzsituation."
+  },
+  {
+    question: "Was ist der Unterschied zwischen SEO und Google Ads?",
+    answer: "Google Ads (bezahlte Anzeigen) bringen sofortige Sichtbarkeit, kosten aber pro Klick Geld und stoppen, sobald Sie aufhören zu zahlen. SEO (organische Rankings) braucht Zeit zum Aufbau, arbeitet dann aber kostenlos für Sie – 24/7, auch im Schlaf. Langfristig ist SEO deutlich günstiger und vertrauenswürdiger, da 70-80% der Nutzer organische Ergebnisse bevorzugen. Ideal ist oft eine Kombination: Ads für schnelle Ergebnisse, SEO für nachhaltigen Erfolg."
+  },
+  {
+    question: "Kann ich SEO selbst machen oder brauche ich eine Agentur?",
+    answer: "Grundlagen-SEO können Sie selbst lernen – allerdings investieren Sie dann viel Zeit in Recherche und Umsetzung. Professionelles SEO umfasst jedoch technische Optimierung, Keyword-Analyse, Content-Strategie, Linkaufbau und laufendes Monitoring. Fehler können Ihre Rankings sogar verschlechtern. Eine SEO-Agentur bringt Erfahrung, Tools und Know-how mit, spart Ihnen Zeit und liefert messbare Ergebnisse. Sie konzentrieren sich auf Ihr Geschäft, wir auf Ihre Sichtbarkeit."
+  },
+  {
+    question: "Was ist lokales SEO und brauche ich das?",
+    answer: "Lokales SEO optimiert Ihre Sichtbarkeit für regionale Suchanfragen wie 'Fliesenleger Mannheim' oder 'Restaurant in meiner Nähe'. Besonders wichtig für Handwerker, Dienstleister, Restaurants und Shops mit physischem Standort. Wir optimieren Ihr Google Unternehmensprofil, sorgen für korrekte NAP-Daten (Name, Address, Phone), bauen lokale Citations auf und optimieren für Google Maps. Ergebnis: Sie erscheinen prominent, wenn lokale Kunden nach Ihren Leistungen suchen."
+  },
+  {
+    question: "Wie messen Sie den Erfolg von SEO-Maßnahmen?",
+    answer: "Wir tracken relevante KPIs: Keyword-Rankings (Position in Google für wichtige Suchbegriffe), organischer Traffic (Besucher von Google), Conversion-Rate (Anfragen/Käufe aus organischem Traffic), Sichtbarkeitsindex und Domain-Authority. Sie erhalten monatliche Reports mit klaren Zahlen und Entwicklungen. Transparenz ist uns wichtig – Sie sehen genau, was Ihre SEO-Investition bringt. Tools wie Google Search Console, Analytics und professionelle SEO-Software geben uns präzise Einblicke."
+  }
+];
+
+// SEO Myths vs Reality
+const myths = [
+  {
+    myth: "SEO ist einmalig",
+    reality: "SEO ist ein laufender Prozess. Suchmaschinen ändern sich, Konkurrenz wächst, Content muss gepflegt werden."
+  },
+  {
+    myth: "Viele Keywords = besser",
+    reality: "Fokus auf relevante Keywords, die Ihre Zielgruppe wirklich sucht. Qualität vor Quantität."
+  },
+  {
+    myth: "Ergebnisse in 2 Wochen",
+    reality: "SEO braucht Zeit. Erste Ergebnisse nach 3-6 Monaten, volle Wirkung nach 6-12 Monaten."
+  }
+];
 ---
 
-<Base className="bg-white">
-  <section class="bg-[#E5E7EB] py-20 md:py-24">
-    <div class="container space-y-3">
-      <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Leistungen</p>
-      <h1 class="text-h1-sm font-bold leading-tight text-[#0A1A2F] md:text-h1">
-        {title}
-      </h1>
-      <p class="text-base text-[#1f2a35]/75 md:text-lg">Placeholder für Inhalte.</p>
-    </div>
-  </section>
+<Base className="bg-white" title={title} description={metaDescription}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-white via-[#f9f2e9] to-white py-16 md:py-24">
+    <div class="container grid gap-12 lg:grid-cols-2 lg:items-center">
+      <div
+        class="relative order-2 overflow-hidden rounded-3xl border border-[#d7c5aa]/70 bg-white shadow-[0_28px_120px_-70px_rgba(0,0,0,0.35)] lg:order-1 lg:translate-y-10"
+        data-aos="fade-right">
+        <!-- TODO: Replace with actual SEO analytics/ranking screenshot -->
+        <img
+          src="/src/assets/images/leistungen/SEO_2.webp"
+          alt="SEO Analytics Dashboard"
+          class="h-full w-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
 
-  <section class="py-14 md:py-20">
-    <div class="container">
-      <div class="rounded-3xl border border-dashed border-[#d7c5aa]/60 bg-white/70 p-8 text-[#0a1a2f]">
-        <p class="text-sm text-[#0a1a2f]/70">Inhalt folgt: {title}</p>
+      <div class="order-1 space-y-6 text-[#0A1A2F] lg:order-2" data-aos="fade-left" data-aos-delay="120">
+        <div class="inline-flex items-center gap-3 rounded-full bg-[#476783]/10 px-3 py-1.5 text-[#476783]">
+          <img
+            src="/images/logo.webp"
+            alt="MY Digital Works Logo"
+            class="h-6 w-auto opacity-80"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="text-[11px] uppercase tracking-[0.24em]">MY Digital Works</span>
+        </div>
+        <h1 class="text-h1-sm font-bold leading-tight md:text-h1">{title}</h1>
+        <p class="text-base text-[#1f2a35]/80 md:text-lg">
+          Gefunden werden, wenn Kunden nach Ihren Leistungen suchen. Lokal stark, organisch wachsend und messbar erfolgreich.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <CustomButton
+            label="Kostenloses Gespräch buchen"
+            url="/#footer-with-contact"
+            hoverEffect="creative-fill"
+            class="btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#c9baa8] hover:border-[#c9baa8] hover:text-[#0a1a2f] effect-color-dark"
+          />
+          <CustomButton
+            variant="text"
+            hoverEffect="underline-slide"
+            label="Mehr erfahren"
+            url="#details"
+            class="text-[#476783] hover:text-[#f7b97d] px-0 py-0"
+          />
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- Benefits Section -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-3xl space-y-4 text-center mb-12" data-aos="fade-up">
+        <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Ihre Vorteile</p>
+        <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+          Warum SEO?
+        </h2>
+        <p class="text-base text-[#1f2a35]/70 md:text-lg">
+          70% aller Klicks gehen an die ersten 5 Ergebnisse. Wer nicht sichtbar ist, verliert Kunden an die Konkurrenz.
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-3">
+        {benefits.map((benefit, idx) => (
+          <article
+            class="benefit-card group relative overflow-hidden rounded-3xl border border-[#d7c5aa]/50 p-8 transition-all duration-500 hover:-translate-y-2 hover:border-[#d7c5aa] hover:shadow-[0_20px_80px_-20px_rgba(0,0,0,0.15)]"
+            style={`background: linear-gradient(135deg, ${benefit.lightBg} 0%, white 100%);`}
+            data-aos="fade-up"
+            data-aos-delay={idx * 100}>
+            
+            <div
+              class="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
+              style={`background: linear-gradient(135deg, ${benefit.gradientFrom}, ${benefit.gradientTo});`}>
+              <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {benefit.icon === 'search' && (
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                )}
+                {benefit.icon === 'growth' && (
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                )}
+                {benefit.icon === 'analytics' && (
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                )}
+              </svg>
+            </div>
+
+            <h3 class="mb-3 text-xl font-semibold text-[#0A1A2F] transition-colors duration-300 group-hover:text-[#476783]">
+              {benefit.title}
+            </h3>
+            <p class="text-sm leading-relaxed text-[#1f2a35]/75">
+              {benefit.description}
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Services -->
+  <section id="details" class="bg-gradient-to-b from-[#f9f2e9] to-white py-16 md:py-24">
+    <div class="container">
+      <div class="grid gap-12 lg:grid-cols-2 lg:items-start">
+        <div class="space-y-6" data-aos="fade-right">
+          <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+            Was wir für Sie optimieren
+          </h2>
+          <p class="text-base leading-relaxed text-[#1f2a35]/80 md:text-lg">
+            Ganzheitliches SEO: Von der Keyword-Strategie über technische Optimierung bis zur Content-Erstellung. Transparent, messbar und nachhaltig.
+          </p>
+          <ul class="space-y-3">
+            {services.map(service => (
+              <li class="flex items-start gap-3 text-[#1f2a35]/80">
+                <svg class="mt-1 h-5 w-5 flex-shrink-0 text-[#476783]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{service}</span>
+              </li>
+            ))}
+          </ul>
+          
+          <div class="rounded-xl bg-[#476783]/5 p-4 text-sm text-[#1f2a35]/70">
+            <strong class="text-[#0A1A2F]">Lokales SEO:</strong> Speziell für regionale Unternehmen optimieren wir Ihre Sichtbarkeit in Google Maps und lokaler Suche.
+          </div>
+        </div>
+
+        <div class="relative" data-aos="fade-left" data-aos-delay="120">
+          <div class="overflow-hidden rounded-2xl border border-[#d7c5aa]/70 bg-white shadow-[0_24px_90px_-60px_rgba(0,0,0,0.25)]">
+            <!-- TODO: Replace with actual SEO process or results screenshot -->
+            <img
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop"
+              alt="SEO Prozess"
+              class="aspect-[4/3] w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Myths vs Reality -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-3xl space-y-4 text-center mb-12" data-aos="fade-up">
+        <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+          SEO: Mythen vs. Realität
+        </h2>
+        <p class="text-base text-[#1f2a35]/70 md:text-lg">
+          Wir räumen mit falschen Erwartungen auf und zeigen, wie SEO wirklich funktioniert.
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-3">
+        {myths.map((item, idx) => (
+          <div
+            class="group rounded-2xl border border-[#d7c5aa]/50 bg-gradient-to-br from-white to-[#f9f2e9]/30 p-6 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-30px_rgba(71,103,131,0.2)]"
+            data-aos="fade-up"
+            data-aos-delay={idx * 100}>
+            <div class="mb-4 space-y-2">
+              <div class="inline-flex items-center gap-2 rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-red-700">
+                ✗ Mythos
+              </div>
+              <p class="text-sm text-[#1f2a35]/70">{item.myth}</p>
+            </div>
+            <div class="space-y-2">
+              <div class="inline-flex items-center gap-2 rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
+                ✓ Realität
+              </div>
+              <p class="text-sm leading-relaxed text-[#0A1A2F]">{item.reality}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-4xl space-y-10">
+        <div class="space-y-3 text-center text-[#0a1a2f]" data-aos="fade-up">
+          <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Häufige Fragen</p>
+          <h2 class="text-h2-sm font-bold leading-tight md:text-h2">
+            SEO FAQ – Ihre Fragen, unsere Antworten
+          </h2>
+          <p class="text-base text-[#1f2a35]/70 max-w-2xl mx-auto">
+            Alles Wichtige über Suchmaschinenoptimierung, Rankings und lokale Sichtbarkeit.
+          </p>
+        </div>
+
+        <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+          {faqs.map((faq, index) => (
+            <details
+              class="group rounded-2xl border border-[#d7c5aa]/50 bg-gradient-to-br from-[#f9f2e9]/20 to-white p-6 transition-all duration-300 hover:border-[#d7c5aa] hover:shadow-lg [&[open]]:border-[#476783] [&[open]]:bg-white [&[open]]:shadow-xl"
+              data-aos="fade-up"
+              data-aos-delay={index * 50}>
+              <summary class="flex cursor-pointer items-start justify-between gap-4 text-left font-semibold text-[#0A1A2F] transition-colors duration-200 group-hover:text-[#476783] [&::-webkit-details-marker]:hidden">
+                <span class="text-base md:text-lg leading-relaxed">{faq.question}</span>
+                <svg
+                  class="h-6 w-6 flex-shrink-0 text-[#476783] transition-transform duration-300 group-open:rotate-180"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="mt-4 border-t border-[#d7c5aa]/30 pt-4 text-sm leading-relaxed text-[#1f2a35]/80 md:text-base">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+
+        <!-- Schema.org JSON-LD für FAQ -->
+        <script type="application/ld+json" set:html={JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.answer
+            }
+          }))
+        })} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline / Expectations Section -->
+  <section class="bg-gradient-to-b from-[#f9f2e9] to-white py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-4xl">
+        <div class="mb-12 space-y-4 text-center" data-aos="fade-up">
+          <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+            Was Sie erwarten können
+          </h2>
+          <p class="text-base text-[#1f2a35]/70 md:text-lg">
+            SEO ist ein Marathon, kein Sprint. Hier ist eine realistische Timeline.
+          </p>
+        </div>
+
+        <div class="relative space-y-8">
+          <!-- Timeline Line -->
+          <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-[#476783]/20 max-md:hidden"></div>
+
+          <div class="relative flex gap-6" data-aos="fade-up">
+            <div class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-[#476783] text-white font-bold">
+              1-3M
+            </div>
+            <div class="flex-1 rounded-xl border border-[#d7c5aa]/50 bg-white p-6">
+              <h3 class="mb-2 text-lg font-semibold text-[#0A1A2F]">Erste Verbesserungen</h3>
+              <p class="text-sm text-[#1f2a35]/75">Technische Optimierungen live, erste Rankings steigen, Traffic nimmt zu.</p>
+            </div>
+          </div>
+
+          <div class="relative flex gap-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-[#476783] text-white font-bold">
+              3-6M
+            </div>
+            <div class="flex-1 rounded-xl border border-[#d7c5aa]/50 bg-white p-6">
+              <h3 class="mb-2 text-lg font-semibold text-[#0A1A2F]">Sichtbare Ergebnisse</h3>
+              <p class="text-sm text-[#1f2a35]/75">Top 10 Positionen für Haupt-Keywords, organischer Traffic verdoppelt, mehr Anfragen.</p>
+            </div>
+          </div>
+
+          <div class="relative flex gap-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-[#476783] text-white font-bold">
+              6-12M
+            </div>
+            <div class="flex-1 rounded-xl border border-[#d7c5aa]/50 bg-white p-6">
+              <h3 class="mb-2 text-lg font-semibold text-[#0A1A2F]">Volle Wirkung</h3>
+              <p class="text-sm text-[#1f2a35]/75">Top 3 Rankings etabliert, konstanter organischer Traffic, ROI positiv.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-gradient-to-b from-[#0A1A2F] to-[#1a2f45] py-20 md:py-28">
+    <div class="container">
+      <div class="mx-auto max-w-3xl space-y-8 text-center" data-aos="fade-up">
+        <h2 class="text-h2-sm font-bold leading-tight text-white md:text-h2">
+          Bereit für mehr Sichtbarkeit?
+        </h2>
+        <p class="text-lg text-white/80">
+          Wir optimieren Ihre Website für Suchmaschinen und sorgen dafür, dass Ihre Kunden Sie finden – in Ludwigshafen, Mannheim und der gesamten Metropolregion Rhein-Neckar.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <CustomButton
+            label="Kostenloses Erstgespräch"
+            url="/#footer-with-contact"
+            hoverEffect="creative-fill"
+            class="btn-primary bg-[#f7b97d] border-[#f7b97d] text-[#0a1a2f] hover:bg-white hover:border-white hover:text-[#0a1a2f]"
+          />
+          <CustomButton
+            label="E-Mail schreiben"
+            url="mailto:kontakt@mydigitalworks.de"
+            hoverEffect="creative-fill"
+            class="btn-outline border-white text-white hover:bg-white hover:text-[#0a1a2f]"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Service Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "MY Digital Works - SEO & Lokale Sichtbarkeit",
+    "description": "Professionelle SEO-Optimierung und lokale Suchmaschinenoptimierung für Unternehmen in Ludwigshafen, Mannheim und der Metropolregion Rhein-Neckar",
+    "url": "https://mydigitalworks.de/leistungen/seo-local",
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Ludwigshafen"
+      },
+      {
+        "@type": "City", 
+        "name": "Mannheim"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Rheinland-Pfalz"
+      }
+    ],
+    "serviceType": [
+      "Suchmaschinenoptimierung",
+      "Lokales SEO",
+      "Keyword-Recherche",
+      "On-Page-Optimierung",
+      "Technisches SEO"
+    ]
+  })} />
 </Base>
 
+<style>
+  /* Premium Benefit Cards */
+  .benefit-card {
+    transform-style: preserve-3d;
+  }
+
+  /* FAQ Details smooth animation */
+  details > summary {
+    list-style: none;
+  }
+  
+  details[open] > summary ~ * {
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

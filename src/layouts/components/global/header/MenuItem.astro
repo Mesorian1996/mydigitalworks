@@ -2,33 +2,125 @@
 import type { NavigationLink } from "@/types";
 const menu = Astro.props.menu as NavigationLink;
 const { pathname } = Astro.url;
+const dropdownId = menu.name
+  ? `nav-dropdown-${menu.name.toLowerCase().replace(/\\s+/g, "-")}`
+  : "nav-dropdown";
+const hasChildren = Array.isArray(menu.children) && menu.children.length > 0;
 ---
 
 {
   menu.name && (
-    <li class="nav-item" role="menuitem">
-      <a
-        {...{
-          // Set `rel` attribute for external links or use provided value
-          rel: menu.url?.startsWith("http")
-            ? menu.rel || "noopener noreferrer"
-            : menu.rel || undefined,
+    <li
+      class:list={[
+        "nav-item",
+        hasChildren && "nav-dropdown hs-dropdown",
+      ]}
+      role="none"
+      data-hs-dropdown-trigger="hover"
+    >
+      {hasChildren ? (
+        <button
+          type="button"
+          class:list={[
+            "nav-link nav-toggle hs-dropdown-toggle text-current",
+            {
+              "nav-link-active":
+                pathname === `${menu.url}/` || pathname === menu.url,
+            },
+          ]}
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls={dropdownId}
+        >
+          <span>{menu.name}</span>
+          <span class="sr-only">Untermenü für {menu.name}</span>
+          <svg
+            class="nav-toggle-icon text-current"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.2l3.71-3.97a.75.75 0 1 1 1.1 1.02l-4.25 4.55a.75.75 0 0 1-1.1 0L5.21 8.27a.75.75 0 0 1 .02-1.06z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </button>
+      ) : (
+        <a
+          {...{
+            // Set `rel` attribute for external links or use provided value
+            rel: menu.url?.startsWith("http")
+              ? menu.rel || "noopener noreferrer"
+              : menu.rel || undefined,
 
-          // Set `target` to "_blank" for external links unless otherwise specified
-          target: menu.url?.startsWith("http")
-            ? menu.target || "_blank"
-            : menu.target || undefined,
-        }}
-        href={menu.url || "/"}
-        class:list={[
-          "nav-link",
-          {
-            "nav-link-active":
-              pathname === `${menu.url}/` || pathname === menu.url,
-          },
-        ]}>
-        {menu.name}
-      </a>
+            // Set `target` to "_blank" for external links unless otherwise specified
+            target: menu.url?.startsWith("http")
+              ? menu.target || "_blank"
+              : menu.target || undefined,
+          }}
+          href={menu.url || "/"}
+          class:list={[
+            "nav-link",
+            {
+              "nav-link-active":
+                pathname === `${menu.url}/` || pathname === menu.url,
+            },
+          ]}
+        >
+          {menu.name}
+        </a>
+      )}
+      {hasChildren && (
+        <ul
+          id={dropdownId}
+          class="nav-dropdown-list hs-dropdown-menu"
+          role="menu"
+          aria-label={`${menu.name} Untermenü`}
+        >
+          <li class="nav-dropdown-item" role="none">
+            <a href={menu.url || "/leistungen"} class="nav-dropdown-link" role="menuitem">
+              Leistungsübersicht
+              <span class="sr-only">Mehr zu {menu.name}</span>
+            </a>
+          </li>
+          {menu.children?.map((child) => (
+            <li class="nav-dropdown-item" role="none">
+              <a
+                href={child.url || "/"}
+                class="nav-dropdown-link"
+                role="menuitem"
+              >
+                {child.name}
+                <span class="sr-only">Mehr zu {child.name}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+      {hasChildren && (
+        <script>
+          const container = document.currentScript?.closest(".hs-dropdown");
+          const toggle = container?.querySelector(".hs-dropdown-toggle");
+
+          if (toggle && container) {
+            toggle.addEventListener("keydown", (event) => {
+              if (event.key === "Escape") {
+                container.classList.remove("hs-dropdown-open");
+                toggle.setAttribute("aria-expanded", "false");
+                toggle.blur();
+              }
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                toggle.click();
+              }
+            });
+          }
+        </script>
+      )}
     </li>
   )
 }

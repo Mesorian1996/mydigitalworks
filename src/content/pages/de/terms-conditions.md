@@ -6,7 +6,7 @@ draft: false
 
 **Gültig ab:** Juli 2022
 
-Willkommen bei MY Digital Studio ("wir", "uns"). Durch den Zugriff auf oder die Nutzung unserer Website <https://www.my-digital-studio.de> ("Website") erklären Sie sich mit den folgenden Nutzungsbedingungen ("Bedingungen") einverstanden. Wenn Sie diesen Bedingungen nicht zustimmen, nutzen Sie unsere Website bitte nicht.
+Willkommen bei MY Digital Works ("wir", "uns"). Durch den Zugriff auf oder die Nutzung unserer Website <https://www.my-digital-works.de> ("Website") erklären Sie sich mit den folgenden Nutzungsbedingungen ("Bedingungen") einverstanden. Wenn Sie diesen Bedingungen nicht zustimmen, nutzen Sie unsere Website bitte nicht.
 
 ### Acceptance of Terms
 
@@ -27,7 +27,7 @@ If you create an account on our Website, you are responsible for maintaining the
 
 ### Intellectual Property
 
-All content on the Website, including but not limited to text, images, logos, and software, is the property of MY Digital Studio or its licensors and is protected by copyright, trademark, and other intellectual property laws. You may not reproduce, distribute, or modify any content without prior written consent from MY Digital Studio.
+All content on the Website, including but not limited to text, images, logos, and software, is the property of MY Digital Works or its licensors and is protected by copyright, trademark, and other intellectual property laws. You may not reproduce, distribute, or modify any content without prior written consent from MY Digital Works.
 
 ### Purchases and Payments
 
@@ -39,7 +39,7 @@ The Website and its content are provided "as is" without warranties of any kind,
 
 ### Limitation of Liability
 
-To the fullest extent permitted by law, MY Digital Studio shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the Website or inability to access it. Our total liability for any claims related to the Website shall not exceed the amount paid by you, if any, to MY Digital Studio.
+To the fullest extent permitted by law, MY Digital Works shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the Website or inability to access it. Our total liability for any claims related to the Website shall not exceed the amount paid by you, if any, to MY Digital Works.
 
 ### Termination
 
@@ -61,9 +61,9 @@ We reserve the right to update or modify these Terms at any time without prior n
 
 If you have any questions or concerns about these Terms, please contact us at:
 
-MY Digital Studio
+MY Digital Works
 
-Email: <hello@my-digital-studio.de>  
+Email: <kontakt@mydigitalworks.de>  
 Address: Mannheim, Deutschland
 
-Thank you for choosing MY Digital Studio!
+Thank you for choosing MY Digital Works!

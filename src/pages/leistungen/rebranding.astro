@@ -1,25 +1,757 @@
 ---
 import Base from "@/layouts/Base.astro";
-const title = "Rebranding";
+import CustomButton from "@/components/CustomButton.astro";
+
+const title = "Rebranding & Logo Refresh";
+const metaDescription = "Professionelles Rebranding & Logo Design ✓ Modernes Erscheinungsbild ✓ Wiedererkennungswert ✓ Für Unternehmen in Ludwigshafen, Mannheim & Rhein-Neckar";
+
+// Benefits/Value Props - Premium Design mit Branding Colors
+const benefits = [
+  {
+    title: "Modernes Erscheinungsbild",
+    description: "Frischer Auftritt, der Professionalität und Zeitgeist widerspiegelt. Ohne Ihre Identität zu verlieren.",
+    icon: "design",
+    gradientFrom: "#476783",
+    gradientTo: "#648298",
+    lightBg: "#e7ecf1"
+  },
+  {
+    title: "Wiedererkennungswert",
+    description: "Konsistentes Design über alle Kanäle. Von der Website bis zur Visitenkarte.",
+    icon: "consistency",
+    gradientFrom: "#f7b97d",
+    gradientTo: "#efba87",
+    lightBg: "#f7f2ea"
+  },
+  {
+    title: "Mehr Vertrauen",
+    description: "Professionelles Branding schafft Glaubwürdigkeit und hebt Sie von der Konkurrenz ab.",
+    icon: "trust",
+    gradientFrom: "#476783",
+    gradientTo: "#648298",
+    lightBg: "#e7ecf1"
+  }
+];
+
+// Service Tiers
+const services = [
+  {
+    name: "Logo Refresh",
+    price: "ab 190 €",
+    description: "Bestehendes Logo modernisieren",
+    features: [
+      "Analyse des aktuellen Logos",
+      "Moderne Überarbeitung",
+      "2-3 Designvarianten",
+      "Finale Vektordateien (SVG, PDF)",
+      "Farb- und Schriftvarianten"
+    ]
+  },
+  {
+    name: "Rebranding Komplett",
+    price: "auf Anfrage",
+    description: "Komplettes visuelles Redesign",
+    features: [
+      "Umfassende Markenanalyse",
+      "Neues Logo-Design",
+      "Farbpalette und Typografie",
+      "Geschäftsausstattung (Visitenkarten, Briefpapier)",
+      "Brand Guidelines (PDF)",
+      "Social Media Vorlagen"
+    ],
+    featured: true
+  }
+];
+
+// Process Steps
+const process = [
+  {
+    step: "01",
+    title: "Analyse",
+    description: "Wir analysieren Ihre aktuelle Marke, Zielgruppe und Wettbewerb."
+  },
+  {
+    step: "02",
+    title: "Konzept",
+    description: "Entwicklung von 2-3 Designrichtungen basierend auf Ihrer Vision."
+  },
+  {
+    step: "03",
+    title: "Umsetzung",
+    description: "Finalisierung des gewählten Designs und Erstellung aller Dateiformate."
+  },
+  {
+    step: "04",
+    title: "Übergabe",
+    description: "Alle Dateien, Guidelines und Anwendungsbeispiele komplett übergeben."
+  }
+];
+
+// FAQ Section - Rebranding fokusiert (KOMPAKT - nur Kernfragen)
+const faqs = [
+  {
+    question: "Was ist der Unterschied zwischen Logo Refresh und komplettem Rebranding?",
+    answer: "Logo Refresh bedeutet: Ihr bestehendes Logo wird modernisiert, aber bleibt erkennbar. Farben werden aufgefrischt, Schriften aktualisiert, Details vereinfacht. Perfekt, wenn die Grundidee gut ist, aber die Ausführung veraltet wirkt. Komplettes Rebranding geht tiefer: Neues Logo, neue Farbwelt, neue Typografie, neue visuelle Sprache. Sinnvoll bei grundlegender Neuausrichtung oder wenn das aktuelle Branding komplett überholt ist."
+  },
+  {
+    question: "Was kostet ein professionelles Rebranding?",
+    answer: "Die Kosten hängen vom Umfang ab. Ein Logo Refresh (Modernisierung des bestehenden Logos) startet bei 190€. Ein komplettes Rebranding mit neuem Logo, Farbpalette, Typografie, Geschäftsausstattung und Brand Guidelines liegt je nach Komplexität bei 1.500-5.000€. Wir erstellen ein individuelles Angebot basierend auf Ihren Anforderungen. Wichtig: Rebranding ist eine Investition in die Zukunft Ihrer Marke und zahlt sich durch bessere Kundenwahrnehmung aus."
+  },
+  {
+    question: "Wie lange dauert ein Rebranding Prozess?",
+    answer: "Ein Logo Refresh dauert 1-2 Wochen: Analyse, 2-3 Designvarianten, Feedback, Finalisierung. Ein komplettes Rebranding benötigt 4-8 Wochen: Markenanalyse (1 Woche), Konzeptentwicklung (2 Wochen), Design und Iteration (2-3 Wochen), Finalisierung aller Materialien (1-2 Wochen). Die Timeline hängt auch von Ihrer Feedback-Geschwindigkeit ab. Wir halten Sie im gesamten Prozess auf dem Laufenden."
+  },
+  {
+    question: "Was bekomme ich nach dem Rebranding alles?",
+    answer: "Sie erhalten alle Dateien in verschiedenen Formaten: Logo als Vektordatei (SVG, PDF, AI), PNG/JPG in verschiedenen Größen, Farbvarianten (Vollfarbe, Schwarz-Weiß, invertiert), Typografie-Definitionen, Farbpalette mit exakten Werten, und bei komplettem Rebranding zusätzlich Brand Guidelines (PDF), Geschäftsausstattung-Templates und Social Media Vorlagen. Alles ready to use für Print, Web und Social Media."
+  }
+];
 ---
 
-<Base className="bg-white">
-  <section class="bg-[#E5E7EB] py-20 md:py-24">
-    <div class="container space-y-3">
-      <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Leistungen</p>
-      <h1 class="text-h1-sm font-bold leading-tight text-[#0A1A2F] md:text-h1">
-        {title}
-      </h1>
-      <p class="text-base text-[#1f2a35]/75 md:text-lg">Placeholder für Inhalte.</p>
-    </div>
-  </section>
+<Base className="bg-white" title={title} description={metaDescription}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-white via-[#f9f2e9] to-white py-16 md:py-24">
+    <div class="container grid gap-12 lg:grid-cols-2 lg:items-center">
+      <div
+        class="relative order-2 overflow-hidden rounded-3xl border border-[#d7c5aa]/70 bg-white shadow-[0_28px_120px_-70px_rgba(0,0,0,0.35)] lg:order-1 lg:translate-y-10"
+        data-aos="fade-right">
+        <!-- TODO: Replace with actual before/after rebranding example -->
+        <img
+          src="/src/assets/images/leistungen/rebranding.webp"
+          alt="Rebranding Beispiel"
+          class="h-full w-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
 
-  <section class="py-14 md:py-20">
-    <div class="container">
-      <div class="rounded-3xl border border-dashed border-[#d7c5aa]/60 bg-white/70 p-8 text-[#0a1a2f]">
-        <p class="text-sm text-[#0a1a2f]/70">Inhalt folgt: {title}</p>
+      <div class="order-1 space-y-6 text-[#0A1A2F] lg:order-2" data-aos="fade-left" data-aos-delay="120">
+        <div class="inline-flex items-center gap-3 rounded-full bg-[#476783]/10 px-3 py-1.5 text-[#476783]">
+          <img
+            src="/images/logo.webp"
+            alt="MY Digital Works Logo"
+            class="h-6 w-auto opacity-80"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="text-[11px] uppercase tracking-[0.24em]">MY Digital Works</span>
+        </div>
+        <h1 class="text-h1-sm font-bold leading-tight md:text-h1">{title}</h1>
+        <p class="text-base text-[#1f2a35]/80 md:text-lg">
+          Frischer Wind für Ihre Marke. Modern, professionell und wiedererkennbar und das Ganze ohne Ihre Identität zu verlieren. Für Unternehmen in Ludwigshafen, Mannheim und der Metropolregion Rhein Neckar.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <CustomButton
+            label="Kostenloses Gespräch buchen"
+            url="/#footer-with-contact"
+            hoverEffect="creative-fill"
+            class="btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#c9baa8] hover:border-[#c9baa8] hover:text-[#0a1a2f] effect-color-dark"
+          />
+          <CustomButton
+            variant="text"
+            hoverEffect="underline-slide"
+            label="Prozess ansehen"
+            url="#process"
+            class="text-[#476783] hover:text-[#f7b97d] px-0 py-0"
+          />
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- Benefits Section - BENTOBOX STYLE -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-3xl space-y-4 text-center mb-12" data-aos="fade-up">
+        <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Ihre Vorteile</p>
+        <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+          Warum Rebranding?
+        </h2>
+        <p class="text-base text-[#1f2a35]/70 md:text-lg">
+          Ihr Logo ist das Gesicht Ihrer Marke. Ein veralteter Auftritt kostet Vertrauen und Kunden. Zeit für einen frischen Look.
+        </p>
+      </div>
+
+      <!-- Bentobox Grid -->
+      <div class="grid gap-4 md:grid-cols-6 md:grid-rows-2">
+        <!-- Card 1 - Spans 2 columns, modern design -->
+        <article
+          class="benefit-bento group relative overflow-hidden rounded-3xl border border-[#d7c5aa]/50 bg-gradient-to-br from-[#e7ecf1] via-white to-[#f9f2e9]/30 p-8 md:col-span-4 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_32px_120px_-40px_rgba(71,103,131,0.4)]"
+          data-aos="fade-up">
+          
+          <!-- Animated Stripe on Hover -->
+          <div class="stripe-top"></div>
+          
+          <div class="relative z-10 flex flex-col gap-6 h-full">
+            <div class="flex items-start justify-between">
+              <div
+                class="flex h-20 w-20 items-center justify-center rounded-2xl shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6"
+                style="background: linear-gradient(135deg, #476783, #648298);">
+                <svg class="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                </svg>
+              </div>
+              
+              <!-- Decorative Element -->
+              <div class="hidden md:block opacity-20 group-hover:opacity-40 transition-opacity duration-500">
+                <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                  <circle cx="60" cy="60" r="40" stroke="#476783" stroke-width="2" stroke-dasharray="4 4"/>
+                  <circle cx="60" cy="60" r="30" stroke="#f7b97d" stroke-width="2" stroke-dasharray="4 4"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="flex-1">
+              <h3 class="mb-3 text-2xl font-bold text-[#0A1A2F] transition-colors duration-300 group-hover:text-[#476783]">
+                Modernes Erscheinungsbild
+              </h3>
+              <p class="text-base leading-relaxed text-[#1f2a35]/80">
+                Frischer Auftritt, der Professionalität und Zeitgeist widerspiegelt. Ohne Ihre Identität zu verlieren. Modernität trifft Wiedererkennung.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 - Compact, spans 1 column -->
+        <article
+          class="benefit-bento group relative overflow-hidden rounded-3xl border border-[#d7c5aa]/50 bg-gradient-to-br from-[#f7f2ea] via-white to-[#e7ecf1]/30 p-6 md:col-span-2 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_32px_120px_-40px_rgba(247,185,125,0.4)]"
+          data-aos="fade-up"
+          data-aos-delay="100">
+          
+          <div class="stripe-top stripe-gold"></div>
+          
+          <div class="relative z-10 flex flex-col gap-4 h-full">
+            <div
+              class="flex h-16 w-16 items-center justify-center rounded-2xl shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:-rotate-6"
+              style="background: linear-gradient(135deg, #f7b97d, #efba87);">
+              <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+              </svg>
+            </div>
+
+            <div class="flex-1">
+              <h3 class="mb-2 text-xl font-bold text-[#0A1A2F] transition-colors duration-300 group-hover:text-[#f7b97d]">
+                Wiedererkennungswert
+              </h3>
+              <p class="text-sm leading-relaxed text-[#1f2a35]/80">
+                Konsistentes Design über alle Kanäle. Von der Website bis zur Visitenkarte.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 - Wide card, bottom row -->
+        <article
+          class="benefit-bento group relative overflow-hidden rounded-3xl border border-[#d7c5aa]/50 bg-gradient-to-br from-[#e7ecf1] via-white to-[#f7f2ea]/30 p-8 md:col-span-3 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_32px_120px_-40px_rgba(71,103,131,0.4)]"
+          data-aos="fade-up"
+          data-aos-delay="200">
+          
+          <div class="stripe-top"></div>
+          
+          <div class="relative z-10 flex flex-col md:flex-row gap-6 h-full items-center">
+            <div
+              class="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-2xl shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6"
+              style="background: linear-gradient(135deg, #476783, #648298);">
+              <svg class="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+
+            <div class="flex-1">
+              <h3 class="mb-2 text-xl font-bold text-[#0A1A2F] transition-colors duration-300 group-hover:text-[#476783]">
+                Mehr Vertrauen
+              </h3>
+              <p class="text-sm leading-relaxed text-[#1f2a35]/80">
+                Professionelles Branding schafft Glaubwürdigkeit und hebt Sie von der Konkurrenz ab.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4 - Feature highlight card - IMPROVED CONTRAST -->
+        <article
+          class="benefit-bento group relative overflow-hidden rounded-3xl border-2 border-[#f7b97d] bg-gradient-to-br from-[#f7b97d] to-[#efba87] p-8 md:col-span-3 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_32px_120px_-40px_rgba(247,185,125,0.6)]"
+          data-aos="fade-up"
+          data-aos-delay="300">
+          
+          <div class="stripe-top" style="background: linear-gradient(90deg, #476783, #648298);"></div>
+          
+          <div class="relative z-10 flex flex-col gap-4 h-full">
+            <div class="flex items-center gap-3">
+              <div class="h-3 w-3 rounded-full bg-[#0A1A2F] animate-pulse"></div>
+              <span class="text-xs uppercase tracking-wider text-[#0A1A2F] font-bold">Premium Paket</span>
+            </div>
+
+            <div class="flex-1">
+              <h3 class="mb-4 text-2xl font-bold text-[#0A1A2F]">
+                Komplettes Rebranding inklusive
+              </h3>
+              <ul class="space-y-3 text-sm text-[#0A1A2F]/90 font-medium">
+                <li class="flex items-center gap-2">
+                  <svg class="h-5 w-5 flex-shrink-0 text-[#476783]" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  <span>Neues Logo + Farbwelt + Typografie</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="h-5 w-5 flex-shrink-0 text-[#476783]" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  <span>Brand Guidelines (PDF)</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg class="h-5 w-5 flex-shrink-0 text-[#476783]" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  <span>Social Media Templates</span>
+                </li>
+              </ul>
+            </div>
+
+            <CustomButton
+              label="Mehr erfahren"
+              url="#details"
+              hoverEffect="creative-fill"
+              class="btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#0A1A2F] hover:border-[#0A1A2F]"
+            />
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Tiers -->
+  <section class="bg-gradient-to-b from-[#f9f2e9] to-white py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-3xl space-y-4 text-center mb-12" data-aos="fade-up">
+        <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Unsere Pakete</p>
+        <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+          Unsere Leistungen
+        </h2>
+        <p class="text-base text-[#1f2a35]/70 md:text-lg">
+          Von der kleinen Auffrischung bis zum kompletten Rebrand – wir finden die passende Lösung für Ihre Marke.
+        </p>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2">
+        {services.map((service, idx) => (
+          <div
+            class:list={[
+              "group flex h-full flex-col rounded-3xl border bg-white p-8 shadow-[0_24px_90px_-60px_rgba(0,0,0,0.25)] transition duration-300",
+              service.featured ? "border-[#476783] ring-2 ring-[#476783]/20" : "border-[#d7c5aa]/70 hover:-translate-y-1 hover:shadow-[0_32px_110px_-70px_rgba(71,103,131,0.28)]"
+            ]}
+            data-aos="fade-up"
+            data-aos-delay={idx * 100}>
+            {service.featured && (
+              <div class="mb-4 inline-flex items-center gap-2 self-start rounded-full bg-[#476783] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">
+                Empfohlen
+              </div>
+            )}
+            <div class="mb-6">
+              <h3 class="text-2xl font-bold text-[#0A1A2F]">{service.name}</h3>
+              <p class="mt-2 text-sm text-[#1f2a35]/70">{service.description}</p>
+            </div>
+            <div class="mb-6">
+              <div class="text-4xl font-bold text-[#476783]">{service.price}</div>
+            </div>
+            <ul class="mb-8 flex-1 space-y-3">
+              {service.features.map(feature => (
+                <li class="flex items-start gap-3 text-sm text-[#1f2a35]/80">
+                  <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-[#476783]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <CustomButton
+              label="Anfrage senden"
+              url="/#footer-with-contact"
+              hoverEffect="creative-fill"
+              class:list={[
+                service.featured
+                  ? "btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#f7b97d] hover:border-[#f7b97d] hover:text-[#0a1a2f]"
+                  : "btn-outline border-[#476783] text-[#476783] hover:bg-[#476783] hover:text-white"
+              ]}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section - ENHANCED -->
+  <section id="process" class="bg-white py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-3xl space-y-4 text-center mb-12" data-aos="fade-up">
+        <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">So arbeiten wir</p>
+        <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+          Unser Prozess
+        </h2>
+        <p class="text-base text-[#1f2a35]/70 md:text-lg">
+          Strukturiert, transparent und mit Ihrer Vision im Fokus.
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {process.map((item, idx) => (
+          <article
+            class="process-card group relative overflow-hidden rounded-3xl border border-[#d7c5aa]/50 bg-gradient-to-br from-white to-[#f9f2e9]/30 p-6 transition-all duration-500 hover:-translate-y-2 hover:border-[#476783]/50 hover:shadow-[0_24px_80px_-30px_rgba(71,103,131,0.3)]"
+            data-aos="fade-up"
+            data-aos-delay={idx * 100}>
+            
+            <!-- Top Stripe with Step Number -->
+            <div class="stripe-top-process"></div>
+            
+            <div class="relative z-10">
+              <!-- Step Number Badge -->
+              <div class="mb-6 flex items-center justify-between">
+                <div 
+                  class="flex h-14 w-14 items-center justify-center rounded-2xl shadow-lg font-bold text-xl text-white transition-all duration-500 group-hover:scale-110 group-hover:rotate-12"
+                  style="background: linear-gradient(135deg, #476783, #648298);">
+                  {item.step}
+                </div>
+                
+                <!-- Arrow indicator -->
+                {idx < 3 && (
+                  <svg class="hidden lg:block absolute -right-3 top-6 h-6 w-6 text-[#476783]/30 group-hover:text-[#476783] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                )}
+              </div>
+
+              <h3 class="mb-3 text-xl font-bold text-[#0A1A2F] transition-colors group-hover:text-[#476783]">
+                {item.title}
+              </h3>
+              <p class="text-sm leading-relaxed text-[#1f2a35]/75">
+                {item.description}
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- CTA nach Process -->
+      <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="300">
+        <div class="mx-auto max-w-2xl space-y-4">
+          <p class="text-base text-[#1f2a35]/70">
+            Bereit für eine moderne, professionelle Markenidentität?
+          </p>
+          <CustomButton
+            label="Jetzt Rebranding anfragen"
+            url="/#footer-with-contact"
+            hoverEffect="creative-fill"
+            class="btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#f7b97d] hover:border-[#f7b97d] hover:text-[#0a1a2f]"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section - KOMPAKT -->
+  <section class="bg-gradient-to-b from-[#f9f2e9] to-white py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-4xl space-y-10">
+        <div class="space-y-3 text-center text-[#0a1a2f]" data-aos="fade-up">
+          <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Häufige Fragen</p>
+          <h2 class="text-h2-sm font-bold leading-tight md:text-h2">
+            Die wichtigsten Fragen zu Rebranding
+          </h2>
+          <p class="text-base text-[#1f2a35]/70 max-w-2xl mx-auto">
+            Schnelle Antworten zu Ablauf, Kosten und Umfang.
+          </p>
+        </div>
+
+        <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+          {faqs.map((faq, index) => (
+            <details
+              class="group rounded-2xl border border-[#d7c5aa]/50 bg-gradient-to-br from-white to-[#f9f2e9]/30 p-6 transition-all duration-300 hover:border-[#d7c5aa] hover:shadow-lg [&[open]]:border-[#476783] [&[open]]:bg-white [&[open]]:shadow-xl"
+              data-aos="fade-up"
+              data-aos-delay={index * 50}>
+              <summary class="flex cursor-pointer items-start justify-between gap-4 text-left font-semibold text-[#0A1A2F] transition-colors duration-200 group-hover:text-[#476783] [&::-webkit-details-marker]:hidden">
+                <span class="text-base md:text-lg leading-relaxed">{faq.question}</span>
+                <svg
+                  class="h-6 w-6 flex-shrink-0 text-[#476783] transition-transform duration-300 group-open:rotate-180"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="mt-4 border-t border-[#d7c5aa]/30 pt-4 text-sm leading-relaxed text-[#1f2a35]/80 md:text-base">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+
+        <!-- Schema.org JSON-LD für FAQ -->
+        <script type="application/ld+json" set:html={JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.answer
+            }
+          }))
+        })} />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-gradient-to-b from-[#0A1A2F] to-[#1a2f45] py-20 md:py-28">
+    <div class="container">
+      <div class="mx-auto max-w-3xl space-y-8 text-center" data-aos="fade-up">
+        <h2 class="text-h2-sm font-bold leading-tight text-white md:text-h2">
+          Bereit für einen frischen Look?
+        </h2>
+        <p class="text-lg text-white/80">
+          Wir modernisieren Ihre Marke – professionell, wiedererkennbar und passend zu Ihrer Vision. Rebranding für Unternehmen in Ludwigshafen, Mannheim und der Metropolregion Rhein Neckar.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <CustomButton
+            label="Kostenloses Erstgespräch"
+            url="/#footer-with-contact"
+            hoverEffect="creative-fill"
+            class="btn-primary bg-[#f7b97d] border-[#f7b97d] text-[#0a1a2f] hover:bg-white hover:border-white hover:text-[#0a1a2f]"
+          />
+          <CustomButton
+            label="E-Mail schreiben"
+            url="mailto:kontakt@mydigitalworks.de"
+            hoverEffect="creative-fill"
+            class="btn-outline border-white text-white hover:bg-white hover:text-[#0a1a2f]"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rebranding Service Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "MY Digital Works - Rebranding & Logo Design",
+    "description": "Professionelles Rebranding und Logo Design für Unternehmen in Ludwigshafen, Mannheim und der Metropolregion Rhein-Neckar",
+    "url": "https://mydigitalworks.de/leistungen/rebranding",
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Ludwigshafen"
+      },
+      {
+        "@type": "City", 
+        "name": "Mannheim"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Rheinland-Pfalz"
+      }
+    ],
+    "serviceType": [
+      "Rebranding",
+      "Logo Design",
+      "Logo Refresh",
+      "Corporate Identity",
+      "Brand Guidelines"
+    ]
+  })} />
 </Base>
 
+<style>
+  /* ===== BENTOBOX & STRIPE EFFECTS ===== */
+  
+  /* Animated Top Stripe - Main */
+  .stripe-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #476783, #648298, #f7b97d);
+    background-size: 200% 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .benefit-bento:hover .stripe-top,
+  .process-card:hover .stripe-top-process {
+    transform: scaleX(1);
+    animation: shimmer 2s infinite;
+  }
+
+  /* Gold Stripe Variant */
+  .stripe-gold {
+    background: linear-gradient(90deg, #f7b97d, #efba87, #476783);
+  }
+
+  /* White Stripe for Dark Cards */
+  .stripe-white {
+    background: linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+  }
+
+  /* Process Card Stripe */
+  .stripe-top-process {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #476783, #f7b97d);
+    background-size: 200% 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @keyframes shimmer {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* ===== BENTOBOX HOVER EFFECTS ===== */
+  .benefit-bento {
+    position: relative;
+    transform-style: preserve-3d;
+  }
+
+  .benefit-bento::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 1.5rem;
+    padding: 2px;
+    background: linear-gradient(135deg, #476783, #f7b97d, #648298);
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .benefit-bento:hover::before {
+    opacity: 0.6;
+  }
+
+  /* Glow Effect on Hover */
+  .benefit-bento:hover {
+    box-shadow: 
+      0 32px 120px -40px rgba(71, 103, 131, 0.4),
+      0 0 0 1px rgba(71, 103, 131, 0.1),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+  }
+
+  /* Process Card Enhancements */
+  .process-card {
+    position: relative;
+  }
+
+  .process-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(71, 103, 131, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+
+  .process-card:hover::after {
+    opacity: 1;
+  }
+
+  /* ===== GLASSMORPHISM EFFECT ===== */
+  @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+    .benefit-bento {
+      background: 
+        linear-gradient(135deg, 
+          rgba(231, 236, 241, 0.8) 0%, 
+          rgba(255, 255, 255, 0.9) 50%,
+          rgba(249, 242, 233, 0.8) 100%
+        );
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+  }
+
+  /* ===== MICRO-INTERACTIONS ===== */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .benefit-bento:hover svg {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Pulse Animation for Premium Badge */
+  @keyframes pulse-subtle {
+    0%, 100% {
+      opacity: 0.9;
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  /* FAQ Details smooth animation */
+  details > summary {
+    list-style: none;
+  }
+  
+  details[open] > summary ~ * {
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ===== RESPONSIVE ADJUSTMENTS ===== */
+  @media (max-width: 768px) {
+    .benefit-bento {
+      min-height: 200px;
+    }
+    
+    .stripe-top,
+    .stripe-top-process {
+      height: 3px;
+    }
+  }
+
+  /* ===== ACCESSIBILITY ===== */
+  @media (prefers-reduced-motion: reduce) {
+    .stripe-top,
+    .stripe-top-process,
+    .benefit-bento,
+    .process-card {
+      transition: none;
+      animation: none;
+    }
+  }
+</style>

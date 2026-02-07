@@ -25,6 +25,7 @@ const {
 <header
   class:list={[
     "header group/header transform",
+    "header-dark",
     { sticky: position === "sticky" },
     { fixed: position === "fixed" },
     { "has-dark-background": hasDarkBackground },
@@ -34,11 +35,7 @@ const {
   <nav class="xl:container-12xl relative max-xl:container">
     <div
       class="hs-dropdown relative flex items-center justify-between py-6 [--auto-close:inside] [--gpu-acceleration:false] [--strategy:absolute] lg:[--strategy:static]">
-      {hasDarkBackground ? (
-        <Logo src={logoAlternate} width="auto" height="4.25rem" class="drop-shadow-sm" />
-      ) : (
-        <Logo width="auto" height="4.25rem" class="drop-shadow-sm" />
-      )}
+      <Logo src={logoAlternate} width="auto" height="4.25rem" class="drop-shadow-sm" />
 
       <!-- Navbar For Header -->
       <Navbar />

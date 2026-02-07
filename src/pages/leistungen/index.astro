@@ -17,6 +17,7 @@ const services = [
       "Eine professionelle Website ist oft der erste Eindruck deines Unternehmens. Sie schafft Vertrauen, führt gezielt durch dein Angebot und macht aus Interessenten Kunden.",
     href: "/leistungen/webdesign",
     icon: IconLaptop,
+    accentColor: "#476783",
   },
   {
     title: "SEO & Local SEO",
@@ -25,6 +26,7 @@ const services = [
       "Gute Sichtbarkeit entsteht dort, wo Menschen aktiv nach Lösungen suchen. Mit klarer Struktur und lokaler Ausrichtung wirst du genau im richtigen Moment gefunden.",
     href: "/leistungen/seo-local",
     icon: IconSeo,
+    accentColor: "#f7b97d",
   },
   {
     title: "Google Unternehmensprofil",
@@ -33,6 +35,7 @@ const services = [
       "Für viele Kunden beginnt die Entscheidung bei Google Maps. Ein gepflegtes Unternehmensprofil sorgt für Vertrauen, Präsenz und kontinuierliche Anfragen.",
     href: "/leistungen/google-unternehmensprofil",
     icon: IconGmb,
+    accentColor: "#476783",
   },
   {
     title: "Digitale Rechnungen",
@@ -41,6 +44,7 @@ const services = [
       "Digitale Rechnungsprozesse bringen Klarheit in den Arbeitsalltag. Sie vereinfachen Abläufe, sparen Zeit und schaffen eine verlässliche Grundlage für weiteres Wachstum.",
     href: "/leistungen/buchhaltung-digital",
     icon: IconChecklist,
+    accentColor: "#f7b97d",
   },
   {
     title: "Rebranding / Logo Refresh",
@@ -49,6 +53,7 @@ const services = [
       "Ein zeitgemäßer Markenauftritt erzählt, wofür dein Unternehmen steht. Er sorgt für Wiedererkennung und ein professionelles Auftreten auf allen Kanälen.",
     href: "/leistungen/rebranding",
     icon: IconRebrand,
+    accentColor: "#476783",
   },
   {
     title: "Webhosting & Wartung",
@@ -57,25 +62,65 @@ const services = [
       "Damit deine Website jederzeit zuverlässig funktioniert, braucht es stabile Technik im Hintergrund. Wir sorgen für Sicherheit, Performance und einen reibungslosen Betrieb.",
     href: "/leistungen/webhosting-wartung",
     icon: IconHosting,
+    accentColor: "#f7b97d",
   },
+];
+
+// FAQ Section - Leistungsübersicht (5 Kernfragen)
+const faqs = [
+  {
+    question: "Welche Leistung passt zu meinem Unternehmen?",
+    answer: "Das kommt auf Ihre aktuelle Situation und Ziele an. Wenn Sie noch keine Website haben oder Ihre veraltete modernisieren wollen, starten Sie mit Webdesign. Für bestehende Websites, die nicht gefunden werden, ist SEO & Local SEO der richtige Schritt. Das Google Unternehmensprofil ist perfekt für lokale Sichtbarkeit ohne Werbekosten. Im kostenlosen Erstgespräch finden wir gemeinsam heraus, was für Sie am sinnvollsten ist."
+  },
+  {
+    question: "Kann ich mehrere Leistungen kombinieren?",
+    answer: "Ja, absolut! Die meisten Kunden kombinieren mehrere Leistungen für maximalen Erfolg. Typische Kombinationen: Webdesign + SEO + Hosting, oder Google Unternehmensprofil + Local SEO + Rebranding. Oft macht ein ganzheitlicher Ansatz am meisten Sinn. Wir erstellen Ihnen ein individuelles Paket, das perfekt zu Ihren Zielen und Ihrem Budget passt."
+  },
+  {
+    question: "Was kostet professionelles Webdesign und Marketing?",
+    answer: "Die Kosten variieren je nach Umfang. Eine Business-Website startet bei 2.000€, SEO-Betreuung ab 99€/Monat, Google Unternehmensprofil Setup ab 300€, Hosting ab 25€/Monat, Logo Refresh ab 190€. Wir erstellen transparente Angebote ohne versteckte Kosten. Im Erstgespräch bekommen Sie eine realistische Einschätzung für Ihr konkretes Projekt."
+  },
+  {
+    question: "Wie lange dauert es, bis ich Ergebnisse sehe?",
+    answer: "Das hängt von der Leistung ab: Eine Website ist in 3-6 Wochen live. SEO zeigt erste Verbesserungen nach 1-3 Monaten, volle Wirkung nach 6-12 Monaten. Ein Google Unternehmensprofil ist sofort sichtbar, Rankings bauen sich über Wochen auf. Rebranding dauert 2-8 Wochen je nach Umfang. Wir setzen realistische Erwartungen und halten Sie im gesamten Prozess auf dem Laufenden."
+  },
+  {
+    question: "Arbeitet ihr nur mit Unternehmen aus Ludwigshafen und Mannheim?",
+    answer: "Nein! Obwohl wir in Ludwigshafen ansässig sind und viele Kunden aus der Metropolregion Rhein-Neckar betreuen, arbeiten wir deutschlandweit. Alle Leistungen – von Webdesign über SEO bis Hosting – können wir komplett remote umsetzen. Persönliche Meetings sind in Ludwigshafen, Mannheim und Umgebung möglich, aber auch Videocalls funktionieren hervorragend. Wichtig ist uns die Qualität, nicht der Standort."
+  }
 ];
 
 const title = "Leistungen";
 ---
 
 <Base className="bg-white">
-  <section class="bg-[#E5E7EB] py-16 md:py-20">
-    <div class="container grid gap-10 lg:grid-cols-[1.1fr,0.9fr] lg:items-center">
-      <div class="space-y-4">
-        <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Leistungen</p>
+  <!-- Hero Section mit AOS -->
+  <section class="bg-gradient-to-b from-white via-[#f9f2e9] to-white py-16 md:py-24">
+    <div class="container grid gap-12 lg:grid-cols-[1.1fr,0.9fr] lg:items-center">
+      <div class="space-y-6" data-aos="fade-right">
+        <div class="inline-flex items-center gap-3 rounded-full bg-[#476783]/10 px-4 py-2 text-[#476783]">
+          <span class="text-xs uppercase tracking-[0.28em]">Leistungen</span>
+        </div>
         <h1 class="text-h1-sm font-bold leading-tight text-[#0A1A2F] md:text-h1">
           {title}
         </h1>
         <p class="text-base text-[#1f2a35]/80 md:text-lg">
-          Klar strukturierte Services für sichtbare, schnelle Ergebnisse – von Webdesign bis Betrieb.
+          Du willst eine professionelle Webseite haben, dich auf Google positionieren oder deine Buchhaltungen digital gestalten? Dann bist du hier genau richtig. 
+          <br> Von Webdesign, über Webhosting bis hin zur SEO-Optimierung ist hier alles dabei!
         </p>
+        <div class="pt-2">
+          <CustomButton
+            label="Kostenloses Erstgespräch"
+            url="/#footer-with-contact"
+            hoverEffect="creative-fill"
+            class="btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#f7b97d] hover:border-[#f7b97d] hover:text-[#0a1a2f]"
+          />
+        </div>
       </div>
-      <div class="overflow-hidden rounded-3xl bg-white shadow-lg">
+      <div 
+        class="relative overflow-hidden rounded-3xl border border-[#d7c5aa]/70 bg-white shadow-[0_28px_120px_-70px_rgba(0,0,0,0.35)]"
+        data-aos="fade-left"
+        data-aos-delay="150">
         <img
           src={heroImg.src}
           alt="Modernes Webdesign Workspace"
@@ -87,33 +132,70 @@ const title = "Leistungen";
     </div>
   </section>
 
-  <section class="bg-gradient-to-b from-white via-[#f9f2e9] to-white py-16 md:py-20">
-    <div class="container space-y-8">
-      <div class="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3">
+  <!-- Services Grid mit modernen Effekten -->
+  <section class="bg-gradient-to-b from-white via-[#f9f2e9] to-white py-16 md:py-24">
+    <div class="container space-y-12">
+      <div class="space-y-3 text-center" data-aos="fade-up">
+        <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Unsere Services</p>
+        <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+          Alles, was du für deinen digitalen Erfolg brauchst.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {services.map((item, idx) => (
           <article
-            class="group flex h-full min-h-[280px] flex-col rounded-3xl border border-[#a7b4bb]/40 bg-[#eef2f5] p-10 shadow-[0_24px_90px_-60px_rgba(0,0,0,0.18)] transition hover:-translate-y-1 hover:bg-[#e8edf2] hover:shadow-[0_32px_110px_-70px_rgba(71,103,131,0.28)]">
-            <a href={item.href} class="flex h-full flex-col gap-5">
-              <div class="flex items-start gap-2">
-                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#ddbc97]/50 text-[#476783]">
-                  <img src={item.icon.src} alt="" class="h-6 w-6" loading="lazy" decoding="async" />
+            class="service-card group relative flex h-full min-h-[320px] flex-col overflow-hidden rounded-3xl border border-[#d7c5aa]/70 bg-white shadow-[0_24px_90px_-60px_rgba(0,0,0,0.18)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_32px_110px_-70px_rgba(71,103,131,0.35)]"
+            data-aos="fade-up"
+            data-aos-delay={idx * 80}>
+            
+            {/* Top Stripe */}
+            <div class="stripe-top"></div>
+            
+            {/* Gradient Overlay on Hover */}
+            <div 
+              class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              style={`background: linear-gradient(135deg, ${item.accentColor}08 0%, transparent 100%)`}>
+            </div>
+
+            <a href={item.href} class="relative z-10 flex h-full flex-col gap-6 p-8">
+              {/* Icon & Title */}
+              <div class="flex items-start gap-4">
+                <span 
+                  class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
+                  style={`background: linear-gradient(135deg, ${item.accentColor}20, ${item.accentColor}10)`}>
+                  <img 
+                    src={item.icon.src} 
+                    alt="" 
+                    class="h-7 w-7 transition-transform duration-500 group-hover:scale-110" 
+                    loading="lazy" 
+                    decoding="async" 
+                  />
                 </span>
-                <div class="space-y-1.5">
-                  <h3 class="text-lg font-semibold tracking-tight text-[#0A1A2F]">{item.title}</h3>
-                  <p class="text-sm text-[#1f2a35]/80">{item.hook}</p>
+                <div class="flex-1 space-y-2">
+                  <h3 class="text-xl font-bold tracking-tight text-[#0A1A2F] transition-colors duration-300 group-hover:text-[#476783]">
+                    {item.title}
+                  </h3>
+                  <p class="text-sm font-medium text-[#476783]">{item.hook}</p>
                 </div>
               </div>
-              <p class="text-sm leading-7 text-[#0a1a2f]/80">
+
+              {/* Story */}
+              <p class="flex-1 text-sm leading-relaxed text-[#0a1a2f]/75">
                 {item.story}
               </p>
-              <div class="mt-2">
-                <CustomButton
-                  variant="text"
-                  hoverEffect="underline-slide"
-                  label="Mehr erfahren"
-                  url={item.href}
-                  class="text-[#476783] hover:text-[#f7b97d] px-0 py-0"
-                />
+
+              {/* CTA */}
+              <div class="mt-auto pt-2">
+                <span class="btn-underline-slide inline-flex items-center gap-2 text-sm font-semibold text-[#476783] transition-colors duration-300 group-hover:text-[#f7b97d]">
+                  Mehr erfahren
+                  <img 
+                    src="src/assets/images/icons/svg/arrow.svg" 
+                    alt="" 
+                    class="btn-underline-icon h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" 
+                    aria-hidden="true"
+                  />
+                </span>
               </div>
             </a>
           </article>
@@ -121,5 +203,181 @@ const title = "Leistungen";
       </div>
     </div>
   </section>
+
+  <!-- FAQ Section -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-4xl space-y-10">
+        <div class="space-y-3 text-center text-[#0a1a2f]" data-aos="fade-up">
+          <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Häufige Fragen</p>
+          <h2 class="text-h2-sm font-bold leading-tight md:text-h2">
+            Alles Wichtige auf einen Blick
+          </h2>
+          <p class="text-base text-[#1f2a35]/70 max-w-2xl mx-auto">
+            Die wichtigsten Antworten zu unseren Leistungen, Preisen und Abläufen.
+          </p>
+        </div>
+
+        <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+          {faqs.map((faq, index) => (
+            <details
+              class="group rounded-2xl border border-[#d7c5aa]/50 bg-gradient-to-br from-white to-[#f9f2e9]/30 p-6 transition-all duration-300 hover:border-[#d7c5aa] hover:shadow-lg [&[open]]:border-[#476783] [&[open]]:bg-white [&[open]]:shadow-xl"
+              data-aos="fade-up"
+              data-aos-delay={index * 50}>
+              <summary class="flex cursor-pointer items-start justify-between gap-4 text-left font-semibold text-[#0A1A2F] transition-colors duration-200 group-hover:text-[#476783] [&::-webkit-details-marker]:hidden">
+                <span class="text-base md:text-lg leading-relaxed">{faq.question}</span>
+                <svg
+                  class="h-6 w-6 flex-shrink-0 text-[#476783] transition-transform duration-300 group-open:rotate-180"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="mt-4 border-t border-[#d7c5aa]/30 pt-4 text-sm leading-relaxed text-[#1f2a35]/80 md:text-base">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+
+        <!-- Schema.org JSON-LD für FAQ -->
+        <script type="application/ld+json" set:html={JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.answer
+            }
+          }))
+        })} />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-gradient-to-b from-[#476783] to-[#3d5a6f] py-16 md:py-20" data-aos="fade-up">
+    <div class="container text-center">
+      <div class="mx-auto max-w-3xl space-y-6">
+        <h2 class="text-h2-sm font-bold leading-tight text-white md:text-h2">
+          Lass uns gemeinsam dein Projekt starten.
+        </h2>
+        <p class="text-base text-white/90 md:text-lg">
+          In einem kostenlosen Erstgespräch finden wir heraus, welche Leistungen am besten zu deinen Zielen passen.
+        </p>
+        <div class="pt-4">
+          <CustomButton
+            label="Jetzt Termin vereinbaren"
+            url="/#footer-with-contact"
+            hoverEffect="creative-fill"
+            class="btn-primary bg-white border-white text-[#476783] hover:bg-[#f7b97d] hover:border-[#f7b97d] hover:text-[#0a1a2f]"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
 </Base>
 
+<style>
+  /* ===== SERVICE CARD STRIPE (animated) ===== */
+  .stripe-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #476783, #648298, #f7b97d);
+    background-size: 200% 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .service-card:hover .stripe-top {
+    transform: scaleX(1);
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Smooth color transitions */
+  .service-card * {
+    transition-property: color, background-color, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Underline Slide Effect */
+  .btn-underline-slide {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-underline-slide::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #f7b97d;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .service-card:hover .btn-underline-slide::after {
+    width: 100%;
+  }
+
+  /* Arrow Icon Animation */
+  .btn-underline-icon {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .service-card:hover .btn-underline-icon {
+    transform: translateX(4px);
+  }
+
+  /* FAQ Details smooth animation */
+  details > summary {
+    list-style: none;
+  }
+  
+  details[open] > summary ~ * {
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  // AOS initialisieren (muss im <head> oder global eingebunden sein)
+  import AOS from 'aos';
+  import 'aos/dist/aos.css';
+  
+  AOS.init({
+    duration: 800,
+    easing: 'ease-out-cubic',
+    once: true,
+    offset: 80,
+  });
+</script>

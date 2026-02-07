@@ -6,7 +6,7 @@ draft: false
 
 **Gültig ab: Juli 2022**
 
-Welcome to MY Digital Studio ("we," "our," or "us"). Your privacy is important to us, and we are committed to protecting the personal information you share with us. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website, https://www.my-digital-studio.de ("Website").
+Welcome to MY Digital Works ("we," "our," or "us"). Your privacy is important to us, and we are committed to protecting the personal information you share with us. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website, https://www.my-digital-works.de ("Website").
 
 ### Information We Collect
 
@@ -68,7 +68,7 @@ Depending on your location, you may have the following rights regarding your per
 - Restrict processing of your data
 - Withdraw consent for data usage
 
-To exercise your rights, please contact us at privacy@my-digital-studio.de.
+To exercise your rights, please contact us at kontakt@mydigitalworks.de.
 
 ### Third-Party Links
 
@@ -86,8 +86,8 @@ We may update this Privacy Policy from time to time. Any changes will be posted 
 
 If you have any questions or concerns about this Privacy Policy, please contact us at:
 
-MY Digital Studio
-Email: privacy@my-digital-studio.de
+MY Digital Works
+Email: kontakt@mydigitalworks.de
 Address: Mannheim, Deutschland
 
-Thank you for trusting MY Digital Studio with your personal information!
+Thank you for trusting MY Digital Works with your personal information!

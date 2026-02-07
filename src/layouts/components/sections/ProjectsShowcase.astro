@@ -44,7 +44,7 @@ const projects = [
 
 <section
   id="portfolio"
-  class="bg-gradient-to-b from-white via-[#f7f2ea] to-white py-20 md:py-28">
+  class="py-20 md:py-28">
   <div class="container space-y-12">
     <div class="space-y-3 text-center text-[#0a1a2f]" data-aos="fade-up">
       <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Portfolio</p>
@@ -52,83 +52,100 @@ const projects = [
         Sichtbare Ergebnisse für lokale Marken.
       </h2>
       <p class="text-base text-[#1f2a35]/85 md:text-lg">
-        Klar strukturiert, schnell verständlich, auf Conversion optimiert – mit
-        vollständigen Screens ohne Cropping.
+        Individuell entwickelte Webseiten mit Fokus auf Performance, Nutzerführung und den Charakter deines Unternehmens.
       </p>
     </div>
 
-    <div class="mx-auto grid max-w-7xl grid-cols-1 justify-items-center gap-10 lg:grid-cols-2">
-      {projects.map((project, idx) => (
-        <article
-          class="group relative flex h-full w-full flex-col overflow-hidden rounded-3xl border border-[#d7c5aa]/70 bg-gradient-to-br from-white to-[#f7f0e4] p-8 shadow-[0_25px_90px_-55px_rgba(0,0,0,0.35)] transition duration-500 hover:-translate-y-2 hover:border-[#f7b97d]/80 hover:shadow-[0_35px_120px_-65px_rgba(247,185,125,0.55)] focus-within:-translate-y-2 focus-within:border-[#f7b97d]/80 focus-within:shadow-[0_35px_120px_-65px_rgba(247,185,125,0.55)]"
-          data-aos="fade-up"
-          data-aos-delay={idx * 140}
-          tabindex="0">
-          <div class="space-y-6">
-            <div class="relative aspect-[16/9] overflow-hidden rounded-2xl border border-[#d7c5aa]/80 bg-white">
-              <div class="portfolio-track group-hover:pause group-focus:pause">
-                {project.slides.map((slide) => (
-                  <div class="portfolio-slide p-2 md:p-3">
-                    <OptimizedImage
-                      src={slide}
-                      alt={`${project.title} Screenshot`}
-                      loading="lazy"
-                      width={1600}
-                      height={900}
-                      sizes="(min-width: 1024px) 640px, 94vw"
-                      class="h-full w-full object-contain transition duration-700 group-hover:scale-[1.01] group-focus:scale-[1.01]"
-                    />
-                  </div>
-                ))}
-              </div>
+<div class="portfolio-shell" data-aos="fade-up">
+  <div class="portfolio-fade-left" aria-hidden="true"></div>
+  <div class="portfolio-fade-right" aria-hidden="true"></div>
+
+  <div class="portfolio-scroller" aria-label="Projekt-Showcase (horizontal scroll)">
+    {projects.map((project, idx) => (
+      <article
+        id={`project-${idx}`}
+        class="portfolio-card group"
+        tabindex="0"
+        data-aos="fade-up"
+        data-aos-delay={idx * 140}
+      >
+        <!-- Dein bestehender Card-Inhalt 1:1 -->
+        <div class="portfolio-inner space-y-4 md:space-y-6">
+          <div class="relative aspect-[16/9] overflow-hidden rounded-2xl border border-[#d7c5aa]/80 bg-white">
+            <div class="portfolio-track group-hover:pause group-focus:pause">
+              {project.slides.map((slide) => (
+                <div class="portfolio-slide p-2 md:p-3">
+                  <OptimizedImage
+                    src={slide}
+                    alt={`${project.title} Screenshot`}
+                    loading="lazy"
+                    width={1600}
+                    height={900}
+                    sizes="(min-width: 1024px) 640px, 88vw"
+                    class="h-full w-full object-contain transition duration-700 group-hover:scale-[1.01] group-focus:scale-[1.01]"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="space-y-2 md:space-y-3 text-[#0a1a2f]">
+            <h3 class="text-3xl font-bold tracking-tight md:text-[2.1rem]">{project.title}</h3>
+
+            {project.subtitle && (
+              <p class="text-xs uppercase tracking-[0.22em] text-[#476783]/70">{project.subtitle}</p>
+            )}
+
+<div class="space-y-2 text-sm leading-relaxed text-[#1f2a35]/85 md:text-base">
+  <p class="story-clamp">{project.story}</p>
+</div>
+
+{project.deliverables && (
+  <ul class="hidden md:block space-y-1 text-sm text-[#1f2a35]/85">
+    {project.deliverables.map((item) => (
+      <li class="flex items-start gap-2">
+        <span class="mt-1 h-2 w-2 rounded-full bg-[#f7b97d]" />
+        <span>{item}</span>
+      </li>
+    ))}
+  </ul>
+)}
+
+            <div class="flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span class="rounded-full border border-[#d7c5aa]/70 bg-white/70 px-3 py-1 text-xs uppercase tracking-[0.12em] text-[#0f1c28]/75 backdrop-blur-sm">
+                  {tag}
+                </span>
+              ))}
             </div>
 
-            <div class="space-y-3 text-[#0a1a2f]">
-              <h3 class="text-3xl font-bold tracking-tight md:text-[2.1rem]">
-                {project.title}
-              </h3>
-              {project.subtitle && (
-                <p class="text-xs uppercase tracking-[0.22em] text-[#476783]/70">
-                  {project.subtitle}
-                </p>
-              )}
-              <div class="space-y-2 text-sm leading-relaxed text-[#1f2a35]/85 md:text-base">
-                <p>{project.story}</p>
-              </div>
-              {project.deliverables && (
-                <ul class="space-y-1 text-sm text-[#1f2a35]/85">
-                  {project.deliverables.map((item) => (
-                    <li class="flex items-start gap-2">
-                      <span class="mt-1 h-2 w-2 rounded-full bg-[#f7b97d]" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-              <div class="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span class="rounded-full border border-[#d7c5aa]/70 bg-white/70 px-3 py-1 text-xs uppercase tracking-[0.12em] text-[#0f1c28]/75 backdrop-blur-sm">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <div class="flex items-center gap-3 text-sm text-[#476783] transition group-hover:text-[#0a1a2f] group-focus:text-[#0a1a2f]">
-                <CustomButton
-                  label="Case ansehen"
-                  url={project.url}
-                  hoverEffect="creative-fill"
-                  class="btn-outline border-[#476783] text-[#476783] hover:bg-[#476783] hover:text-white focus-visible:ring-4 focus-visible:ring-[#f7b97d]/40"
-                />
-                <span class="uppercase tracking-[0.18em] text-[#1f2a35]/60">Live</span>
-              </div>
+            <div class="portfolio-cta flex items-center gap-3 text-sm text-[#476783] transition group-hover:text-[#0a1a2f] group-focus:text-[#0a1a2f]">
+              <CustomButton
+                label="Case ansehen"
+                url={project.url}
+                hoverEffect="creative-fill"
+                class="btn-outline border-[#476783] text-[#476783] hover:bg-[#476783] hover:text-white focus-visible:ring-4 focus-visible:ring-[#f7b97d]/40"
+              />
+              <span class="uppercase tracking-[0.18em] text-[#1f2a35]/60">Live</span>
             </div>
           </div>
-          <div class="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100 group-focus:opacity-100">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(247,185,125,0.22),transparent_38%)]" />
-          </div>
-        </article>
-      ))}
-    </div>
+        </div>
+
+        <div class="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100 group-focus:opacity-100">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(247,185,125,0.22),transparent_38%)]" />
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <!-- Dots als “mehr nach rechts”-Hinweis (optional, aber sehr effektiv) -->
+  <div class="portfolio-dots" aria-label="Projekt-Navigation">
+    {projects.map((_, idx) => (
+      <a class="dot" href={`#project-${idx}`} aria-label={`Zu Projekt ${idx + 1}`} />
+    ))}
+  </div>
+</div>
+
   </div>
 </section>
 <style>
@@ -164,5 +181,149 @@ const projects = [
       transform: translateX(0);
     }
   }
+  /* Horizontal scroller (touch + trackpad) */
+.portfolio-shell {
+  position: relative;
+  padding-inline: 0.25rem; /* verhindert „cut“ am Rand links/rechts */
+}
+
+.portfolio-scroller {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(90%, 1fr); /* Mobile: große Card + rechts "peek" */
+  gap: 1.25rem;
+  overflow-x: auto;
+  padding: 0.25rem 0.25rem 0.75rem;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 0.25rem;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  overflow-x: auto;
+  overflow-y: visible;            /* neu */
+  padding-top: 0.75rem;           /* neu: Luft für Hover nach oben */
+  padding-bottom: 1.25rem;        /* neu: Luft für Shadow */
+}
+.portfolio-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+/* Desktop: mehr Cards sichtbar */
+@media (min-width: 768px) {
+  .portfolio-scroller {
+    grid-auto-columns: minmax(520px, 1fr);
+    gap: 1.75rem;
+  }
+}
+@media (min-width: 1024px) {
+  .portfolio-scroller {
+    grid-auto-columns: minmax(560px, 1fr);
+  }
+}
+
+/* Card as snap item */
+.portfolio-card {
+  position: relative;
+  scroll-snap-align: start;
+  height: 100%;
+  width: 100%;
+    display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(215, 197, 170, 0.7);
+  background: linear-gradient(135deg, #ffffff, #f7f0e4);
+  padding: 2rem;
+  box-shadow: 0 25px 90px -55px rgba(0, 0, 0, 0.35);
+  transition: transform 0.5s, box-shadow 0.5s, border-color 0.5s;
+}
+.portfolio-card:hover,
+.portfolio-card:focus-within {
+  transform: translateY(-0.5rem);
+  border-color: rgba(247, 185, 125, 0.8);
+  box-shadow: 0 35px 120px -65px rgba(247, 185, 125, 0.55);
+}
+
+/* Subtle “there is more” fades left/right */
+.portfolio-fade-left,
+.portfolio-fade-right {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  bottom: 2.25rem; /* leave room for dots */
+  width: 56px;
+  z-index: 2;
+  opacity: 0.9;
+}
+.portfolio-fade-left {
+  left: -4px;
+  background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
+}
+.portfolio-fade-right {
+  right: -4px;
+  background: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
+}
+
+/* Dots */
+.portfolio-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+.portfolio-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(71, 103, 131, 0.35);
+  background: rgba(255, 255, 255, 0.8);
+}
+.portfolio-dots .dot:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(247, 185, 125, 0.35);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-scroller {
+    scroll-behavior: auto;
+  }
+  .portfolio-track {
+    animation: none !important;
+  }
+}
+
+.portfolio-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.portfolio-cta {
+  margin-top: auto;   /* DAS ist der Key */
+  padding-top: 0.75rem;
+}
+
+
+@media (min-width: 768px) {
+  .story-clamp {
+    display: block;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-card {
+    padding: 1.25rem; /* statt 2rem */
+  }
+  .portfolio-scroller {
+    grid-auto-columns: minmax(90%, 1fr); /* hast du schon */
+  }
+}
+
+
+
 </style>
 

@@ -1,0 +1,114 @@
+---
+import CustomButton from "@/components/CustomButton.astro";
+
+const plans = [
+  {
+    title: "Einführung / Setup",
+    price: "990 € einmalig",
+    badge: null,
+    copy:
+      "Selbstständige Nutzung mit professioneller Einrichtung durch uns inkl. Einarbeitung in Lexoffice (keine Steuerberatung).",
+    bullets: [
+      "Einrichtung von Angeboten & Rechnungen",
+      "Struktur für Belege, Einnahmen & Ausgaben",
+      "Übergabe & kurze Schulung",
+    ],
+    button: {
+      label: "Setup anfragen",
+      url: "#footer-with-contact",
+    },
+  },
+  {
+    title: "Digitaler Buchhaltungsservice",
+    price: "119 € / Monat",
+    badge: "Empfohlen",
+    copy:
+      "Laufende vorbereitende Buchführung inkl. Übergabe an Steuerkanzlei. Lohn je Mitarbeiter als Add-on.",
+    bullets: [
+      "Angebote/Rechnungen & Belegablage",
+      "Einnahmen/Ausgaben vorbereiten",
+      "Vorbereitende Buchführung / Übergabe",
+      "Zusätzlich 11 € je Mitarbeiter Lohn",
+    ],
+    button: {
+      label: "Service anfragen",
+      url: "#footer-with-contact",
+    },
+  },
+];
+---
+
+<section id="digitale-buchhaltung" class="py-16 md:py-20 bg-white">
+  <div class="container space-y-10">
+    <div class="space-y-3 text-center text-[#0a1a2f]">
+      <p class="text-xs uppercase tracking-[0.28em] text-[#476783]">
+        Digitale Buchhaltung
+      </p>
+      <h2 class="text-h2-sm md:text-h2 font-bold leading-tight">
+        Digitale Buchhaltung mit Lexoffice für Selbstständige und Unternehmen
+      </h2>
+      <p class="text-sm text-[#1f2a35]/85 md:text-base">
+        Wir erstellen professionelle Angebote und Rechnungen, organisieren deine laufende
+        Buchhaltung in Lexoffice und halten Einnahmen, Ausgaben und Belege aktuell.
+        Die Übergabe an die Steuerkanzlei erfolgt reibungslos ohne steuerrechtliche Beratung.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+      {plans.map((plan, idx) => (
+        <article
+          class:list={[
+            "flex h-full flex-col rounded-3xl border p-7 md:p-8 shadow-[0_22px_70px_-48px_rgba(0,0,0,0.28)] bg-gradient-to-br from-white to-[#f7f0e4]",
+            plan.badge
+              ? "border-[#f7b97d]/80 ring-1 ring-[#f7b97d]/40"
+              : "border-[#d7c5aa]/70",
+          ]}
+          data-aos="fade-up"
+          data-aos-delay={idx * 120}
+        >
+          <div class="space-y-4">
+            <div class="flex items-start justify-between gap-3">
+              <div class="space-y-1">
+                <h3 class="text-lg font-semibold tracking-tight text-[#0a1a2f] md:text-xl">
+                  {plan.title}
+                </h3>
+                <p class="text-xl font-primary font-semibold text-[#476783] md:text-2xl">
+                  {plan.price}
+                </p>
+              </div>
+              {plan.badge && (
+                <span class="rounded-full bg-[#f7b97d] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#0a1a2f]">
+                  {plan.badge}
+                </span>
+              )}
+            </div>
+            {plan.title === "Digitaler Buchhaltungsservice" && (
+              <p class="text-xs font-semibold text-[#0a1a2f]/80">
+                Einmalige Einrichtung: 490 € (statt 990 €)
+              </p>
+            )}
+            <p class="text-sm text-[#1f2a35]/85 md:text-base">{plan.copy}</p>
+            <ul class="list-aligned space-y-2 text-xs font-medium text-[#0f1c28] md:text-[13px]">
+              {plan.bullets.map((item) => (
+                <li class="list-aligned-item">
+                  <span class="leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+            {plan.title === "Digitaler Buchhaltungsservice" && (
+              <p class="text-xs text-[#1f2a35]/75">Jahresabschluss etc. kostet extra.</p>
+            )}
+          </div>
+          <div class="mt-auto pt-4">
+            <CustomButton
+              label={plan.button.label}
+              url={plan.button.url}
+              hoverEffect="creative-fill"
+              class="btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#c9baa8] hover:border-[#c9baa8] hover:text-[#0a1a2f] effect-color-dark"
+            />
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

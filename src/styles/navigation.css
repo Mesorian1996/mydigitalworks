@@ -86,11 +86,10 @@
     @apply mb-0 bg-transparent;
 
     .nav-toggle {
+      /* Bisher hattest du hier nur cursor/gap usw.
+         Ergänze: gleiche Basis wie .nav-link */
+      @apply font-secondary text-text-default hover:bg-primary/5 hover:text-primary relative flex w-full items-center px-5 py-3 text-sm font-normal uppercase transition duration-300;
       @apply cursor-pointer justify-between gap-2 select-none;
-
-      .nav-toggle-icon {
-        @apply hs-dropdown-open:rotate-180 ms-2 inline-block h-4 w-4 transition duration-300;
-      }
     }
 
     .nav-link,
@@ -101,20 +100,29 @@
         @apply max-lg:text-accent;
       }
     }
+
+    /* Icon inherits text color */
+    .nav-toggle-icon {
+      @apply hs-dropdown-open:rotate-180 ms-2 inline-block h-4 w-4 transition duration-300 text-current;
+    }
+    .nav-toggle-icon svg,
+    .nav-toggle-icon svg * {
+      stroke: currentColor;
+      fill: currentColor;
+    }
   }
+
+  
 
   /* Dropdown List Styles */
   .nav-dropdown-list {
-    @apply hs-dropdown-open:pointer-events-auto hs-dropdown-open:opacity-100 border-border-dark pointer-events-none absolute top-0 z-10 mt-4 hidden min-w-72 border bg-white p-1 opacity-0 transition-[opacity,margin] max-lg:!static max-lg:!transform-none lg:start-1/2 lg:!mx-2 lg:-translate-x-1/2;
+    @apply hs-dropdown-open:pointer-events-auto hs-dropdown-open:opacity-100 border-border-dark pointer-events-none absolute top-full z-10 mt-3 hidden min-w-72 border bg-white p-1 opacity-0 transition-[opacity,margin] max-lg:!static max-lg:!transform-none lg:start-0 lg:translate-x-0;
   }
 
   .nav-dropdown-link {
     @apply font-secondary hover:bg-primary/5 hover:text-primary px-2.5 py-2 text-inherit lg:px-5;
   }
 
-  .nav-dropdown .nav-toggle {
-    @apply lg:hs-dropdown-open:bg-primary/5 lg:text-primary;
-  }
 
   /* Navbar for Mobile */
   &.navbar-mobile {
@@ -155,10 +163,43 @@
   }
 }
 
-/* Dark Header Variant */
+/* Dark Header Variant - Weiße Schrift auf dunklem Hintergrund (nur wenn has-dark-background gesetzt ist) */
 .header.has-dark-background {
-  .nav-link {
-    @apply text-light hover:text-accent;
+  .navbar:not(.navbar-mobile) {
+    .nav-link,
+    .nav-toggle,
+    .nav-dropdown-link {
+      @apply !text-light hover:!text-accent hover:!bg-white/10;
+    }
+    
+    /* Dropdown-Menü bei dunklem Header */
+    .nav-dropdown-list {
+      @apply bg-black/90 border-white/10;
+      
+      .nav-dropdown-link {
+        @apply !text-light hover:!bg-white/10;
+      }
+    }
+  }
+}
+
+/* Light Header Variant - Schwarze Schrift auf hellem Hintergrund (Unterseiten ohne has-dark-background) */
+.header:not(.has-dark-background) {
+  .navbar:not(.navbar-mobile) {
+    .nav-link,
+    .nav-toggle,
+    .nav-dropdown-link {
+      @apply !text-black hover:!text-primary hover:!bg-primary/5;
+    }
+    
+    /* Dropdown-Menü bei hellem Header */
+    .nav-dropdown-list {
+      @apply bg-white border-border-dark;
+      
+      .nav-dropdown-link {
+        @apply !text-black hover:!bg-primary/5;
+      }
+    }
   }
 }
 

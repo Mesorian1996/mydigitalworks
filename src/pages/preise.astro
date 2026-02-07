@@ -1,25 +1,42 @@
 ---
 import Base from "@/layouts/Base.astro";
-const title = "Preise";
+import PricingSection from "@/components/sections/PricingSection.astro";
+import HostingSection from "@/components/sections/HostingSection.astro";
+import DigitaleBuchhaltungSection from "@/components/sections/DigitaleBuchhaltungSection.astro";
+import ModulesSection from "@/components/sections/ModulesSection.astro";
+import CustomButton from "@/components/CustomButton.astro";
 ---
 
 <Base className="bg-white">
-  <section class="bg-[#E5E7EB] py-20 md:py-24">
-    <div class="container space-y-3">
-      <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Preise</p>
-      <h1 class="text-h1-sm font-bold leading-tight text-[#0A1A2F] md:text-h1">
-        {title}
-      </h1>
-      <p class="text-base text-[#1f2a35]/75 md:text-lg">Placeholder für Inhalte.</p>
+  <section class="bg-gradient-to-b from-white via-[#f9f2e9] to-white py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-4xl space-y-6 text-center" data-aos="fade-up">
+        <div class="inline-flex items-center gap-3 rounded-full bg-[#476783]/10 px-3 py-1.5 text-[#476783]">
+          <img src="/images/logo.webp" alt="MY Digital Works Logo" class="h-6 w-auto opacity-80" loading="lazy" decoding="async" />
+          <span class="text-[11px] uppercase tracking-[0.24em]">MY Digital Works</span>
+        </div>
+        <h1 class="text-h1-sm font-bold leading-tight text-[#0A1A2F] md:text-h1">Preise &amp; Pakete</h1>
+        <p class="text-base text-[#1f2a35]/80 md:text-lg max-w-2xl mx-auto">
+          Transparente Preise, faire Konditionen. Investieren Sie in Sichtbarkeit und Anfragen, nicht in versteckte Kosten.
+        </p>
+      </div>
     </div>
   </section>
 
-  <section class="py-14 md:py-20">
+  <PricingSection />
+  <HostingSection />
+  <DigitaleBuchhaltungSection />
+  <ModulesSection />
+
+  <section class="bg-gradient-to-b from-[#0A1A2F] to-[#1a2f45] py-20 md:py-28">
     <div class="container">
-      <div class="rounded-3xl border border-dashed border-[#d7c5aa]/60 bg-white/70 p-8 text-[#0a1a2f]">
-        <p class="text-sm text-[#0a1a2f]/70">Inhalt folgt: {title}</p>
+      <div class="mx-auto max-w-3xl space-y-8 text-center" data-aos="fade-up">
+        <h2 class="text-h2-sm font-bold leading-tight text-white md:text-h2">Fragen zu den Preisen?</h2>
+        <p class="text-lg text-white/80">
+          Lassen Sie uns in einem kostenlosen Gespräch herausfinden, welches Paket am besten zu Ihnen passt.
+        </p>
+        <CustomButton label="Kostenloses Erstgespräch" url="/#contact" hoverEffect="creative-fill" class="btn-primary bg-[#f7b97d] border-[#f7b97d] text-[#0a1a2f] hover:bg-white hover:border-white hover:text-[#0a1a2f]" />
       </div>
     </div>
   </section>
 </Base>
-

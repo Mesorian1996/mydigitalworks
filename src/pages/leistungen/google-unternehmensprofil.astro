@@ -1,25 +1,723 @@
 ---
 import Base from "@/layouts/Base.astro";
-const title = "Google Unternehmensprofil";
+import CustomButton from "@/components/CustomButton.astro";
+
+const title = "Google Unternehmensprofil erstellen lassen";
+const metaDescription = "Google Unternehmensprofil professionell erstellen lassen ✓ Google Maps Optimierung ✓ Mehr lokale Kunden ✓ Kostenlose Beratung für Unternehmen in Ludwigshafen, Mannheim & Umgebung";
+
+// Was wir konkret machen
+const services = [
+  {
+    title: "Profil Einrichtung und Optimierung",
+    hook: "Komplett eingerichtet und einsatzbereit.",
+    story: "Wir erstellen oder beanspruchen Ihr Profil und richten es vollständig ein. Mit Unternehmensinfos, Öffnungszeiten, Kategorien und einer optimierten Beschreibung mit relevanten Keywords.",
+    accentColor: "#476783",
+    details: [
+      "Profil erstellen oder beanspruchen",
+      "Unternehmensname, Adresse, Telefon",
+      "Öffnungszeiten und Erreichbarkeit",
+      "Kategorien und Attribute richtig setzen",
+      "Beschreibung mit relevanten Keywords"
+    ]
+  },
+  {
+    title: "Professionelle Bilder und Logo",
+    hook: "Visuell überzeugend von der ersten Sekunde.",
+    story: "Hochwertige Fotos und ein professionelles Logo machen Ihr Profil attraktiv und vertrauenswürdig. Der erste Eindruck zählt.",
+    accentColor: "#f7b97d",
+    details: [
+      "Logo hochladen und positionieren",
+      "Titelbild für ersten Eindruck",
+      "Innen und Außenaufnahmen",
+      "Team und Produktfotos",
+      "Mobile optimierte Darstellung"
+    ]
+  },
+  {
+    title: "Lokale Sichtbarkeit steigern",
+    hook: "Gefunden werden, wenn Kunden suchen.",
+    story: "Durch gezielte Optimierung erscheinen Sie in der lokalen Suche und auf Google Maps ganz oben. Genau dann, wenn potenzielle Kunden nach Ihren Leistungen suchen.",
+    accentColor: "#476783",
+    details: [
+      "Lokale Keywords integrieren",
+      "NAP Konsistenz sicherstellen",
+      "Google Maps Optimierung",
+      "Einzugsgebiet definieren",
+      "Relevante Service Kategorien"
+    ]
+  },
+  {
+    title: "Bewertungs Management",
+    hook: "Vertrauen aufbauen durch echte Kundenstimmen.",
+    story: "Wir zeigen Ihnen, wie Sie Bewertungen erhalten und professionell darauf reagieren. Für kontinuierliches Vertrauen bei neuen Kunden.",
+    accentColor: "#f7b97d",
+    details: [
+      "Bewertungs Strategie entwickeln",
+      "Review Link für Kunden einrichten",
+      "Antwort Vorlagen erstellen",
+      "Positive Bewertungen fördern",
+      "Professioneller Umgang mit Kritik"
+    ]
+  }
+];
+
+// FAQ Section - SEO optimiert mit echten Suchbegriffen
+const faqs = [
+  {
+    question: "Wie erstelle ich ein Google Unternehmensprofil?",
+    answer: "Um ein Google Unternehmensprofil zu erstellen, benötigen Sie ein Google-Konto. Gehen Sie zu google.com/business und klicken Sie auf 'Jetzt starten'. Geben Sie Ihren Firmennamen, Adresse und Kategorie ein. Nach der Verifizierung per Postkarte, Telefon oder E-Mail können Sie Ihr Profil vollständig einrichten. Wir übernehmen diesen kompletten Prozess für Sie und optimieren Ihr Profil direkt für maximale lokale Sichtbarkeit."
+  },
+  {
+    question: "Wie platziere ich mein Unternehmen auf Google Maps?",
+    answer: "Ihr Unternehmen erscheint automatisch auf Google Maps, sobald Sie ein verifiziertes Google Unternehmensprofil haben. Entscheidend für eine gute Platzierung sind: vollständige und korrekte Unternehmensdaten, passende Kategorien, hochwertige Fotos, positive Bewertungen und regelmäßige Beiträge. Wir optimieren all diese Faktoren, damit Sie bei lokalen Suchanfragen in den Top-Ergebnissen erscheinen."
+  },
+  {
+    question: "Was kostet ein Google Unternehmensprofil?",
+    answer: "Das Google Unternehmensprofil selbst ist komplett kostenlos – Google erhebt keine Gebühren dafür. Die Investition liegt in der professionellen Einrichtung und Optimierung. Unser Service umfasst die vollständige Einrichtung, Verifizierung, SEO-Optimierung mit lokalen Keywords, professionelle Bildauswahl und Bewertungsmanagement. So erscheinen Sie von Anfang an optimal in den lokalen Suchergebnissen."
+  },
+  {
+    question: "Wie lange dauert die Einrichtung eines Google Unternehmens­profils?",
+    answer: "Die grundlegende Einrichtung dauert nur wenige Stunden. Die Verifizierung durch Google kann 3-7 Werktage in Anspruch nehmen, je nach gewählter Methode (Postkarte, Telefon oder E-Mail). Die vollständige Optimierung mit Fotos, Beschreibungen und allen relevanten Informationen führen wir parallel durch. In der Regel ist Ihr Profil innerhalb von 1-2 Wochen vollständig einsatzbereit und optimiert."
+  },
+  {
+    question: "Wie bekomme ich mehr Google Bewertungen?",
+    answer: "Der Schlüssel liegt in einem systematischen Ansatz: Wir richten einen direkten Review-Link für Sie ein, den Sie einfach per E-Mail oder WhatsApp versenden können. Am besten funktioniert die Bitte um Bewertung direkt nach erfolgreicher Leistungserbringung, wenn der Kunde zufrieden ist. Wir erstellen für Sie passende Textvorlagen und zeigen Ihnen, wie Sie Bewertungen professionell in Ihren Geschäftsablauf integrieren."
+  },
+  {
+    question: "Kann ich mein Google Profil auch selbst verwalten?",
+    answer: "Ja, absolut! Nach der professionellen Einrichtung und Optimierung durch uns erhalten Sie vollen Zugriff auf Ihr Profil. Wir zeigen Ihnen in einer Einweisung, wie Sie Beiträge erstellen, auf Bewertungen antworten und Informationen aktualisieren. Auf Wunsch bieten wir auch laufende Betreuung an, damit Ihr Profil immer aktuell und optimal für die lokale Suche aufgestellt bleibt."
+  },
+  {
+    question: "Warum erscheine ich nicht bei Google Maps?",
+    answer: "Häufige Gründe sind: Das Profil ist nicht verifiziert, wichtige Informationen fehlen, die Kategoriezuordnung ist falsch oder das Profil verstößt gegen Google-Richtlinien. Auch technische Probleme wie falsche NAP-Daten (Name, Adresse, Telefon) oder zu wenige Aktivitäten können die Sichtbarkeit beeinträchtigen. Wir analysieren Ihr Profil und beheben alle Faktoren, die Ihre lokale Sichtbarkeit einschränken."
+  }
+];
+
+// Benefits/Value Props - Premium Design mit Branding Colors
+const benefits = [
+  {
+    title: "Professionelles Setup",
+    description: "Wir richten Ihr Google Unternehmensprofil vollständig ein und optimieren es für maximale lokale Sichtbarkeit.",
+    icon: "gear",
+    gradientFrom: "#476783",
+    gradientTo: "#648298",
+    lightBg: "#e7ecf1"
+  },
+  {
+    title: "Direkte Kundenanfragen",
+    description: "Kunden können Sie direkt anrufen, Routen planen, Bewertungen lesen und Nachrichten senden.",
+    icon: "phone",
+    gradientFrom: "#f7b97d",
+    gradientTo: "#efba87",
+    lightBg: "#f7f2ea"
+  },
+  {
+    title: "In der Suche sichtbar",
+    description: "Erscheinen Sie in der Google Suche und auf Google Maps, wenn Kunden nach Ihren Leistungen suchen.",
+    icon: "search",
+    gradientFrom: "#476783",
+    gradientTo: "#648298",
+    lightBg: "#e7ecf1"
+  },
+  {
+    title: "Vertrauen aufbauen",
+    description: "Professionelles Profil mit Fotos, Öffnungszeiten und Bewertungen schafft Glaubwürdigkeit.",
+    icon: "shield",
+    gradientFrom: "#f7b97d",
+    gradientTo: "#efba87",
+    lightBg: "#f7f2ea"
+  }
+];
+
+// Real Case Example
+const realCase = {
+  title: "Limani Fliesenleger, Mannheim",
+  description: "Professionelles Google Unternehmensprofil Setup: Kategorie Optimierung (Fliesenleger Mannheim), hochwertige Vorher Nachher Bilder aus echten Projekten, vollständige Leistungsbeschreibung, Öffnungszeiten und lokale Keywords. Bewertungs Link aktiv in Kundenkommunikation integriert.",
+  image: "/images/Limani_Fliesenleger_1.png",
+  mapsImage: "/src/assets/images/leistungen/Limani_google_profil.webp",
+  services: [
+    "Profil vollständig eingerichtet",
+    "10+ hochwertige Projektbilder",
+    "Lokale SEO Optimierung",
+    "Bewertungs Management aktiv"
+  ],
+  metrics: [
+    { label: "Google Maps Ranking", value: "Top 10 Suchergebnis" },
+    { label: "Profil Aufrufe", value: "+250% in 3 Monaten" },
+    { label: "Direkte Anfragen", value: "Kontinuierlich über Maps" }
+  ],
+  url: "https://limani-fliesenleger.de"
+};
 ---
 
-<Base className="bg-white">
-  <section class="bg-[#E5E7EB] py-20 md:py-24">
-    <div class="container space-y-3">
-      <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Leistungen</p>
-      <h1 class="text-h1-sm font-bold leading-tight text-[#0A1A2F] md:text-h1">
-        {title}
-      </h1>
-      <p class="text-base text-[#1f2a2f]/75 md:text-lg">Placeholder für Inhalte.</p>
-    </div>
-  </section>
+<Base className="bg-white" title={title} description={metaDescription}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-white via-[#f9f2e9] to-white py-12 md:py-24">
+    <div class="container grid gap-8 lg:gap-12 lg:grid-cols-2 lg:items-center">
+      <!-- Phone Mockup -->
+      <div class="order-2 lg:order-1" data-aos="fade-right">
+        <div class="mx-auto max-w-[320px] lg:translate-y-10">
+          <div class="relative overflow-hidden rounded-3xl bg-gradient-to-b from-[#0A1A2F] to-[#1a2f45] shadow-2xl">
+            <!-- Status Bar -->
+            <div class="bg-[#0A1A2F] px-4 py-2">
+              <div class="flex items-center justify-between text-xs text-white">
+                <span>9:41</span>
+                <div class="flex gap-1">
+                  <div class="h-3 w-4 rounded-sm bg-white/80"></div>
+                  <div class="h-3 w-4 rounded-sm bg-white/80"></div>
+                  <div class="h-3 w-4 rounded-sm bg-white/80"></div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Google Maps View -->
+            <div class="relative bg-gradient-to-b from-[#e8f4f8] to-white p-4">
+              <!-- Search Bar -->
+              <div class="mb-4 rounded-full border border-[#d7c5aa] bg-white px-4 py-2 shadow-sm">
+                <p class="text-xs text-[#476783]">Fliesenleger in meiner Nähe</p>
+              </div>
+              
+              <!-- Business Card Preview with animation -->
+              <div class="animate-slide-up rounded-2xl border border-[#d7c5aa]/70 bg-white p-4 shadow-lg">
+                <div class="mb-2 flex items-start justify-between">
+                  <div class="flex-1">
+                    <h3 class="text-sm font-bold text-[#0A1A2F]">Ihr Unternehmen</h3>
+                    <div class="mt-1 flex items-center gap-1">
+                      <span class="text-xs text-[#f7b97d]">★★★★★</span>
+                      <span class="text-xs text-[#1f2a35]/60">4.9 (24)</span>
+                    </div>
+                  </div>
+                  <div class="h-12 w-12 rounded-lg bg-gradient-to-br from-[#476783] to-[#5a7f9d]"></div>
+                </div>
+                
+                <div class="mb-3 space-y-1 text-xs text-[#1f2a35]/75">
+                  <p>✓ Geöffnet · Schließt um 18:00</p>
+                  <p>📍 2.3 km entfernt</p>
+                </div>
+                
+                <div class="flex gap-2">
+                  <div class="flex-1 rounded-lg bg-[#476783] py-2 text-center">
+                    <span class="text-xs font-medium text-white">Anrufen</span>
+                  </div>
+                  <div class="flex-1 rounded-lg border border-[#476783] py-2 text-center">
+                    <span class="text-xs font-medium text-[#476783]">Route</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <section class="py-14 md:py-20">
-    <div class="container">
-      <div class="rounded-3xl border border-dashed border-[#d7c5aa]/60 bg-white/70 p-8 text-[#0a1a2f]">
-        <p class="text-sm text-[#0a1a2f]/70">Inhalt folgt: {title}</p>
+      <!-- Text Content -->
+      <div class="order-1 space-y-4 md:space-y-6 text-[#0A1A2F] lg:order-2" data-aos="fade-left" data-aos-delay="120">
+        <div class="inline-flex items-center gap-3 rounded-full bg-[#476783]/10 px-3 py-1.5 text-[#476783]">
+          <img
+            src="/images/logo.webp"
+            alt="MY Digital Works Logo"
+            class="h-6 w-auto opacity-80"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="text-[11px] uppercase tracking-[0.24em]">MY Digital Works</span>
+        </div>
+        <h1 class="text-[2rem] sm:text-[2.5rem] md:text-h1-sm font-bold leading-tight lg:text-h1">{title}</h1>
+        <p class="text-base text-[#1f2a35]/80 md:text-lg">
+          Professionelles Google Unternehmensprofil für mehr lokale Kunden in Ludwigshafen, Mannheim und der Metropolregion Rhein-Neckar. Wir richten Ihr Profil ein, optimieren es für Google Maps und sorgen für kontinuierliche Anfragen.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <CustomButton
+            label="Kostenloses Gespräch buchen"
+            url="/#footer-with-contact"
+            hoverEffect="creative-fill"
+            class="btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#c9baa8] hover:border-[#c9baa8] hover:text-[#0a1a2f] effect-color-dark"
+          />
+          <CustomButton
+            variant="text"
+            hoverEffect="underline-slide"
+            label="Mehr erfahren"
+            url="#details"
+            class="text-[#476783] hover:text-[#f7b97d] px-0 py-0"
+          />
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- Premium Benefits Section mit WOW-Effekt -->
+  <section class="relative overflow-hidden bg-gradient-to-b from-white via-[#fafafa] to-white py-16 md:py-24">
+    <!-- Background Decoration -->
+    <div class="absolute inset-0 opacity-30">
+      <div class="absolute right-0 top-0 h-96 w-96 rounded-full bg-gradient-to-br from-[#476783]/10 to-transparent blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-gradient-to-tr from-[#f7b97d]/10 to-transparent blur-3xl"></div>
+    </div>
+
+    <div class="container relative">
+      <div class="mx-auto max-w-3xl space-y-4 text-center mb-16" data-aos="fade-up">
+        <p class="text-sm font-semibold uppercase tracking-[0.28em] text-[#476783]">Ihre Vorteile</p>
+        <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+          Warum ein Google Unternehmensprofil?
+        </h2>
+        <p class="text-base text-[#1f2a35]/70 md:text-lg">
+          80% der lokalen Suchanfragen führen zu einem Kauf oder Kontakt. Ohne professionelles Profil verlieren Sie täglich Kunden an die Konkurrenz.
+        </p>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {benefits.map((benefit, idx) => (
+          <a
+            href="#footer-with-contact"
+            class="benefit-card group relative block"
+            data-aos="fade-up"
+            data-aos-delay={idx * 100}>
+            
+            <!-- Card Background with Gradient Border Effect -->
+            <div 
+              class="absolute -inset-0.5 rounded-3xl opacity-0 blur transition-opacity duration-500 group-hover:opacity-100"
+              style={`background: linear-gradient(to right, ${benefit.gradientFrom}, ${benefit.gradientTo})`}>
+            </div>
+            
+            <!-- Card Content -->
+            <div class="relative h-full overflow-hidden rounded-3xl bg-white p-8 shadow-[0_20px_80px_-30px_rgba(0,0,0,0.15)] transition-all duration-500 group-hover:shadow-[0_30px_100px_-40px_rgba(0,0,0,0.25)]">
+              
+              <!-- Light Background on Hover -->
+              <div 
+                class="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                style={`background-color: ${benefit.lightBg}`}>
+              </div>
+              
+              <!-- Content -->
+              <div class="relative">
+                <!-- Icon with Animated Background -->
+                <div class="mb-6 inline-flex">
+                  <div class="relative">
+                    <!-- Rotating Ring -->
+                    <div 
+                      class="absolute inset-0 animate-spin-slow rounded-full p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                      style={`background: linear-gradient(to right, ${benefit.gradientFrom}, ${benefit.gradientTo})`}>
+                      <div class="h-full w-full rounded-full bg-white"></div>
+                    </div>
+                    
+                    <!-- Icon Container -->
+                    <div 
+                      class="relative flex h-16 w-16 items-center justify-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"
+                      style={`background: linear-gradient(135deg, ${benefit.gradientFrom}, ${benefit.gradientTo})`}>
+                      {benefit.icon === 'gear' && (
+                        <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                      )}
+                      {benefit.icon === 'phone' && (
+                        <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                      )}
+                      {benefit.icon === 'search' && (
+                        <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                      )}
+                      {benefit.icon === 'shield' && (
+                        <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                <h3 class="mb-3 text-xl font-bold text-[#0A1A2F]">
+                  {benefit.title}
+                </h3>
+                <p class="text-sm leading-relaxed text-[#1f2a35]/75 transition-colors duration-300 group-hover:text-[#1f2a35]/90">
+                  {benefit.description}
+                </p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA nach Benefits -->
+      <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="400">
+        <CustomButton
+          label="Jetzt Profil einrichten lassen"
+          url="/#footer-with-contact"
+          hoverEffect="creative-fill"
+          class="btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#f7b97d] hover:border-[#f7b97d] hover:text-[#0a1a2f]"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section mit Leistungsübersicht-Stil -->
+  <section id="details" class="bg-gradient-to-b from-[#f9f2e9] to-white py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-3xl space-y-4 text-center mb-12" data-aos="fade-up">
+        <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Unsere Leistungen</p>
+        <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+          Was wir für Sie einrichten
+        </h2>
+        <p class="text-base text-[#1f2a35]/70 md:text-lg">
+          Ein vollständig optimiertes Google Unternehmensprofil, das Vertrauen schafft und Anfragen generiert.
+        </p>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2">
+        {services.map((service, idx) => (
+          <article
+            class="service-card group relative flex h-full flex-col overflow-hidden rounded-3xl border border-[#d7c5aa]/70 bg-white shadow-[0_24px_90px_-60px_rgba(0,0,0,0.25)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_32px_110px_-70px_rgba(71,103,131,0.35)]"
+            data-aos="fade-up"
+            data-aos-delay={idx * 100}>
+            
+            <!-- Gradient Overlay on Hover -->
+            <div 
+              class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              style={`background: linear-gradient(135deg, ${service.accentColor}08 0%, transparent 100%)`}>
+            </div>
+
+            <div class="relative flex h-full flex-col gap-6 p-8">
+              <!-- Icon & Title -->
+              <div class="flex items-start gap-4">
+                <span 
+                  class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
+                  style={`background: linear-gradient(135deg, ${service.accentColor}20, ${service.accentColor}10)`}>
+                  <svg class="h-8 w-8 transition-transform duration-500 group-hover:scale-110" fill="none" stroke="currentColor" style={`color: ${service.accentColor}`} viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </span>
+                <div class="flex-1 space-y-2">
+                  <h3 class="text-xl font-bold tracking-tight text-[#0A1A2F] transition-colors duration-300 group-hover:text-[#476783]">
+                    {service.title}
+                  </h3>
+                  <p class="text-sm font-medium text-[#476783]">{service.hook}</p>
+                </div>
+              </div>
+
+              <!-- Story -->
+              <p class="flex-1 text-sm leading-relaxed text-[#0a1a2f]/75">
+                {service.story}
+              </p>
+
+              <!-- Details List -->
+              <ul class="space-y-2 border-t border-[#d7c5aa]/30 pt-4">
+                {service.details.slice(0, 3).map(detail => (
+                  <li class="flex items-start gap-2 text-sm text-[#1f2a35]/75">
+                    <svg class="mt-0.5 h-4 w-4 flex-shrink-0" style={`color: ${service.accentColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{detail}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- CTA nach Services -->
+      <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="400">
+        <div class="mx-auto max-w-2xl space-y-4">
+          <p class="text-base text-[#1f2a35]/70">
+            Lassen Sie uns Ihr Profil professionell einrichten und für lokale Kunden optimieren.
+          </p>
+          <CustomButton
+            label="Beratungsgespräch vereinbaren"
+            url="/#footer-with-contact"
+            hoverEffect="creative-fill"
+            class="btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#f7b97d] hover:border-[#f7b97d] hover:text-[#0a1a2f]"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Real Case Section mit echtem Maps Screenshot -->
+  <section class="bg-gradient-to-b from-white via-[#f1ebe2] to-white py-16 md:py-24">
+    <div class="container space-y-10">
+      <div class="space-y-3 text-center text-[#0a1a2f]" data-aos="fade-up">
+        <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Praxisbeispiel</p>
+        <h2 class="text-h2-sm font-bold leading-tight md:text-h2">
+          So sieht ein professionelles Profil aus
+        </h2>
+      </div>
+
+      <article
+        class="group mx-auto max-w-5xl overflow-hidden rounded-3xl border border-[#d7c5aa]/70 bg-white shadow-[0_24px_90px_-60px_rgba(0,0,0,0.25)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_32px_110px_-70px_rgba(71,103,131,0.28)]"
+        data-aos="fade-up">
+        
+        <!-- Split Layout: Image + Maps Screenshot -->
+        <div class="grid md:grid-cols-2">
+          <div class="overflow-hidden">
+            <img
+              src={realCase.image}
+              alt={realCase.title}
+              class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="flex items-center justify-center bg-gradient-to-br from-[#f9f2e9]/30 to-white p-8">
+            <!-- Echter Google Maps Screenshot - kleiner und skaliert -->
+            <div class="max-w-[320px]">
+              <img
+                src={realCase.mapsImage}
+                alt="Google Maps Profil von Limani Fliesenleger"
+                class="w-full h-auto rounded-2xl shadow-xl transition duration-500 group-hover:scale-[1.02]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="p-8 md:p-10">
+          <div class="mb-6 space-y-3">
+            <h3 class="text-3xl font-semibold text-[#0A1A2F]">{realCase.title}</h3>
+            <p class="text-base leading-relaxed text-[#1f2a35]/80">{realCase.description}</p>
+          </div>
+
+          <div class="mb-6 grid gap-3 md:grid-cols-2">
+            {realCase.services.map((service) => (
+              <div class="flex items-center gap-2 text-sm text-[#1f2a35]/75">
+                <svg class="h-5 w-5 flex-shrink-0 text-[#476783]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{service}</span>
+              </div>
+            ))}
+          </div>
+          
+          <div class="mb-8 grid gap-4 md:grid-cols-3">
+            {realCase.metrics.map((metric) => (
+              <div class="rounded-2xl border border-[#d7c5aa]/50 bg-gradient-to-br from-[#f9f2e9]/30 to-white p-5">
+                <p class="mb-1 text-xs font-medium uppercase tracking-wider text-[#476783]/70">{metric.label}</p>
+                <p class="text-xl font-bold text-[#0A1A2F]">{metric.value}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="flex flex-wrap gap-3">
+            <CustomButton
+              label="Website ansehen"
+              url={realCase.url}
+              hoverEffect="creative-fill"
+              class="btn-outline border-[#476783] text-[#476783] hover:bg-[#476783] hover:text-white focus-visible:ring-4 focus-visible:ring-[#f7b97d]/40"
+            />
+            <CustomButton
+              label="Ähnliches Profil anfragen"
+              url="/#footer-with-contact"
+              hoverEffect="creative-fill"
+              class="btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#c9baa8] hover:border-[#c9baa8] hover:text-[#0a1a2f]"
+            />
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-4xl space-y-10">
+        <div class="space-y-3 text-center text-[#0a1a2f]" data-aos="fade-up">
+          <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Häufige Fragen</p>
+          <h2 class="text-h2-sm font-bold leading-tight md:text-h2">
+            Google Unternehmensprofil FAQ
+          </h2>
+          <p class="text-base text-[#1f2a35]/70 max-w-2xl mx-auto">
+            Die wichtigsten Antworten rund um Google Unternehmensprofil, Google Maps und lokale Sichtbarkeit.
+          </p>
+        </div>
+
+        <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+          {faqs.map((faq, index) => (
+            <details
+              class="group rounded-2xl border border-[#d7c5aa]/50 bg-gradient-to-br from-[#f9f2e9]/20 to-white p-6 transition-all duration-300 hover:border-[#d7c5aa] hover:shadow-lg [&[open]]:border-[#476783] [&[open]]:bg-white [&[open]]:shadow-xl"
+              data-aos="fade-up"
+              data-aos-delay={index * 50}>
+              <summary class="flex cursor-pointer items-start justify-between gap-4 text-left font-semibold text-[#0A1A2F] transition-colors duration-200 group-hover:text-[#476783] [&::-webkit-details-marker]:hidden">
+                <span class="text-base md:text-lg leading-relaxed">{faq.question}</span>
+                <svg
+                  class="h-6 w-6 flex-shrink-0 text-[#476783] transition-transform duration-300 group-open:rotate-180"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div class="mt-4 border-t border-[#d7c5aa]/30 pt-4 text-sm leading-relaxed text-[#1f2a35]/80 md:text-base">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+
+        <!-- Schema.org JSON-LD für FAQ -->
+        <script type="application/ld+json" set:html={JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.answer
+            }
+          }))
+        })} />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-gradient-to-b from-[#0A1A2F] to-[#1a2f45] py-20 md:py-28">
+    <div class="container">
+      <div class="mx-auto max-w-3xl space-y-8 text-center" data-aos="fade-up">
+        <h2 class="text-h2-sm font-bold leading-tight text-white md:text-h2">
+          Bereit für mehr lokale Anfragen?
+        </h2>
+        <p class="text-lg text-white/80">
+          Wir richten Ihr Google Unternehmensprofil professionell ein, optimieren die lokale Sichtbarkeit und sorgen für kontinuierliche Anfragen über Google Maps und die lokale Suche in Ludwigshafen, Mannheim und der gesamten Metropolregion Rhein-Neckar.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <CustomButton
+            label="Kostenloses Erstgespräch"
+            url="/#footer-with-contact"
+            hoverEffect="creative-fill"
+            class="btn-primary bg-[#f7b97d] border-[#f7b97d] text-[#0a1a2f] hover:bg-white hover:border-white hover:text-[#0a1a2f]"
+          />
+          <CustomButton
+            label="E-Mail schreiben"
+            url="mailto:kontakt@mydigitalworks.de"
+            hoverEffect="creative-fill"
+            class="btn-outline border-white text-white hover:bg-white hover:text-[#0a1a2f]"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Local Business Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "MY Digital Works - Google Unternehmensprofil Service",
+    "description": "Professionelle Einrichtung und Optimierung von Google Unternehmensprofilen für lokale Unternehmen in Ludwigshafen, Mannheim und der Metropolregion Rhein-Neckar",
+    "url": "https://mydigitalworks.de/leistungen/google-unternehmensprofil",
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Ludwigshafen"
+      },
+      {
+        "@type": "City", 
+        "name": "Mannheim"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Rheinland-Pfalz"
+      }
+    ],
+    "serviceType": [
+      "Google Unternehmensprofil Erstellung",
+      "Google Maps Optimierung",
+      "Lokales SEO",
+      "Bewertungsmanagement"
+    ]
+  })} />
+
+  
 </Base>
 
+<style>
+  /* Service Card Effects */
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #476783, #f7b97d);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .service-card:hover::before {
+    opacity: 1;
+  }
+
+  .service-card * {
+    transition-property: color, background-color, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Premium Benefit Cards */
+  .benefit-card {
+    transform-style: preserve-3d;
+  }
+
+  /* Phone Animation */
+  @keyframes slide-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 1s ease-out 0.5s both;
+  }
+
+  /* Slow Spin for Icon Ring */
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 3s linear infinite;
+  }
+
+  /* FAQ Details smooth animation */
+  details > summary {
+    list-style: none;
+  }
+  
+  details[open] > summary ~ * {
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  import AOS from 'aos';
+  import 'aos/dist/aos.css';
+  
+  AOS.init({
+    duration: 800,
+    easing: 'ease-out-cubic',
+    once: true,
+    offset: 80,
+  });
+</script>

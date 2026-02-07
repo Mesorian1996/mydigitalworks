@@ -5,6 +5,7 @@ import { markdownify } from "@/lib/utils/textConverter";
 import overrideObjects from "@/lib/utils/overrideObjects.ts";
 import type { pricingSectionSchema } from "@/sections.schema";
 import PricingCard from "@/layouts/components/cards/PricingCard.astro";
+import CustomButton from "@/components/CustomButton.astro";
 
 // Type for this section data
 type pricingSectionSchema = NonNullable<z.infer<typeof pricingSectionSchema>>;
@@ -30,6 +31,25 @@ let actualContent = overrideObjects(
 // Extracting required values from 'content' object
 let { enable = true, title, list } = actualContent || {};
 
+const normalizedPlans = (list || []).map((plan) => {
+  const rawName = (plan.name || "").replace(/<[^>]*>/g, "");
+  const id = rawName
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
+  return {
+    ...plan,
+    id: id || "plan",
+    isFeatured: rawName.toLowerCase().includes("business"),
+  };
+});
+
+const defaultPlanId =
+  normalizedPlans.find((plan) => plan.isFeatured)?.id ||
+  normalizedPlans[0]?.id;
+
+const segmentLabels = ["Starter", "Business", "Pro"];
+
 if (!enable) {
   return null;
 }
@@ -38,17 +58,111 @@ if (!enable) {
 <section id="pricing" class="py-16 md:py-24">
   <div class="container space-y-14">
     <div class="space-y-3 text-center text-[#0f1c28]">
-      <p class="text-xs uppercase tracking-[0.32em] text-[#476783]">P R E I S E & P A K E T E</p>
+      <p class="text-xs uppercase tracking-[0.32em] text-[#476783]">Webseitenpakete</p>
       <h2 class="text-h1-sm font-bold leading-tight md:text-h1">
         Professionelle Web-Auftritte, die Kunden überzeugen.
       </h2>
       <p class="text-base text-[#1f2a35] md:text-lg">
-        Von erster Sichtbarkeit bis High-End-Marke – wählen Sie das Paket, das zu Ihrer Reise passt.
+        Transparente Preise für hochwertige Arbeit. Investiere in dein Unternehmen, steigere Anfragen und erhöhe deine Reichweite.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
-      {list.map((item) => <PricingCard content={item} />)}
+    <div class="pricing-mobile sm:hidden">
+      <div
+        class="pricing-segmented"
+        role="tablist"
+        aria-label="Preispakete auswählen"
+        data-default={defaultPlanId}>
+        {normalizedPlans.map((plan, idx) => (
+          <button
+            type="button"
+            role="tab"
+            id={`tab-${plan.id}`}
+            aria-selected={plan.id === defaultPlanId}
+            aria-controls={`panel-${plan.id}`}
+            class:list={["pricing-segment", plan.id === defaultPlanId && "is-active"]}
+            data-plan={plan.id}>
+            {segmentLabels[idx] || plan.name?.replace(/<[^>]*>/g, "")}
+          </button>
+        ))}
+      </div>
+
+      <div class="pricing-mobile-panels">
+        {normalizedPlans.map((plan) => (
+          <div
+            id={`panel-${plan.id}`}
+            role="tabpanel"
+            aria-labelledby={`tab-${plan.id}`}
+            aria-hidden={plan.id === defaultPlanId ? "false" : "true"}
+            class:list={[
+              "pricing-mobile-panel",
+              plan.id === defaultPlanId && "is-active",
+            ]}
+            data-plan-panel={plan.id}>
+            <div class:list={[
+              "pricing-mobile-card",
+              plan.isFeatured && "is-featured",
+            ]}>
+              <div class="space-y-3">
+                <div class="flex items-start justify-between gap-3">
+                  <h3 class="text-lg font-semibold tracking-tight text-[#0f1c28]">
+                    {plan.name && (
+                      <span set:html={markdownify(plan.name)} />
+                    )}
+                  </h3>
+                  {plan.isFeatured && (
+                    <span class="rounded-full bg-[#f7b97d] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#0a1a2f]">
+                      Empfohlen
+                    </span>
+                  )}
+                </div>
+                {plan.price && (
+                  <div class="text-3xl font-primary font-semibold text-[#476783]">
+                    {plan.price.prependValue}
+                    {plan.price.value}
+                    <span class="text-base">{plan.price.appendValue}</span>
+                  </div>
+                )}
+                {plan.description && (
+                  <p class="text-sm text-[#1f2a35]/85" set:html={markdownify(plan.description)} />
+                )}
+              </div>
+
+              {plan.features && (
+                <ul class="space-y-2.5 text-xs font-medium text-[#0f1c28]">
+                  {plan.features.map((feature) => (
+                    <li class="flex items-start gap-2">
+                      <span class="mt-1 h-2 w-2 rounded-full bg-[#f7b97d]" />
+                      <span class="leading-relaxed" set:html={markdownify(feature)} />
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {plan.button?.enable && (
+                <div class="space-y-2">
+                  <CustomButton
+                    class:list={[
+                      "pricing-mobile-cta min-h-[44px] w-full text-center rounded-full px-4 py-2",
+                      plan.isFeatured
+                        ? "bg-[#f7b97d] border-[#f7b97d] text-[#0a0f1a] hover:bg-[#0a0f1a] hover:border-[#0a0f1a] hover:text-[#f7b97d] focus-visible:ring-4 focus-visible:ring-[#f7b97d]/45"
+                        : "bg-[#476783] border-[#476783] text-white hover:bg-white hover:border-[#476783] hover:text-[#476783] focus-visible:ring-4 focus-visible:ring-[#476783]/35",
+                    ]}
+                    hoverEffect="creative-fill"
+                    {...plan.button}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="hidden sm:grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+      {normalizedPlans.map((item, idx) => (
+        <PricingCard content={item} data-aos="fade-up" data-aos-delay={idx * 120} />
+      ))}
     </div>
 
     <div class="text-center text-sm text-[#1f2a35]">
@@ -56,3 +170,33 @@ if (!enable) {
     </div>
   </div>
 </section>
+
+<script>
+  const segmented = document.querySelector(".pricing-segmented");
+  const panels = document.querySelectorAll(".pricing-mobile-panel");
+  const tabs = document.querySelectorAll(".pricing-segment");
+
+  const activatePlan = (id) => {
+    tabs.forEach((tab) => {
+      const isActive = tab.dataset.plan === id;
+      tab.setAttribute("aria-selected", isActive ? "true" : "false");
+      tab.classList.toggle("is-active", isActive);
+    });
+    panels.forEach((panel) => {
+      const isActive = panel.dataset.planPanel === id;
+      panel.classList.toggle("is-active", isActive);
+      panel.setAttribute("aria-hidden", isActive ? "false" : "true");
+    });
+  };
+
+  if (segmented) {
+    const defaultId = segmented.dataset.default;
+    if (defaultId) activatePlan(defaultId);
+
+    segmented.addEventListener("click", (event) => {
+      const target = event.target.closest(".pricing-segment");
+      if (!target) return;
+      activatePlan(target.dataset.plan);
+    });
+  }
+</script>

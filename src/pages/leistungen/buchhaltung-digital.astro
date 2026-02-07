@@ -1,25 +1,592 @@
 ---
 import Base from "@/layouts/Base.astro";
-const title = "Buchhaltung digital";
+import CustomButton from "@/components/CustomButton.astro";
+
+const title = "Digitale Buchhaltung";
+
+// Premium Benefits mit Branding Colors
+const benefits = [
+  {
+    title: "Zeit für Ihr Geschäft",
+    description: "Keine Stunden mehr mit Belegen und Excel. Wir übernehmen die laufende Buchhaltung vollständig digital und strukturiert.",
+    icon: "clock",
+    gradientFrom: "#476783",
+    gradientTo: "#648298",
+    lightBg: "#e7ecf1"
+  },
+  {
+    title: "Steuerberater freut sich",
+    description: "Alle Belege digital erfasst, kategorisiert und GoBD konform. Ihr Steuerberater erhält perfekt vorbereitete Unterlagen.",
+    icon: "check",
+    gradientFrom: "#f7b97d",
+    gradientTo: "#efba87",
+    lightBg: "#f7f2ea"
+  },
+  {
+    title: "Volle Transparenz",
+    description: "Dashboard mit Einnahmen, Ausgaben und Liquidität. Sie wissen jederzeit genau, wie Ihr Unternehmen finanziell dasteht.",
+    icon: "chart",
+    gradientFrom: "#476783",
+    gradientTo: "#648298",
+    lightBg: "#e7ecf1"
+  },
+  {
+    title: "Rechtssicher und GoBD konform",
+    description: "Alle Dokumente revisionssicher archiviert nach den Grundsätzen ordnungsmäßiger Buchführung. Finanzamt approved.",
+    icon: "shield",
+    gradientFrom: "#f7b97d",
+    gradientTo: "#efba87",
+    lightBg: "#f7f2ea"
+  }
+];
+
+// Hauptleistungen
+const services = [
+  {
+    title: "Setup und Einrichtung",
+    hook: "Startklar in wenigen Tagen.",
+    story: "Wir richten Ihre digitale Buchhaltung komplett ein. Mit Lexoffice oder einem vergleichbaren Tool, das zu Ihrem Unternehmen passt. Konten verbinden, Kategorien anlegen, Vorlagen erstellen.",
+    accentColor: "#476783",
+    details: [
+      "Lexoffice oder alternatives Tool einrichten",
+      "Bankkonten und Kreditkarten anbinden",
+      "Kategorien und Kostenstellen anlegen",
+      "Rechnungsvorlagen erstellen",
+      "Schnittstelle zum Steuerberater"
+    ]
+  },
+  {
+    title: "Laufende Buchhaltung",
+    hook: "Ihre Belege werden automatisch verarbeitet.",
+    story: "Eingehende Belege werden digital erfasst, kategorisiert und gebucht. Rechnungen erstellt und versendet. Zahlungseingänge überwacht. Alles läuft automatisch im Hintergrund.",
+    accentColor: "#f7b97d",
+    details: [
+      "Belege scannen und kategorisieren",
+      "Einnahmen und Ausgaben buchen",
+      "Rechnungen und Angebote erstellen",
+      "Zahlungseingänge überwachen",
+      "Mahnwesen bei Bedarf"
+    ]
+  },
+  {
+    title: "Monatliche Reports",
+    hook: "Voller Durchblick über Ihre Finanzen.",
+    story: "Sie erhalten jeden Monat einen übersichtlichen Report mit Einnahmen, Ausgaben und offenen Posten. So behalten Sie die Kontrolle und können fundierte Entscheidungen treffen.",
+    accentColor: "#476783",
+    details: [
+      "Einnahmen Übersicht des Monats",
+      "Ausgaben nach Kategorien",
+      "Offene Forderungen und Verbindlichkeiten",
+      "Liquiditäts Prognose",
+      "Vorbereitung für Steuerkanzlei"
+    ]
+  },
+  {
+    title: "Steuerkanzlei Schnittstelle",
+    hook: "Perfekt vorbereitet für den Steuerberater.",
+    story: "Ihre Buchhaltung ist stets aktuell und vollständig. Der Steuerberater erhält alle Daten digital und strukturiert. Keine Nachfragen, keine fehlenden Belege, keine Verzögerungen.",
+    accentColor: "#f7b97d",
+    details: [
+      "DATEV Export für Steuerkanzlei",
+      "Quartalsweise oder monatliche Übergabe",
+      "Vollständige Belegsammlung",
+      "GoBD konforme Archivierung",
+      "Direkte Kommunikation bei Fragen"
+    ]
+  }
+];
+
+// Warum digitale Buchhaltung wichtig ist
+const whyDigital = [
+  {
+    title: "Gesetzliche Anforderungen",
+    points: [
+      "GoBD konforme Aufbewahrung aller Geschäftsunterlagen",
+      "Digitale Belege müssen revisionssicher archiviert werden",
+      "Finanzamt fordert zunehmend digitale Übermittlung",
+      "Papierbelege können verloren gehen oder verblassen"
+    ]
+  },
+  {
+    title: "Zeitersparnis und Effizienz",
+    points: [
+      "Keine manuelle Sortierung von Papierbelegen mehr",
+      "Automatische Kategorisierung spart Stunden pro Monat",
+      "Rechnungen in Minuten statt Stunden erstellen",
+      "Zahlungseingänge werden automatisch zugeordnet"
+    ]
+  },
+  {
+    title: "Bessere Entscheidungen",
+    points: [
+      "Echtzeit Überblick über Einnahmen und Ausgaben",
+      "Liquidität jederzeit im Blick behalten",
+      "Kostenentwicklung frühzeitig erkennen",
+      "Fundierte Basis für Investitionsentscheidungen"
+    ]
+  }
+];
+
+// Vorteile bei Steuererklärung
+const taxBenefits = [
+  {
+    title: "Weniger Stress mit der Steuererklärung",
+    description: "Ihr Steuerberater erhält alle Unterlagen vollständig und digital. Keine fehlenden Belege, keine Nachfragen. Die Steuererklärung wird schneller fertig und Sie sparen Beratungskosten."
+  },
+  {
+    title: "Umsatzsteuer Voranmeldung einfach",
+    description: "Monatliche oder quartalsweise Voranmeldung läuft automatisch. Alle Daten sind erfasst, kategorisiert und können direkt an das Finanzamt übermittelt werden."
+  },
+  {
+    title: "Betriebsprüfung vorbereitet",
+    description: "Bei einer Betriebsprüfung müssen alle Geschäftsunterlagen lückenlos vorgelegt werden. Mit digitaler Buchhaltung ist alles revisionssicher archiviert und schnell auffindbar."
+  }
+];
 ---
 
 <Base className="bg-white">
-  <section class="bg-[#E5E7EB] py-20 md:py-24">
-    <div class="container space-y-3">
-      <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Leistungen</p>
-      <h1 class="text-h1-sm font-bold leading-tight text-[#0A1A2F] md:text-h1">
-        {title}
-      </h1>
-      <p class="text-base text-[#1f2a35]/75 md:text-lg">Placeholder für Inhalte.</p>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-white via-[#f9f2e9] to-white py-12 md:py-24">
+    <div class="container grid gap-8 lg:gap-12 lg:grid-cols-2 lg:items-center">
+      <!-- Dashboard Mockup -->
+      <div class="order-2 lg:order-1" data-aos="fade-right">
+        <div class="mx-auto max-w-[520px] lg:translate-y-10">
+          <div class="overflow-hidden rounded-3xl border border-[#d7c5aa]/70 bg-white shadow-2xl">
+            <!-- Dashboard Preview -->
+            <div class="bg-gradient-to-b from-[#476783] to-[#3d5a6f] p-6">
+              <div class="mb-4 flex items-center justify-between text-white">
+                <h3 class="text-lg font-bold">Buchhaltungs Dashboard</h3>
+                <div class="rounded-full bg-white/20 px-3 py-1 text-xs">Live</div>
+              </div>
+              
+              <!-- Stats Grid -->
+              <div class="grid grid-cols-2 gap-4">
+                <div class="rounded-2xl bg-white/10 p-4 backdrop-blur">
+                  <p class="mb-1 text-xs text-white/70">Einnahmen MTD</p>
+                  <p class="text-2xl font-bold text-white">15.840 €</p>
+                  <p class="text-xs text-green-300">+12% vs Vormonat</p>
+                </div>
+                <div class="rounded-2xl bg-white/10 p-4 backdrop-blur">
+                  <p class="mb-1 text-xs text-white/70">Ausgaben MTD</p>
+                  <p class="text-2xl font-bold text-white">8.420 €</p>
+                  <p class="text-xs text-white/70">+3% vs Vormonat</p>
+                </div>
+                <div class="rounded-2xl bg-white/10 p-4 backdrop-blur">
+                  <p class="mb-1 text-xs text-white/70">Offene Rechnungen</p>
+                  <p class="text-2xl font-bold text-white">12</p>
+                  <p class="text-xs text-orange-300">5.200 € ausstehend</p>
+                </div>
+                <div class="rounded-2xl bg-white/10 p-4 backdrop-blur">
+                  <p class="mb-1 text-xs text-white/70">Liquidität</p>
+                  <p class="text-2xl font-bold text-white">42.300 €</p>
+                  <p class="text-xs text-green-300">Gesund</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Recent Activity -->
+            <div class="bg-white p-6">
+              <p class="mb-4 text-sm font-semibold text-[#0A1A2F]">Letzte Aktivitäten</p>
+              <div class="space-y-3">
+                <div class="flex items-center gap-3">
+                  <div class="h-2 w-2 rounded-full bg-green-500"></div>
+                  <p class="text-xs text-[#1f2a35]/75">Rechnung RE-2024-042 bezahlt</p>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="h-2 w-2 rounded-full bg-blue-500"></div>
+                  <p class="text-xs text-[#1f2a35]/75">15 neue Belege kategorisiert</p>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="h-2 w-2 rounded-full bg-[#476783]"></div>
+                  <p class="text-xs text-[#1f2a35]/75">Monatsreport erstellt</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text Content -->
+      <div class="order-1 space-y-4 md:space-y-6 text-[#0A1A2F] lg:order-2" data-aos="fade-left" data-aos-delay="120">
+        <div class="inline-flex items-center gap-3 rounded-full bg-[#476783]/10 px-3 py-1.5 text-[#476783]">
+          <img
+            src="/images/logo.webp"
+            alt="MY Digital Works Logo"
+            class="h-6 w-auto opacity-80"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="text-[11px] uppercase tracking-[0.24em]">MY Digital Works</span>
+        </div>
+        <h1 class="text-[2rem] sm:text-[2.5rem] md:text-h1-sm font-bold leading-tight lg:text-h1">{title}</h1>
+        <p class="text-base text-[#1f2a35]/80 md:text-lg">
+          Buchhaltung ohne Papierstapel und Zeitverlust. Wir übernehmen die komplette digitale Buchführung, Sie konzentrieren sich auf Ihr Geschäft.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <CustomButton
+            label="Kostenloses Gespräch buchen"
+            url="#footer-with-contact"
+            hoverEffect="creative-fill"
+            class="btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#c9baa8] hover:border-[#c9baa8] hover:text-[#0a1a2f] effect-color-dark"
+          />
+          <CustomButton
+            variant="text"
+            hoverEffect="underline-slide"
+            label="Mehr erfahren"
+            url="#details"
+            class="text-[#476783] hover:text-[#f7b97d] px-0 py-0"
+          />
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="py-14 md:py-20">
+  <!-- Premium Benefits Section -->
+  <section class="relative overflow-hidden bg-gradient-to-b from-white via-[#fafafa] to-white py-16 md:py-24">
+    <!-- Background Decoration -->
+    <div class="absolute inset-0 opacity-30">
+      <div class="absolute right-0 top-0 h-96 w-96 rounded-full bg-gradient-to-br from-[#476783]/10 to-transparent blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-gradient-to-tr from-[#f7b97d]/10 to-transparent blur-3xl"></div>
+    </div>
+
+    <div class="container relative">
+      <div class="mx-auto max-w-3xl space-y-4 text-center mb-16" data-aos="fade-up">
+        <p class="text-sm font-semibold uppercase tracking-[0.28em] text-[#476783]">Ihre Vorteile</p>
+        <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+          Warum digitale Buchhaltung?
+        </h2>
+        <p class="text-base text-[#1f2a35]/70 md:text-lg">
+          Gesetzlich erforderlich, betriebswirtschaftlich sinnvoll und zeitsparend. Digitale Buchhaltung ist der Standard für moderne Unternehmen.
+        </p>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {benefits.map((benefit, idx) => (
+          <div
+            class="benefit-card group relative"
+            data-aos="fade-up"
+            data-aos-delay={idx * 100}>
+            
+            <!-- Card Background with Gradient Border Effect -->
+            <div 
+              class="absolute -inset-0.5 rounded-3xl opacity-0 blur transition-opacity duration-500 group-hover:opacity-100"
+              style={`background: linear-gradient(to right, ${benefit.gradientFrom}, ${benefit.gradientTo})`}>
+            </div>
+            
+            <!-- Card Content -->
+            <div class="relative h-full overflow-hidden rounded-3xl bg-white p-8 shadow-[0_20px_80px_-30px_rgba(0,0,0,0.15)] transition-all duration-500 group-hover:shadow-[0_30px_100px_-40px_rgba(0,0,0,0.25)]">
+              
+              <!-- Light Background on Hover -->
+              <div 
+                class="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                style={`background-color: ${benefit.lightBg}`}>
+              </div>
+              
+              <!-- Content -->
+              <div class="relative">
+                <!-- Icon with Animated Background -->
+                <div class="mb-6 inline-flex">
+                  <div class="relative">
+                    <!-- Rotating Ring -->
+                    <div 
+                      class="absolute inset-0 animate-spin-slow rounded-full p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                      style={`background: linear-gradient(to right, ${benefit.gradientFrom}, ${benefit.gradientTo})`}>
+                      <div class="h-full w-full rounded-full bg-white"></div>
+                    </div>
+                    
+                    <!-- Icon Container -->
+                    <div 
+                      class="relative flex h-16 w-16 items-center justify-center rounded-2xl shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"
+                      style={`background: linear-gradient(135deg, ${benefit.gradientFrom}, ${benefit.gradientTo})`}>
+                      {benefit.icon === 'clock' && (
+                        <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      )}
+                      {benefit.icon === 'check' && (
+                        <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      )}
+                      {benefit.icon === 'chart' && (
+                        <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                      )}
+                      {benefit.icon === 'shield' && (
+                        <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                <h3 class="mb-3 text-xl font-bold text-[#0A1A2F]">
+                  {benefit.title}
+                </h3>
+                <p class="text-sm leading-relaxed text-[#1f2a35]/75 transition-colors duration-300 group-hover:text-[#1f2a35]/90">
+                  {benefit.description}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA nach Benefits -->
+      <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="400">
+        <CustomButton
+          label="Jetzt Buchhaltung digitalisieren"
+          url="#footer-with-contact"
+          hoverEffect="creative-fill"
+          class="btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#f7b97d] hover:border-[#f7b97d] hover:text-[#0a1a2f]"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="details" class="bg-gradient-to-b from-[#f9f2e9] to-white py-16 md:py-24">
     <div class="container">
-      <div class="rounded-3xl border border-dashed border-[#d7c5aa]/60 bg-white/70 p-8 text-[#0a1a2f]">
-        <p class="text-sm text-[#0a1a2f]/70">Inhalt folgt: {title}</p>
+      <div class="mx-auto max-w-3xl space-y-4 text-center mb-12" data-aos="fade-up">
+        <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Unsere Leistungen</p>
+        <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+          Was wir für Sie übernehmen
+        </h2>
+        <p class="text-base text-[#1f2a35]/70 md:text-lg">
+          Von der Einrichtung bis zur monatlichen Buchhaltung. Alles digital, strukturiert und steuerkanzlei fertig.
+        </p>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2">
+        {services.map((service, idx) => (
+          <article
+            class="service-card group relative flex h-full flex-col overflow-hidden rounded-3xl border border-[#d7c5aa]/70 bg-white shadow-[0_24px_90px_-60px_rgba(0,0,0,0.25)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_32px_110px_-70px_rgba(71,103,131,0.35)]"
+            data-aos="fade-up"
+            data-aos-delay={idx * 100}>
+            
+            <!-- Gradient Overlay on Hover -->
+            <div 
+              class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              style={`background: linear-gradient(135deg, ${service.accentColor}08 0%, transparent 100%)`}>
+            </div>
+
+            <div class="relative flex h-full flex-col gap-6 p-8">
+              <!-- Icon & Title -->
+              <div class="flex items-start gap-4">
+                <span 
+                  class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
+                  style={`background: linear-gradient(135deg, ${service.accentColor}20, ${service.accentColor}10)`}>
+                  <svg class="h-8 w-8 transition-transform duration-500 group-hover:scale-110" fill="none" stroke="currentColor" style={`color: ${service.accentColor}`} viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </span>
+                <div class="flex-1 space-y-2">
+                  <h3 class="text-xl font-bold tracking-tight text-[#0A1A2F] transition-colors duration-300 group-hover:text-[#476783]">
+                    {service.title}
+                  </h3>
+                  <p class="text-sm font-medium text-[#476783]">{service.hook}</p>
+                </div>
+              </div>
+
+              <!-- Story -->
+              <p class="flex-1 text-sm leading-relaxed text-[#0a1a2f]/75">
+                {service.story}
+              </p>
+
+              <!-- Details List -->
+              <ul class="space-y-2 border-t border-[#d7c5aa]/30 pt-4">
+                {service.details.slice(0, 3).map(detail => (
+                  <li class="flex items-start gap-2 text-sm text-[#1f2a35]/75">
+                    <svg class="mt-0.5 h-4 w-4 flex-shrink-0" style={`color: ${service.accentColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{detail}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- CTA nach Services -->
+      <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="400">
+        <div class="mx-auto max-w-2xl space-y-4">
+          <p class="text-base text-[#1f2a35]/70">
+            Lassen Sie uns Ihre Buchhaltung digitalisieren und automatisieren.
+          </p>
+          <CustomButton
+            label="Beratungsgespräch vereinbaren"
+            url="#footer-with-contact"
+            hoverEffect="creative-fill"
+            class="btn-primary bg-[#476783] border-[#476783] text-white hover:bg-[#f7b97d] hover:border-[#f7b97d] hover:text-[#0a1a2f]"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Digital Section -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-3xl space-y-4 text-center mb-12" data-aos="fade-up">
+        <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Mehrwert</p>
+        <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+          Warum digitale Buchhaltung unverzichtbar ist
+        </h2>
+        <p class="text-base text-[#1f2a35]/70 md:text-lg">
+          Mehr als nur eine moderne Alternative. Digitale Buchhaltung ist gesetzlich gefordert und wirtschaftlich sinnvoll.
+        </p>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-3">
+        {whyDigital.map((section, idx) => (
+          <div
+            class="rounded-3xl border border-[#d7c5aa]/70 bg-gradient-to-br from-white to-[#f9f2e9]/20 p-8"
+            data-aos="fade-up"
+            data-aos-delay={idx * 100}>
+            <h3 class="mb-6 text-xl font-bold text-[#0A1A2F]">{section.title}</h3>
+            <ul class="space-y-3">
+              {section.points.map(point => (
+                <li class="flex items-start gap-2 text-sm text-[#1f2a35]/75">
+                  <svg class="mt-0.5 h-4 w-4 flex-shrink-0 text-[#476783]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tax Benefits Section -->
+  <section class="bg-gradient-to-b from-[#f9f2e9] to-white py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-3xl space-y-4 text-center mb-12" data-aos="fade-up">
+        <p class="text-sm uppercase tracking-[0.28em] text-[#476783]">Steuererklärung</p>
+        <h2 class="text-h2-sm font-bold leading-tight text-[#0A1A2F] md:text-h2">
+          Vorteile bei der Steuererklärung
+        </h2>
+        <p class="text-base text-[#1f2a35]/70 md:text-lg">
+          Ihr Steuerberater wird es lieben. Digitale Buchhaltung macht die Zusammenarbeit effizienter und spart Kosten.
+        </p>
+      </div>
+
+      <div class="mx-auto max-w-4xl space-y-6">
+        {taxBenefits.map((benefit, idx) => (
+          <div
+            class="group rounded-3xl border border-[#d7c5aa]/70 bg-white p-8 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_80px_-35px_rgba(71,103,131,0.25)]"
+            data-aos="fade-up"
+            data-aos-delay={idx * 100}>
+            <div class="flex items-start gap-6">
+              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#476783] to-[#648298] text-white">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div class="flex-1">
+                <h3 class="mb-2 text-lg font-bold text-[#0A1A2F]">{benefit.title}</h3>
+                <p class="text-sm leading-relaxed text-[#1f2a35]/75">{benefit.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-12 rounded-3xl border border-[#d7c5aa]/70 bg-gradient-to-br from-[#476783]/5 to-[#f7b97d]/5 p-8 text-center" data-aos="fade-up">
+        <p class="mb-2 text-sm font-semibold text-[#476783]">Wichtiger Hinweis</p>
+        <p class="text-base text-[#1f2a35]/75">
+          Wir sind keine Steuerberater und dürfen keine steuerliche Beratung durchführen. Wir bereiten Ihre Buchhaltung perfekt vor, Jahresabschlüsse und Steuererklärungen macht Ihr Steuerberater.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-gradient-to-b from-[#0A1A2F] to-[#1a2f45] py-20 md:py-28">
+    <div class="container">
+      <div class="mx-auto max-w-3xl space-y-8 text-center" data-aos="fade-up">
+        <h2 class="text-h2-sm font-bold leading-tight text-white md:text-h2">
+          Bereit für digitale Buchhaltung?
+        </h2>
+        <p class="text-lg text-white/80">
+          Wir richten Ihre digitale Buchhaltung ein und übernehmen die laufende Verwaltung. Sie konzentrieren sich auf Ihr Geschäft.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <CustomButton
+            label="Kostenloses Erstgespräch"
+            url="#footer-with-contact"
+            hoverEffect="creative-fill"
+            class="btn-primary bg-[#f7b97d] border-[#f7b97d] text-[#0a1a2f] hover:bg-white hover:border-white hover:text-[#0a1a2f]"
+          />
+          <CustomButton
+            label="E-Mail schreiben"
+            url="mailto:kontakt@mydigitalworks.de"
+            hoverEffect="creative-fill"
+            class="btn-outline border-white text-white hover:bg-white hover:text-[#0a1a2f]"
+          />
+        </div>
       </div>
     </div>
   </section>
 </Base>
 
+<style>
+  /* Service Card Effects */
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #476783, #f7b97d);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .service-card:hover::before {
+    opacity: 1;
+  }
+
+  .service-card * {
+    transition-property: color, background-color, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Premium Benefit Cards */
+  .benefit-card {
+    transform-style: preserve-3d;
+  }
+
+  /* Slow Spin for Icon Ring */
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 3s linear infinite;
+  }
+</style>
+
+<script>
+  import AOS from 'aos';
+  import 'aos/dist/aos.css';
+  
+  AOS.init({
+    duration: 800,
+    easing: 'ease-out-cubic',
+    once: true,
+    offset: 80,
+  });
+</script>

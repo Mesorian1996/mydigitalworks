@@ -10,6 +10,8 @@ import {
   reloadOnTomlChange,
 } from "./src/lib/utils/tomlUtils.ts";
 
+import icon from "astro-icon";
+
 const config = parseTomlToJson();
 
 let {
@@ -33,7 +35,7 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
-  integrations: [react(), sitemapConfig.enable ? sitemap() : null, mdx()],
+  integrations: [react(), sitemapConfig.enable ? sitemap() : null, mdx(), icon()],
   markdown: {
     rehypePlugins: [
       [
