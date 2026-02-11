@@ -277,6 +277,9 @@ const WEB3FORMS_ACCESS_KEY = import.meta.env.WEB3FORMS_ACCESS_KEY;
       // Store original button content
       const originalHTML = submitBtn.innerHTML;
       
+      formData.append("subject", "Neue Anfrage – MY Digital Works");
+      formData.append("from_name", "MY Digital Works Website");
+
       // Update button state
       submitBtn.innerHTML = `
         <span class="flex items-center justify-center gap-2">
