@@ -29,8 +29,8 @@ const copyrightParts = splitProtectedText(copyrightText);
 // Web3Forms Access Key
 // IMPORTANT: Create your key at https://web3forms.com with the email where you want to receive submissions
 // For testing: Use Mesorian96@gmx.de
-// For production: Use kontakt@mydigitalworks.de
-const WEB3FORMS_ACCESS_KEY = "3a997d22-0d88-4e6e-bd4e-1ef591465416"; // ← REPLACE WITH YOUR KEY FROM WEB3FORMS.COM
+// Web3Forms Access Key (loaded from .env)
+const WEB3FORMS_ACCESS_KEY = import.meta.env.WEB3FORMS_ACCESS_KEY;
 ---
 
 <footer
